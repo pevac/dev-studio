@@ -48,7 +48,7 @@ gulp.task("sass", function () {
 });
 
 gulp.task("script", function(){
-    return gulp.src("./src/js/*.js")
+    return gulp.src("./src/*.js")
         .pipe(gulpif(!RELEASE, sourcemaps.init()))
         .pipe(rigger())
         .pipe(concat('main.js'))
@@ -62,7 +62,7 @@ gulp.task("script", function(){
 });
 
 gulp.task("assets", function() {
-    return gulp.src("src/**/*.html")
+    return gulp.src("src/*.html")
         .pipe(rigger())
         .pipe(gulp.dest(DEST))
 });
