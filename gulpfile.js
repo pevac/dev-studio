@@ -30,7 +30,8 @@ var path = {
         html: "src/*.html", 
         js: "src/js/[^_]*.js",
         styles: "src/sass/*.scss",
-        fonts: "src/fonts/**/*.*",
+        fonts: ["src/fonts/**/*.*",
+        "./bower_components/bootstrap-sass/assets/fonts/**/*.*"],
         img: "src/img/**/*.*"
     },
     watch: { 
@@ -54,6 +55,7 @@ gulp.task("sass:build", function () {
             browsers: AUTOPREFIXER_BROWSERS,
             cascade: false
         }))
+        .pipe($.csscomb())
         .pipe($.if(RELEASE, $.cssmin()))
         .pipe($.rename({
             suffix: ".min",
@@ -90,10 +92,21 @@ gulp.task("fonts:build", function() {
         .pipe(gulp.dest(path.build.fonts));
 });
 
+gulp.task('image:build', function () {
+    gulp.src(path.src.img) 
+        // .pipe($.imagemin({ 
+        //     progressive: true,
+        //     svgoPlugins: [{removeViewBox: false}],
+        //     interlaced: true, 
+        //     optimizationLevel: 3 
+        // }))
+        .pipe(gulp.dest(path.build.img)) 
+});
+
 gulp.task("clean", del.bind(null, path.clean));
 
 gulp.task("build", ["clean"], function (cb) {
-    runSequence(["sass:build", "script:build","assets:build", "fonts:build"], cb);
+    runSequence(["sass:build", "script:build","assets:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
@@ -122,6 +135,9 @@ gulp.task("watch", function(){
         gulp.start("fonts:build");
     });
 
+      $.watch([path.watch.img], function(event, cb) {
+        gulp.start("image:build");
+    });
 });
 
 gulp.task("serve", function (cb) {
