@@ -29,9 +29,9 @@ var path = {
     src: { 
         html: "src/*.html", 
         js: "src/js/[^_]*.js",
+        jshint: "src/js/*.js",
         styles: "src/sass/*.scss",
-        fonts: ["src/fonts/**/*.*",
-        "./bower_components/bootstrap-sass/assets/fonts/**/*.*"],
+        fonts: "src/fonts/**/*.*",
         img: "src/img/**/*.*"
     },
     watch: { 
@@ -56,22 +56,19 @@ gulp.task("sass:build", function () {
             cascade: false
         }))
         .pipe($.csscomb())
-        .pipe($.if(RELEASE, $.cssmin()))
+        .pipe($.if(RELEASE,$.cssmin()))
+        .pipe($.if(!RELEASE, $.sourcemaps.write()))
         .pipe($.rename({
             suffix: ".min",
             extname: ".css"
         }))
-        .pipe($.if(!RELEASE, $.sourcemaps.write(".")))
         .pipe(gulp.dest(path.build.styles));
 });
 
 gulp.task("script:build", function(){
     return gulp.src(path.src.js)
-        .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.rigger())
-        .pipe(jshint()) 
-        .pipe(jshint.reporter("jshint-stylish"))
-        .pipe($.concat('main.js'))
+        .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.uglify())
         .pipe($.rename({
             suffix: ".min",
@@ -81,7 +78,13 @@ gulp.task("script:build", function(){
         .pipe(gulp.dest(path.build.js));
 });
 
-gulp.task("assets:build", function() {
+gulp.task("jshint:build", function(){
+    return gulp.src(path.src.jshint)
+        .pipe(jshint()) 
+        .pipe(jshint.reporter("jshint-stylish"))
+});
+
+gulp.task("html:build", function() {
     return gulp.src(path.src.html)
         .pipe($.rigger())
         .pipe(gulp.dest(path.build.html))
@@ -106,7 +109,7 @@ gulp.task('image:build', function () {
 gulp.task("clean", del.bind(null, path.clean));
 
 gulp.task("build", ["clean"], function (cb) {
-    runSequence(["sass:build", "script:build","assets:build", "fonts:build","image:build"], cb);
+    runSequence(["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
@@ -120,7 +123,7 @@ gulp.task("browser-sync", function () {
 
 gulp.task("watch", function(){
     $.watch([path.watch.html], function(event, cb) {
-        gulp.start("assets:build");
+        gulp.start("html:build");
     });
   
     $.watch([path.watch.styles], function(event, cb) {
