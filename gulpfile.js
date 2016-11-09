@@ -28,8 +28,8 @@ var path = {
     },
     src: { 
         html: "src/*.html", 
-        js: "src/js/[^_]*.js",
-        jshint: "src/js/*.js",
+        js: ["./bower_components/angular/angular.js","src/js/**/[^_]*.js"],
+        jshint: "src/js/**/*.js",
         styles: "src/sass/*.scss",
         fonts: "src/fonts/**/*.*",
         img: "src/img/**/*.*"
@@ -51,30 +51,27 @@ gulp.task("sass:build", function () {
         .pipe($.plumber())
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.sass())
-        .pipe($.autoprefixer({
-            browsers: AUTOPREFIXER_BROWSERS,
-            cascade: false
-        }))
-        .pipe($.csscomb())
-        .pipe($.if(RELEASE,$.cssmin()))
-        .pipe($.if(!RELEASE, $.sourcemaps.write()))
+        .on('error', console.error.bind(console))
+        .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
+        .pipe($.if(RELEASE, $.cssmin()))
         .pipe($.rename({
             suffix: ".min",
             extname: ".css"
         }))
+        .pipe($.if(!RELEASE, $.sourcemaps.write({sourceRoot: './src/sass'})))
         .pipe(gulp.dest(path.build.styles));
 });
 
 gulp.task("script:build", function(){
     return gulp.src(path.src.js)
-        .pipe($.rigger())
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
-        .pipe($.uglify())
+        .pipe($.concat("main.js"))
+        .pipe($.if(RELEASE,$.uglify()))
         .pipe($.rename({
             suffix: ".min",
             extname: ".js"
         }))
-        .pipe($.if(!RELEASE, $.sourcemaps.write(".")))
+        .pipe($.if(!RELEASE, $.sourcemaps.write({sourceRoot: './src/js'})))
         .pipe(gulp.dest(path.build.js));
 });
 
