@@ -1,0 +1,19 @@
+.connect_us{
+            
+    .btn{
+        background-color:$dark-blue-base-color;
+        &:hover,
+        &:focus,
+        &.focus {
+            color:$yellow-base-color;
+            background-color:$dark-blue-base-color;
+        }
+    }
+    textarea{
+        resize: vertical;
+    }
+    h3{
+        text-align: left;
+        margin-left: 30px;
+    }
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp",
     "public": "gulp build --release",
-    "prestart": "npm install"
+    "prestart": "npm install && bower install"
   },
   "author": "",
   "license": "ISC",

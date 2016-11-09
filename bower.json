@@ -13,6 +13,8 @@
   ],
   "dependencies": {
     "bootstrap-sass": "~3.3.7",
-    "angular": "~1.5.8"
+    "angular": "~1.5.8",
+    "angular-bootstrap": "~2.2.0",
+    "angular-ui-validate": "^1.2.2"
   }
 }

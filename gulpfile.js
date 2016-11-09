@@ -28,7 +28,10 @@ var path = {
     },
     src: { 
         html: "src/*.html", 
-        js: ["./bower_components/angular/angular.js","src/js/**/[^_]*.js"],
+        js: ["./bower_components/angular/angular.js",
+        "./bower_components/angular-bootstrap/ui-bootstrap.js",
+         "./bower_components/angular-ui-validate/dist/validate.js",
+        "src/js/**/*.js"],
         jshint: "src/js/**/*.js",
         styles: "src/sass/*.scss",
         fonts: "src/fonts/**/*.*",
@@ -51,7 +54,6 @@ gulp.task("sass:build", function () {
         .pipe($.plumber())
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.sass())
-        .on('error', console.error.bind(console))
         .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
         .pipe($.if(RELEASE, $.cssmin()))
         .pipe($.rename({

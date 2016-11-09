@@ -1,1 +1,1 @@
-
+angular.module('appModule', ['ui.bootstrap']);

@@ -1,16 +1,11 @@
-@import "./bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/variables";
 
-//== Scaffolding
-//
-//## Settings for some of the most global styles.
-//** Background color for `<body>`.
-$body-bg:               red !default;
-//** Global text color on `<body>`.
-$text-color:            $gray-dark !default;
+$blue-base-color: #0a86b7 ;
+$yellow-base-color: #f5bf02 ;
+$gray-base-color: #d1cfd0 ;
+$dark-blue-base-color: #212955 ;
 
-//** Global textual link color.
-$link-color:            red !default;
-//** Link hover color set via `darken()` function.
-$link-hover-color:      darken($link-color, 15%) !default;
-//** Link hover decoration.
-$link-hover-decoration: underline !default;
+$btn-primary-color:              #ffffff ;
+$btn-primary-bg:                 $dark-blue-base-color ;
+$btn-primary-border:             $dark-blue-base-color ;
+

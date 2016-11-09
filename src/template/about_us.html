@@ -1,0 +1,77 @@
+<div class="container">
+    <div ng-controller="FormControllers" ng-init="isFormCollapsed=false" class="connect_us text-center">
+        <a class="btn btn-primary" ng-if="!isFormCollapsed" ng-click="formCollapsed()">Связаться с нами</a>
+        <form class="form-horizontal" role="form" ng-if="isFormCollapsed">
+                <h2>Заполните пожалуйста форму</h2>
+                <h3>Общая информация о бизнесе</h3>
+                <div class="form-group">
+                    <label for="inputCompanyName" class="col-sm-3 control-label">Назвение компании</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputCompanyName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputCompanySite" class="col-sm-3 control-label">Cайт компании</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputCompanySite">
+                    </div>
+                </div>
+                <h3>Вашы контакты</h3>
+                 <div class="form-group">
+                    <label for="inputName" class="col-sm-3 control-label">Имя и фамилия</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputName">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="inputPosition" class="col-sm-3 control-label">Позиция в компании</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputPosition">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="inputPhone" class="col-sm-3 control-label">Телефон</label>
+                    <div class="col-sm-9">
+                    <input type="text" class="form-control" id="inputPhone">
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Email</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="inputEmail">
+                    </div>
+                </div>
+                <h3>Детальная информация о компании и проекте</h3>
+                <div class="form-group">
+                    <label for="inputAbout" class="col-sm-5 control-label">Кто чаще всего является клиентом компании?</label>
+                    <div class="col-sm-7">
+                        <textarea  class="form-control" id="inputAbout"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputTask" class="col-sm-5 control-label">Какую бизнес задачу/проблему вы хотите решить с помощью IT-проекта? </label>
+                    <div class="col-sm-7">
+                        <textarea  class="form-control" id="inputTask"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputResult" class="col-sm-5 control-label">Какой результат вы ожидаете получить? </label>
+                    <div class="col-sm-7">
+                        <textarea  class="form-control" id="inputResult"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputResult" class="col-sm-5 control-label">Мы рассматриваем Вашу заявку как сотрудничества в разработке полноценого IT-решения? </label>
+                    <div class="col-sm-7">
+                        <textarea  class="form-control" id="inputResult"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary">Отправить заявку</button>
+                    </div>
+                </div>
+        </form>
+    </div>
+</div>
+
