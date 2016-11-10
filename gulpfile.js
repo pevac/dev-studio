@@ -146,4 +146,6 @@ gulp.task("serve", function (cb) {
     runSequence("build", ["browser-sync","watch"], cb);
 });
 
+gulp.task("storm", ["build","watch"]);
+
 gulp.task("default", ["serve"]);
