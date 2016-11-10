@@ -1,12 +1,22 @@
 .connect_us{
-            
-    .btn{
+    a.form-close{
+        cursor: pointer;
+        background-image: url("../img/close.png");
+        background-repeat: no-repeat;
+        display: block;
+        float: right;
+        width: 32px;
+        height: 32px;
+    }
+
+    .btn-primary{
         &:hover,
         &:focus,
         &.focus {
             color:$yellow-base-color;
             background-color:$dark-blue-base-color;
         }
+
     }
 
     textarea{
@@ -18,10 +28,15 @@
         -o-transition: 0.05s;
         overflow: hidden;
     }
+    h2{
+        text-align: center;
+    }
+
     h3{
         text-align: left;
         margin-left: 30px;
     }
+
     form .error{
         color:red;
         text-align: left;

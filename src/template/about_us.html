@@ -1,13 +1,17 @@
 <div class="container">
-    <div ng-controller="FormControllers"  class="connect_us text-center">
-        <a class="btn btn-close" ng-click="formCollapsed()"><span class="glyphicon-eye-close "></span></a>
-        <a class="btn btn-primary" ng-if="!isFormCollapsed" ng-click="formCollapsed()">Связаться с нами</a>
+    <div ng-controller="FormControllers"   class="connect_us">
+        <div class="text-center">
+            <a class="btn btn-primary" ng-if="!isFormCollapsed" ng-click="formCollapsed()" >Связаться с нами</a>
+        </div>
         <form class="form-horizontal" name="form" role="form" ng-if="isFormCollapsed" novalidate>
+            <div >
+                <a class="form-close"  ng-click="formCollapsed()"></a>
+            </div>
                 <h2>Заполните пожалуйста форму</h2>
                 <h3>Общая информация о бизнесе</h3>
                 <div class="form-group">
-                    <label for="inputCompany" class="col-sm-3 control-label">Назвение компании*:</label>
-                    <div class="col-sm-9">
+                    <label for="inputCompany" class="col-sm-3 col-xs-12 control-label">Назвение компании*:</label>
+                    <div class="col-sm-9 col-xs-12">
                         <input   type="text" name="company" ng-model="company"  class="form-control" id="inputCompany" required>
                         <div ng-show="form.$submitted || form.company.$touched">
                             <div class="error" ng-show="form.company.$error.required">Ето поле обязательно для заполнение</div>
