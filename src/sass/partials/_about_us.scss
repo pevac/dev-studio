@@ -1,7 +1,6 @@
 .connect_us{
             
     .btn{
-        background-color:$dark-blue-base-color;
         &:hover,
         &:focus,
         &.focus {
@@ -9,11 +8,22 @@
             background-color:$dark-blue-base-color;
         }
     }
+
     textarea{
-        resize: vertical;
+        resize: none;
+        word-wrap: break-word;
+        transition: 0.05s;
+       -moz-transition: 0.05s;
+       -webkit-transition: 0.05s;
+        -o-transition: 0.05s;
+        overflow: hidden;
     }
     h3{
         text-align: left;
         margin-left: 30px;
+    }
+    form .error{
+        color:red;
+        text-align: left;
     }
 }
