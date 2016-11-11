@@ -1,44 +1,147 @@
 .connect_us{
-    a.form-close{
-        cursor: pointer;
-        background-image: url("../img/close.png");
-        background-repeat: no-repeat;
-        display: block;
-        float: right;
-        width: 32px;
-        height: 32px;
+  a.form-close{
+    cursor: pointer;
+    background-image: url("../img/close.png");
+    background-repeat: no-repeat;
+    display: block;
+    float: right;
+    width: 32px;
+    height: 32px;
+
+    &:hover{
+      background-color: #212955;
+      background-image: url("../img/close_hover.png");
+    }
+  }
+
+  .btn-primary{
+    &:hover,
+    &:focus,
+    &.focus {
+      color:$yellow-base-color;
+      background-color:$dark-blue-base-color;
+    }
+  }
+
+  textarea{
+    resize: none;
+    word-wrap: break-word;
+    transition: 0.05s;
+    -moz-transition: 0.05s;
+    -webkit-transition: 0.05s;
+    -o-transition: 0.05s;
+    overflow: hidden;
+  }
+  h2{
+    text-align: center;
+  }
+
+  h3{
+    text-align: left;
+    margin-left: 30px;
+  }
+
+  form .error{
+    color:red;
+    text-align: left;
+  }
+
+  margin-top: 15px;
+}
+
+section.about_us{
+  margin-top:45%;
+  width: 100%;
+  height:auto;
+
+  .about-item{
+    padding:20px;
+    height: 95%;
+    background-color: $gray-base-color;
+    border-right: 2px solid $dark-gray-base-color;
+    border-bottom: 5px solid $dark-gray-base-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+
+    &:hover{
+      background-color: $blue-base-color;
+      color:$default-color;
     }
 
-    .btn-primary{
-        &:hover,
-        &:focus,
-        &.focus {
-            color:$yellow-base-color;
-            background-color:$dark-blue-base-color;
-        }
-
+    &:hover .growth,&:focus .growth{
+      background-image: url("../img/growth_hover.png");
     }
 
-    textarea{
-        resize: none;
-        word-wrap: break-word;
-        transition: 0.05s;
-       -moz-transition: 0.05s;
-       -webkit-transition: 0.05s;
-        -o-transition: 0.05s;
-        overflow: hidden;
-    }
-    h2{
-        text-align: center;
+    &:hover .world, &:focus .world {
+      background-image: url("../img/world_hover.png");
     }
 
-    h3{
-        text-align: left;
-        margin-left: 30px;
+    &:hover .light-bulb,&:focus .light-bulb {
+      background-image: url("../img/light-bulb_hover.png");
+    }
+  }
+
+  .about-item:nth-child(2) img{
+    width:100%;
+    height:auto;
+  }
+
+  .about-item p{
+    text-align: left;
+    margin: 15px 0;
+    font-size: 16px;
+  }
+
+  .about-item .bu3{
+    background-image: url("../img/BU3.png");
+    height: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 5;
+  }
+
+  .about-item .bu2{
+    background-image: url("../img/BU2.png");
+    height: 276px;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 5;
     }
 
-    form .error{
-        color:red;
-        text-align: left;
-    }
+  .about-item .bu1{
+    background-image: url("../img/BU1.png");
+    height: 130px;
+    background-repeat: no-repeat;
+    background-position: center;
+    flex-grow: 5;
+  }
+
+  .about-item .growth{
+    background-image: url("../img/growth.png");
+    height: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .about-item .light-bulb{
+    background-image: url("../img/light-bulb.png");
+    height: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .about-item .world{
+    background-image: url("../img/world.png");
+    height: 80px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+    flex-wrap: wrap;
+  }
 }
