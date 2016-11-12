@@ -35,97 +35,79 @@
                 </div>
             </div>
         </div>
-        <div ng-controller="FormControllers"   class="connect_us">
+        <div    class="connect_us">
             <div class="text-center">
-                <a class="btn btn-primary" ng-if="!isFormCollapsed" ng-click="formCollapsed()" >Связаться с нами</a>
+                <a class="btn btn-primary" >Связаться с нами</a>
             </div>
-            <form class="form-horizontal" name="form" role="form" ng-if="isFormCollapsed" novalidate>
+            <form class="form-horizontal" name="form" role="form" id="formValidate">
                 <div >
-                    <a class="form-close"  ng-click="formCollapsed()"></a>
+                    <a class="form-close"></a>
                 </div>
                 <h2>Заполните пожалуйста форму</h2>
                 <h3>Общая информация о бизнесе</h3>
                 <div class="form-group">
-                    <label for="inputCompany" class="col-sm-3  control-label">Назвение компании*:</label>
+                    <label for="inputNameCompany" class="col-sm-3  control-label">Назвение компании*:</label>
                     <div class="col-sm-9">
-                        <input   type="text" name="company" ng-model="company"  class="form-control" id="inputCompany" required>
-                        <div ng-show="form.$submitted || form.company.$touched">
-                            <div class="error" ng-show="form.company.$error.required">Ето поле обязательно для заполнение</div>
-                        </div>
+                        <input   type="text" name="name_company"  class="form-control" id="inputNameCompany" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputCompanySite" class="col-sm-3 control-label">Cайт компании*:</label>
+                    <label for="inputSiteCompany" class="col-sm-3 control-label">Cайт компании*:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="site" ng-model="site"  class="form-control" id="inputCompanySite" required>
-                        <div ng-show="form.$submitted || form.site.$touched">
-                            <div class="error" ng-show="form.site.$error.required">Ето поле обязательно для заполнение</div>
-                        </div>
+                        <input type="text" name="site_company"   class="form-control" id="inputSiteCompany" required>
                     </div>
                 </div>
                 <h3>Вашы контакты</h3>
                 <div class="form-group">
-                    <label for="inputName" class="col-sm-3 control-label">Имя и фамилия*:</label>
+                    <label for="inputFullName" class="col-sm-3 control-label">Имя и фамилия*:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="name" ng-model="name"  class="form-control" id="inputName" required>
-                        <div ng-show="form.$submitted || form.name.$touched">
-                            <div class="error" ng-show="form.name.$error.required">Ето поле обязательно для заполнение</div>
-                        </div>
+                        <input type="text" name="full_name"   class="form-control" id="inputFullName" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputPosition"  class="col-sm-3 control-label" >Позиция в компании*:</label>
+                    <label for="inputJobPosition"  class="col-sm-3 control-label" >Позиция в компании*:</label>
                     <div class="col-sm-9">
-                        <input type="text" name="position" ng-model="position" class="form-control" id="inputPosition"required>
-                        <div ng-show="form.$submitted || form.position.$touched">
-                            <div class="error" ng-show="form.position.$error.required">Ето поле обязательно для заполнение</div>
-                        </div>
+                        <input type="text" name="job_position"  class="form-control" id="inputJobPosition"required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputPhone" class="col-sm-3 control-label">Телефон*:</label>
                     <div class="col-sm-9">
-                        <input type="tel" name="phone" ng-pattern="/^[0-9]{10,10}$/"  ng-model="phone" class="form-control" id="inputPhone" required>
-                        <div ng-show="form.$submitted || form.phone.$touched">
-                            <div class="error" ng-show="form.phone.$error.required">Ето поле обязательно для заполнение</div>
-                            <div class="error" ng-show="form.phone.$error.pattern">Введите корректный номер телефона</div>
-                        </div>
+                        <input type="tel" name="phone"  class="form-control" id="inputPhone" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputEmail" class="col-sm-3 control-label">Email*:</label>
                     <div class="col-sm-9">
-                        <input type="email" name="email" ng-model="email" class="form-control" id="inputEmail" required>
-                        <div ng-show="form.$submitted || form.email.$touched">
-                            <div class="error" ng-show="form.email.$error.required">Ето поле обязательно для заполнение</div>
-                            <div class="error" ng-show="form.email.$error.email">Введите корректный email</div>
-                        </div>
+                        <input type="email" name="mail"  class="form-control" id="inputEmail" required>
                     </div>
                 </div>
                 <h3>Детальная информация о компании и проекте</h3>
                 <div class="form-group">
                     <label for="inputAbout" class="col-sm-5 control-label">Кто чаще всего является клиентом компании?</label>
                     <div class="col-sm-7">
-                        <textarea auto-resize class="form-control" id="inputAbout"></textarea>
+                        <textarea  class="form-control" name="question_1" id="inputAbout"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputTask" class="col-sm-5 control-label">Какую бизнес задачу/проблему вы хотите решить с помощью IT-проекта? </label>
                     <div class="col-sm-7">
-                        <textarea auto-resize class="form-control" id="inputTask"></textarea>
+                        <textarea  class="form-control" name="question_2" id="inputTask"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputResult" class="col-sm-5 control-label">Какой результат вы ожидаете получить? </label>
                     <div class="col-sm-7">
-                        <textarea auto-resize   class="form-control" id="inputResult"></textarea>
+                        <textarea   class="form-control" name="question_3" id="inputResult"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="inputDescription" class="col-sm-5 control-label">Мы рассматриваем Вашу заявку как сотрудничества в разработке полноценого IT-решения? </label>
                     <div class="col-sm-7">
-                        <textarea auto-resize  class="form-control" id="inputDescription"></textarea>
+                        <textarea   class="form-control" name="question_4" id="inputDescription"></textarea>
                     </div>
+                </div>
+                <div id="result">
                 </div>
                 <div class="form-group">
                     <div class="text-center">

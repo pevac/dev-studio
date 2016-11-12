@@ -28,9 +28,10 @@ var path = {
     },
     src: { 
         html: "src/*.html", 
-        js: ["./bower_components/angular/angular.js",
-        "./bower_components/angular-bootstrap/ui-bootstrap.js",
-         "./bower_components/angular-ui-validate/dist/validate.js",
+        js: ["./bower_components/jquery/dist/jquery.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
+            "./bower_components/jquery-validation/dist/jquery.validate.js",
+            "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
         "src/js/**/*.js"],
         jshint: "src/js/**/*.js",
         styles: "src/sass/*.scss",

@@ -12,9 +12,9 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "2.2.4",
     "bootstrap-sass": "~3.3.7",
-    "angular": "~1.5.8",
-    "angular-bootstrap": "~2.2.0",
-    "angular-ui-validate": "^1.2.2"
+    "jquery-validation": "^1.15.1",
+    "jquery.maskedinput": "^1.4.1"
   }
 }
