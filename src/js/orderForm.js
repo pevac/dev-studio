@@ -10,6 +10,7 @@ $(document).ready(function(){
 } )
 
   $("#inputPhone").mask("(999) 999-99-99");
+  $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
 
   $("#formValidate").validate({
    rules:{
@@ -19,6 +20,7 @@ $(document).ready(function(){
      },
 
      site_company:{
+       required: true,
        url: true
      },
 
@@ -39,8 +41,8 @@ $(document).ready(function(){
     },
 
     mail:{
-      email: true,
-      required: false,
+      required: true,
+      email: true
     },
 
   },
@@ -56,7 +58,10 @@ $(document).ready(function(){
       maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
     },
 
-    site_company:{ email:"Введите корректный  url."},
+    site_company:{
+      url:"Введите корректный  url.",
+      required: "Введите сайт вашей компании."
+    },
 
     full_name:{
       required: "Введите ваше имя.",
@@ -74,7 +79,10 @@ $(document).ready(function(){
       phoneUS: "Введите корректный номер телефона"
     },
 
-    mail:{ email:"Введите корректный  email."}
+    mail:{
+      email:"Введите корректный  email.",
+      required: "Введите ваш email."
+    }
   },
 
   errorElement : 'div',
@@ -104,6 +112,11 @@ $(document).ready(function(){
     });
     return o;
   };
+
+  function resize(e) {
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight+'px';
+  }
 
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());

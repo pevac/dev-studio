@@ -32,7 +32,7 @@ var path = {
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
-        "src/js/**/*.js"],
+            "src/js/**/*.js"],
         jshint: "src/js/**/*.js",
         styles: "src/sass/*.scss",
         fonts: "src/fonts/**/*.*",
