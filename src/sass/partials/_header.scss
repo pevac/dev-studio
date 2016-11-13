@@ -1,0 +1,74 @@
+.header img{
+    /*width: 100px;*/
+    height: 40px;
+}
+
+.header .navbar-blue{
+    background-color: #171d3e;
+}
+
+.header .intership{
+    background-color: white;
+    width: 100%;
+    height: 50px;
+}
+
+.header .navbar-brand{
+    padding: 5px 10px 5px 10px;
+}
+
+.header li{
+    height: 50px;
+    font-size: 14pt;
+    font-family: 'PFBeauSansPro Light', sans-serif;
+    margin: 0 0 0 80px;
+    padding: 15px 0;
+}
+
+.header li:first-child{
+    margin: 0;
+}
+
+.header .navbar-blue .navbar-nav li a{
+    color: white;
+    padding: 0;
+}
+
+.header .navbar-blue .navbar-nav li a:hover{
+    color: #f7c008;
+    border-bottom: 2px solid #f7c008;
+}
+
+.header .navbar-blue .navbar-nav > li > a:focus{
+    color: #f7c008;
+}
+
+.header .intership .nav li{
+    padding-left: 10px;
+}
+
+.header .intership .nav li a{
+    color: #171d3e;
+}
+
+.header .intership .nav li a:hover{
+    color: #171d3e;
+    border: none;
+}
+
+.header .small-menu{
+    padding: 0;
+}
+
+@media(max-width: 1127px){
+    .header li{margin: 0 0 0 40px;}
+}
+
+@media(max-width: 767px){
+    .header li{margin: 0;}
+    .header .intership{width: 100%; height: 60px; text-align: center;}
+    .header .inteship .nav>li{display: inline-block;}
+}
+.header .active{
+    color: red;
+}
