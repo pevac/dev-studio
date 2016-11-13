@@ -2,4 +2,19 @@ body{
   background-image: url("../img/dev.png");
   background-repeat: no-repeat;
   background-size: 100%;
+  font-family: Beau;
+}
+
+// Fonts
+@font-face {
+  font-family: 'PFBeauSansProLight';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansProReg';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansProBold';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
 }
