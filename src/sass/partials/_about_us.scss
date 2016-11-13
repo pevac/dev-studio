@@ -110,26 +110,23 @@ section.about_us{
 
   .about-item{
     padding:20px;
-    height: 95%;
+    height: 100%;
     background-color: $gray-base-color;
     border-right: 3px solid $dark-gray-base-color;
     border-bottom: 8px solid $dark-gray-base-color;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-bottom: 10px;
-
+    //margin-bottom: 10px;
     &:hover{
       background-color: $blue-base-color;
       color:$default-color;
       border-right: 3px solid #0f7492;
       border-bottom: 8px solid #0f7492;
-
       & svg {
         fill: $yellow-base-color;
       }
     }
-
     h1{
       min-height: 80px;
       margin-top: 10px;
@@ -149,9 +146,9 @@ section.about_us{
     flex-grow: 5;
   }
 
-  .about-item .about-img{
-    margin-top: 30px;
-    margin-bottom:30px;
+  .about-img{
+    padding-top: 30px;
+    padding-bottom:30px;
   }
 
   .row {

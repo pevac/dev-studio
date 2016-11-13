@@ -118,6 +118,12 @@ $(document).ready(function(){
     this.style.height = this.scrollHeight+'px';
   }
 
+  // collapsed form and button
+  $('a[data-id="form-collapsed"]').click(function(){
+    $('#formValidate').slideToggle();
+    $('#btn-form-collapsed').toggle();
+  });
+
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
     var url = "http://localhost:3000/";

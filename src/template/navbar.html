@@ -1,40 +1,5 @@
-<!--<nav class="navbar navbar-default navbar-fixed-top">-->
-  <!--<div class="container content">-->
-    <!--<h1>-->
-      <!--<a class="navbar-brand" href="#">-->
-        <!--<img src="data:image/png;base64,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" alt="">-->
-      <!--</a>-->
-    <!--</h1>-->
-
-    <!--&lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;-->
-    <!--<div class="navbar-header">-->
-      <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
-        <!--<span class="sr-only">Toggle navigation</span>-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
-        <!--<span class="icon-bar"></span>-->
-      <!--</button>-->
-    <!--</div>-->
-
-    <!--&lt;!&ndash; Collect the nav links, forms, and other content for toggling &ndash;&gt;-->
-    <!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">-->
-      <!--<ul class="nav navbar-nav navbar-right">-->
-        <!--<li><a href="#">О нас</a></li>-->
-        <!--<li><a href="#">Услуги</a></li>-->
-        <!--<li><a href="#">Проекты</a></li>-->
-        <!--<li><a href="#">Контакты</a></li>-->
-        <!--<li><a href="#">Интернатура</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
-  <!--</div>-->
-  <!--<div class="white_block"></div>-->
-
-<!--</nav>-->
-
-
-<nav class="navbar navbar-default ">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container content">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
