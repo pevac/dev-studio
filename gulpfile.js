@@ -96,13 +96,7 @@ gulp.task("fonts:build", function() {
 });
 
 gulp.task('image:build', function () {
-    gulp.src(path.src.img) 
-        // .pipe($.imagemin({ 
-        //     progressive: true,
-        //     svgoPlugins: [{removeViewBox: false}],
-        //     interlaced: true, 
-        //     optimizationLevel: 3 
-        // }))
+    gulp.src(path.src.img)
         .pipe(gulp.dest(path.build.img)) 
 });
 
