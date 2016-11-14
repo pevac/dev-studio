@@ -1,9 +1,18 @@
 body{
+  font-family: Beau;
+}
+
+.dev-studio{
   background-image: url("../img/dev.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  font-family: Beau;
+  position: absolute;
+  top:30px;
+  left:0;
+  right:0;
+  bottom:0;
 }
+
 
 // Fonts
 @font-face {

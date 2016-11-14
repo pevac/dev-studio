@@ -1,0 +1,81 @@
+@import "../../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/navbar";
+.header img{
+    height: 40px;
+}
+
+.header .navbar-blue{
+    background-color: $dark-blue-base-color;
+}
+
+.navbar {
+    border: none;
+}
+
+.header .intership{
+    background-color: white;
+    width: 100%;
+}
+
+.header .navbar-brand{
+    padding: 5px 10px 5px 10px;
+}
+
+.header li{
+    height: 50px;
+    font-size: 14pt;
+    font-family: 'PFBeauSansPro Light', sans-serif;
+    margin: 0 0 0 80px;
+    padding: 15px 0;
+}
+
+.header li:first-child{
+    margin: 0;
+}
+
+.header .navbar-blue .navbar-nav li a{
+    color: white;
+    padding: 0;
+}
+
+.header .navbar-blue .navbar-nav li a:hover{
+    color: $yellow-base-color;
+    border-bottom: 2px solid $yellow-base-color;
+}
+
+.header .navbar-blue .navbar-nav > li > a:focus{
+    color: $yellow-base-color;
+}
+
+.header .navbar-toggle:hover span{
+	background-color: #f7c008;
+}
+
+.header .navbar-toggle:focus span{
+	background-color: #f7c008;
+}
+
+.header .intership .nav li a{
+    color: $dark-blue-base-color;
+}
+
+.header .intership .nav li {
+    float: none;
+    padding-left: 15px;
+}
+
+.header .intership .nav li a:hover{
+    color: #171d3e;
+    border: none;
+}
+
+.header .small-menu{
+    padding: 0;
+}
+
+@media(max-width: 1127px){
+    .header li{margin: 0 0 0 40px;}
+}
+
+@media(max-width: 767px){
+    .header li{margin: 0;}
+}
