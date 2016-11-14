@@ -87,6 +87,11 @@ gulp.task("jshint:build", function(){
 gulp.task("html:build", function() {
     return gulp.src(path.src.html)
         .pipe($.rigger())
+        .pipe($.if(RELEASE, $.htmlmin({
+            removeComments: true,
+            collapseWhitespace: true,
+            minifyJS: true
+        })))
         .pipe(gulp.dest(path.build.html))
 });
 

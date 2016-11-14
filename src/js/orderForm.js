@@ -20,7 +20,6 @@ $(document).ready(function(){
      },
 
      site_company:{
-       required: true,
        url: true
      },
 
@@ -60,7 +59,6 @@ $(document).ready(function(){
 
     site_company:{
       url:"Введите корректный  url.",
-      required: "Введите сайт вашей компании."
     },
 
     full_name:{
@@ -113,6 +111,16 @@ $(document).ready(function(){
     return o;
   };
 
+  $.fn.resetInputValue = function()
+  {
+    var a = this[0];
+    for(var i =0; i<a.length; i++){
+      if(a[i].value){
+        a[i].value = "";
+      }
+    }
+  };
+
   function resize(e) {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight+'px';
@@ -124,15 +132,22 @@ $(document).ready(function(){
     $('#btn-form-collapsed').toggle();
   });
 
+  // $("#sendBtn").on("click", sendOrderMessage());
+
   function sendOrderMessage() {
-    var customer = JSON.stringify($("#formValidate").serializeObject());
-    var url = "http://localhost:3000/";
-    $.post(url, customer).success(function (response) {
-      // $('#result').text("Ваше сообщение успешно доставлено. Менеджер свяжется с вами в ближайшее время" );
-    }).error(function (message) {
-      console.log(message);
-    });
-  }
+      var customer = JSON.stringify($("#formValidate").serializeObject());
+      var url = "/api/customerrequest/";
+      console.log(customer);
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: customer,
+        dataType: "json",
+        contentType: "application/json"
+      });
+     $("#formValidate").resetInputValue();
+    }
+
 
 });
 
