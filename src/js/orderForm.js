@@ -6,7 +6,7 @@ $(document).ready(function(){
   });
 
   $.validator.addMethod( "lettersonly", function( value, element ) {
-  return this.optional( element ) || /^[а-я,ґ,',і,ї,є\-\a-z]+$/i.test( value );
+  return this.optional( element ) || /^[а-я,ґ,', ,і,ї,є\-\a-z]+$/i.test( value );
 } )
 
   // phone mask
@@ -16,27 +16,28 @@ $(document).ready(function(){
    rules:{
      name_company:{
        required: true,
-       maxlength: 20,
+       maxlength: 25
      },
 
-     site_company:{
-       url: true
+     site_company: {
+       required: true,
+       maxlength: 25,
      },
 
      full_name: {
       required: true,
-      maxlength: 20,
+      maxlength: 50,
       lettersonly: true
     },
 
      job_position:{
        required: true,
-       maxlength: 20,
+       maxlength: 50
      },
 
     phone:{
       required: true,
-      phoneUS: true,
+      phoneUS: true
     },
 
     mail:{
@@ -44,7 +45,20 @@ $(document).ready(function(){
       email: true
     },
 
-  },
+     question_1:{
+       maxlength: 200
+     },
+
+     question_2:{
+       required: true,
+       maxlength: 200
+     },
+
+     question_3:{
+       maxlength: 200
+     },
+
+   },
 
   submitHandler: function() {
     sendOrderMessage();
@@ -58,7 +72,8 @@ $(document).ready(function(){
     },
 
     site_company:{
-      url:"Введите корректный  url.",
+      required: "Введите название вашего сайта",
+      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
     },
 
     full_name:{
@@ -77,9 +92,17 @@ $(document).ready(function(){
       phoneUS: "Введите корректный номер телефона"
     },
 
-    mail:{
-      email:"Введите корректный  email.",
-      required: "Введите ваш email."
+    question_1:{
+      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+    },
+
+    question_2:{
+      required: "Этот вопрос обязательный.",
+      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+    },
+
+    question_3:{
+      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
     }
   },
 
@@ -118,17 +141,12 @@ $(document).ready(function(){
        if (re.test(t) || tag == 'textarea') {
          a[i].value = "";
        }
-       else if (t == 'checkbox' || t == 'radio') {
-         a[i].checked = false;
-       }
-       else if (tag == 'select') {
-         a[i].selectedIndex = -1;
-       }
      }
     };
 
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
+    console.log(customer);
     var url = "/api/customerrequest/";
     $.ajax({
       type: "POST",
