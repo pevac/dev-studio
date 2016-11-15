@@ -56,10 +56,18 @@
     font-weight: 800;
   }
 
-   div.error{
+  .radio-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    clear: both;
+  }
+
+  div.error{
     color:red;
     text-align: left;
   }
+
 
   margin-top: 15px;
 
@@ -83,7 +91,7 @@
   }
 
   .radio-group label{
-    padding-top: 10px;
+    padding-top: 15px;
     font-weight: normal;
     font-style: italic;
     display: flex;
@@ -93,8 +101,8 @@
   .radio-group label>span{
     margin-right: 5px;
     border: none;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     background-color: $default-color;
     border-radius: 50%;
     margin-left: 20px;
