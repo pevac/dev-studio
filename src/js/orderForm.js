@@ -9,8 +9,8 @@ $(document).ready(function(){
   return this.optional( element ) || /^[а-я,ґ,',і,ї,є\-\a-z]+$/i.test( value );
 } )
 
+  // phone mask
   $("#inputPhone").mask("(999) 999-99-99");
-  $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
 
   $("#formValidate").validate({
    rules:{
@@ -94,8 +94,7 @@ $(document).ready(function(){
   },
 });
 
-  $.fn.serializeObject = function()
-  {
+  $.fn.serializeObject = function()  {
     var o = {};
     var a = this.serializeArray();
     $.each(a, function() {
@@ -111,43 +110,49 @@ $(document).ready(function(){
     return o;
   };
 
-  $.fn.resetInputValue = function()
-  {
-    var a = this[0];
-    for(var i =0; i<a.length; i++){
-      if(a[i].value){
-        a[i].value = "";
-      }
-    }
-  };
+   $.fn.clearInputs = function() {
+     var a = this[0];
+     var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i;
+     for(var i =0; i<a.length; i++){
+       var t = a[i].type, tag = a[i].tagName.toLowerCase();
+       if (re.test(t) || tag == 'textarea') {
+         a[i].value = "";
+       }
+       else if (t == 'checkbox' || t == 'radio') {
+         a[i].checked = false;
+       }
+       else if (tag == 'select') {
+         a[i].selectedIndex = -1;
+       }
+     }
+    };
+
+  function sendOrderMessage() {
+    var customer = JSON.stringify($("#formValidate").serializeObject());
+    var url = "/api/customerrequest/";
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: customer,
+      dataType: "json",
+      contentType: "application/json"
+    });
+    $("#formValidate").clearInputs();
+  }
 
   function resize(e) {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight+'px';
   }
 
+  //resize textarea
+  $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
+
   // collapsed form and button
   $('a[data-id="form-collapsed"]').click(function(){
-    $('#formValidate').slideToggle();
     $('#btn-form-collapsed').toggle();
+    $('#formValidate').slideToggle();
   });
-
-  // $("#sendBtn").on("click", sendOrderMessage());
-
-  function sendOrderMessage() {
-      var customer = JSON.stringify($("#formValidate").serializeObject());
-      var url = "/api/customerrequest/";
-      console.log(customer);
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: customer,
-        dataType: "json",
-        contentType: "application/json"
-      });
-     $("#formValidate").resetInputValue();
-    }
-
 
 });
 
