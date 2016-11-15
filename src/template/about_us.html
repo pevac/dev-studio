@@ -1,4 +1,4 @@
-<section class="about_us">
+<section id="about_us" class="about_us">
     <div class="container">
         <div class="label-about_us hidden-xs hidden-sm">
             <h1><span>О</span><span>на</span><span>с</span></h1>
@@ -93,32 +93,32 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputSiteCompany" class="col-sm-3 control-label">Cайт компании*:</label>
+                        <label for="inputSiteCompany" class="col-sm-3 control-label">Cайт компании</label>
                         <div class="col-sm-9">
                             <input type="text" name="site_company"   class="form-control" id="inputSiteCompany">
                         </div>
                     </div>
                     <h3>Вашы контакты</h3>
                     <div class="form-group">
-                        <label for="inputFullName" class="col-sm-3 control-label">Имя и фамилия*:</label>
+                        <label for="inputFullName" class="col-sm-3 control-label">Имя и фамилия*</label>
                         <div class="col-sm-9">
                             <input type="text" name="full_name"   class="form-control" id="inputFullName">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputJobPosition"  class="col-sm-3 control-label" >Позиция в компании*:</label>
+                        <label for="inputJobPosition"  class="col-sm-3 control-label" >Позиция в компании*</label>
                         <div class="col-sm-9">
                             <input type="text" name="job_position"  class="form-control" id="inputJobPosition">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPhone" class="col-sm-3 control-label">Телефон*:</label>
+                        <label for="inputPhone" class="col-sm-3 control-label">Телефон*</label>
                         <div class="col-sm-9">
                             <input type="tel" name="phone"  class="form-control" id="inputPhone">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputEmail" class="col-sm-3 control-label">Email*:</label>
+                        <label for="inputEmail" class="col-sm-3 control-label">Email*</label>
                         <div class="col-sm-9">
                             <input type="email" name="mail"  class="form-control" id="inputEmail">
                         </div>
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputTask" class="col-sm-4 control-label">Какую бизнес задачу/проблему вы хотите решить с помощью IT-проекта? </label>
+                        <label for="inputTask" class="col-sm-4 control-label">Какую бизнес задачу/проблему вы хотите решить с помощью IT-проекта?* </label>
                         <div class="col-sm-8">
                             <textarea  class="form-control" name="question_2" id="inputTask"></textarea>
                         </div>
@@ -143,14 +143,15 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-12 control-label">Мы рассматриваем Вашу заявку как сотрудничества в разработке полноценого IT-решения? </label>
+                        <label class="col-sm-12 control-label">Мы рассматриваем Вашу заявку как сотрудничества в разработке полноценого IT-решения(web-приложение, мобильное приложение и тд)* </label>
                         <div class="radio-group">
                             <label class="control-label col-sm-6">
-                                <input class=" form-check-input" type="radio" name="question_3"  value="option2">без разработки прототипа
+                                <input class=" form-check-input" type="radio" name="question_4"  value="option1" checked><span></span>без разработки прототипа
                             </label>
                             <label class="control-label col-sm-6">
-                                <input class="form-check-input" type="radio" name="question_3"  value="option3">с разработкой прототипа
+                                <input class="form-check-input" type="radio" name="question_4"  value="option2"><span></span>с разработкой прототипа
                             </label>
+                        </div>
                     </div>
                     <div id="result">
                     </div>

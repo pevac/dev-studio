@@ -56,7 +56,7 @@
     font-weight: 800;
   }
 
-  form .error{
+   div.error{
     color:red;
     text-align: left;
   }
@@ -68,12 +68,13 @@
 
     form{
       margin:auto;
-      padding: 30px 15px;
+      padding: 30px 0;
     }
 
     label{
       font-weight: normal;
     }
+
   }
 
   .btn-dev{
@@ -82,21 +83,30 @@
   }
 
   .radio-group label{
-    padding-top: 5px;
+    padding-top: 10px;
     font-weight: normal;
     font-style: italic;
-    vertical-align: middle;
     display: flex;
     align-items: center
   }
 
+  .radio-group label>span{
+    margin-right: 5px;
+    border: none;
+    height: 20px;
+    width: 20px;
+    background-color: $default-color;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+
+   label >input[type=radio   ]:not(old):checked + span{
+     border: 2px solid $dark-blue-base-color;
+     box-shadow: none;
+  }
 
   .radio-group input[type=radio]{
-    margin-left: 20px;
-    margin-right: 5px;
-    border: 0px;
-    height: 25px;
-    width: 25px;
+    display: none;
   }
 
   @media(max-width: 767px){
@@ -116,9 +126,6 @@
       width: 70%;
     }
   }
-
-
-
 
   input, textarea{
     border-radius: $dev-input-border-radius;
@@ -209,6 +216,11 @@ section.about_us{
     flex-direction: column;
     justify-content: flex-start;
     margin: 10px 0;
+
+    img {
+      filter: grayscale(100%);
+    }
+
     &:hover{
       background-color: $blue-base-color;
       color:$default-color;
@@ -217,16 +229,17 @@ section.about_us{
       & svg {
         fill: $yellow-base-color;
       }
-
       .about-img, .about-img img{
         width:100%;
         padding:0 5px 5px 5px ;
-      }
+        filter: none;
 
+      }
       .about-article{
         padding-bottom:10px;
       }
     }
+
     h1{
       min-height: 80px;
       margin-top: 10px;
@@ -237,18 +250,17 @@ section.about_us{
       flex-grow: 5;
       padding:20px;
     }
-  }
 
-   .about-item p{
-    text-align: left;
-    margin: 15px 0;
-    font-size: 16px;
+    .about-item p{
+      text-align: left;
+      margin: 15px 0;
+      font-size: 16px;
+    }
 
-  }
-
-  .about-img{
-    padding-top: 40px;
-    padding-bottom:55px;
+    .about-img{
+      padding-top: 40px;
+      padding-bottom:55px;
+    }
   }
 
   .row {
