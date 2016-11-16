@@ -27,9 +27,11 @@ var path = {
         img: "build/img/"
     },
     src: { 
-        html: "src/*.html", 
+        html: "src/*.html",
         js: ["./bower_components/jquery/dist/jquery.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
             "src/js/**/*.js"],

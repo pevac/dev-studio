@@ -1,0 +1,141 @@
+.projects {
+
+  .controls_block {
+    position: absolute;
+    height: $control-size;
+    width: $control-size;
+    background-color: $dark-blue-base-color;
+    box-shadow: 0px 0px 2px 3px $dark-blue-base-color;
+    transform: rotate(45deg);
+    display: flex;
+    z-index: 1000;
+    left: calc(50% - 45px);
+    top: calc(50% - 50px);
+
+    .controls {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transform: rotate(-45deg);
+
+      .slider_control {
+        &:hover {
+          outline: 0;
+          @include opacity(.7);
+        }
+      }
+    }
+  }
+
+  .project-slide-item {
+    background-color: $carousel-slide-bg;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    height:320px;
+
+    &:hover {
+      background-color: $carousel-slide-hover-bg;
+      img{
+        filter: none;
+      }
+
+      &.item-left::before{
+        border-right-color:  $carousel-slide-hover-bg;
+      }
+
+      &.item-right::before{
+        border-left-color: $carousel-slide-hover-bg;
+      }
+    }
+
+    img {
+      filter: grayscale(100%);
+      z-index: 100;
+      height:180px;
+      width: auto;
+      //position: absolute;
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
+
+  //.item-top>img{
+  //  top: 80px;
+  //}
+  //
+  //.item-bottom>img{
+  //  bottom: 80px;
+  //}
+  //
+  //.item-left>img{
+  //  right: 40px;
+  //}
+  //
+  //.item-right>img{
+  //  left: 40px;
+  //}
+
+  .item-top::before{
+    position: absolute;
+    content: "";
+    top: 0;
+  }
+
+  .item-top.item-left::before{
+    border-top: 100px solid white;
+    border-right: 600px solid $carousel-slide-bg;
+  }
+
+  .item-top.item-right::before{
+    border-top: 100px solid white;
+    border-left: 600px solid $carousel-slide-bg;
+  }
+
+  .item-bottom::before{
+    position: absolute;
+    content: "";
+    bottom: 0;
+  }
+
+  .item-bottom.item-left::before{
+    border-bottom: 100px solid white;
+    border-right: 600px solid $carousel-slide-bg;
+  }
+
+  .item-bottom.item-right::before{
+    border-bottom: 100px solid white;
+    border-left: 600px solid $carousel-slide-bg;
+  }
+
+  .item-top{
+    padding-bottom: 40px;
+    padding-top: 100px;
+  }
+
+  .item-bottom{
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+
+  .item{
+    padding:10px;
+  }
+
+  .flex_row>.flex_col{
+    padding: 10px;
+  }
+
+  .flex_row{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: stretch;
+  }
+
+
+}
+
+
+
