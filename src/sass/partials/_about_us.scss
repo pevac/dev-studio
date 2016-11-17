@@ -17,21 +17,12 @@
   }
 
   .btn-dev{
-    color: $btn-dev-color;
-    border-color: $btn-dev-bg;
-    border: none;
     padding: 10px 25px;
     font-size: 16px;
     margin-bottom: 15px;
   }
 
-  .btn-dev{
-    &:hover,
-    &:focus,
-    &.focus {
-      background-color: $btn-dev-bg-hover;
-    }
-  }
+
 
   textarea{
     resize: none;
@@ -152,6 +143,19 @@
 
 }
 
+.btn-dev{
+  color: $btn-dev-color;
+  border: none;
+}
+
+.btn-dev{
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: $btn-dev-bg-hover;
+  }
+}
+
 
 
 section.about_us{
@@ -169,37 +173,34 @@ section.about_us{
     height: 0;
 
     h1 {
-      font-family: PFBeauSansProBold, "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 16px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      height: 122px;
-      width: 92px;
+      height: 120px;
+      width: 90px;
       position: absolute;
       z-index: 100;
-    }
-    h1:after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 122px;
-      width: 92px;
-    }
-
-    h1 span {
-      position: absolute;
-    }
-
-    h1 {
       left: -20px;
       top: -160px;
-      border: 1px solid $dark-blue-base-color;
+      border: 1px solid $gray-base-color;
 
       &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: 120px;
+        width: 90px;
         background-color: $dark-blue-base-color;
-        right: 26px;
+        right: 30px;
         top: 40px;
+        opacity: 0.9;
       }
+
+      span {
+        position: absolute;
+        z-index: 1000;
+      }
+
       span:nth-child(1) {
         top: 3px;
         left: 7px;
@@ -209,8 +210,20 @@ section.about_us{
         left: 31px;
       }
       span:nth-child(3) {
-        top: 25px;
-        left: 72px;
+        top: 17px;
+        left: 50px;
+      }
+      span:nth-child(4) {
+        top: 42px;
+        left: 70px;
+      }
+      span:nth-child(5) {
+        top: 60px;
+        left: 58px;
+      }
+      span:nth-child(6) {
+        top: 84px;
+        left: 70px;
       }
     }
   }

@@ -92,6 +92,11 @@ $(document).ready(function(){
       phoneUS: "Введите корректный номер телефона"
     },
 
+    mail:{
+      required: "Введите ваш email.",
+      email: "Введите корректный email"
+    },
+
     question_1:{
       maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
     },
