@@ -64,14 +64,21 @@
       padding-left: 15px;
     }
 
-    .btn-dev{
-      position: absolute;
-      padding: 10px 15px;
-      z-index:1005;
 
-    }
   }
 
+  .btn-dev{
+    position: absolute;
+    padding: 10px 15px;
+    z-index:1005;
+    border-radius: 7px;
+    top:50%;
+    left: -25px;
+  }
+
+  .carousel-inner{
+    overflow: visible;
+  }
 
   .item-top::before{
     position: absolute;
