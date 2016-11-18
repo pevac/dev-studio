@@ -1,37 +1,22 @@
 .connect_us{
-  a.form-close{
+  a.close{
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAhCAMAAACC5ikkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAAAgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQAAACwdow1AAAAZHRSTlMAQObWBQF5/SARsjLeZfgKoCXTU/KCcG1bSTUUjsWRVQ8axPu5UQNC6VL1txWp3yTgFugYwVSIFyc7WHik0E3vtjMhzKF/B5dG6vTj3Ssx9wymEntPRAnsjfHiCPram7iwP2gsou3CIgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgCxIECypoFqfmAAABEklEQVQ4y43S51bCQBAF4KEIqCgWxFhQQEVRNFiwK4gC9o4NC+B9/2eQQ0wI7pqd+/OeL2d3M0Nkj8vt8ZIqXT4/EFCp7h5AzXqDYLC+fqhZaABQs8EhMNhw2FIYiYxqY+MTIvJOQkw4OjUds6t4Av9kZnYuaar5BTgkmPpli3DOUrrFlhUMK7o1SMdkVo21WFOda1xvfUPhsoZLbrarAMW2tnd29/bbg8GB+VsOc+Kw0lrevPaR2RWOZTPVT4yyaDWlsoQRnZ7ZHtGKdi5hpF80y0t7c+WRMLq+AXIdze0d/PfCBj00P/5TPVbERXt6Fpg0L3jlMBfeOKz6HuUw+vhksa8Ii9XqLFausliDpeibfgD5vZ7I/HPbYAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0xMS0xOFQwNDoxMTo0Mi0wNzowMPgW8EIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTYtMTEtMThUMDQ6MTE6NDItMDc6MDCJS0j+AAAAAElFTkSuQmCC");
     cursor: pointer;
     display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height:35px;
+    width:35px;
     float: right;
-    width: 32px;
-    height: 32px;
-    svg{
-      fill:$blue-base-color;
-    }
-
-    &:hover{
-      svg{
-        fill:$dark-blue-base-color;
-      }
-    }
   }
 
   .btn-dev{
-    color: $btn-dev-color;
-    border-color: $btn-dev-bg;
-    border: none;
     padding: 10px 25px;
     font-size: 16px;
     margin-bottom: 15px;
   }
 
-  .btn-dev{
-    &:hover,
-    &:focus,
-    &.focus {
-      background-color: $btn-dev-bg-hover;
-    }
-  }
+
 
   textarea{
     resize: none;
@@ -152,6 +137,19 @@
 
 }
 
+.btn-dev{
+  color: $btn-dev-color;
+  border: none;
+}
+
+.btn-dev{
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: $btn-dev-bg-hover;
+  }
+}
+
 
 
 section.about_us{
@@ -169,37 +167,34 @@ section.about_us{
     height: 0;
 
     h1 {
-      font-family: PFBeauSansProBold, "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 16px;
       letter-spacing: 4px;
       text-transform: uppercase;
-      height: 122px;
-      width: 92px;
+      height: 120px;
+      width: 90px;
       position: absolute;
       z-index: 100;
-    }
-    h1:after {
-      content: "";
-      position: absolute;
-      display: block;
-      height: 122px;
-      width: 92px;
-    }
-
-    h1 span {
-      position: absolute;
-    }
-
-    h1 {
       left: -20px;
       top: -160px;
-      border: 1px solid $dark-blue-base-color;
+      border: 1px solid $gray-base-color;
 
       &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        height: 120px;
+        width: 90px;
         background-color: $dark-blue-base-color;
-        right: 26px;
+        right: 30px;
         top: 40px;
+        opacity: 0.9;
       }
+
+      span {
+        position: absolute;
+        z-index: 1000;
+      }
+
       span:nth-child(1) {
         top: 3px;
         left: 7px;
@@ -209,8 +204,20 @@ section.about_us{
         left: 31px;
       }
       span:nth-child(3) {
-        top: 25px;
-        left: 72px;
+        top: 17px;
+        left: 50px;
+      }
+      span:nth-child(4) {
+        top: 42px;
+        left: 70px;
+      }
+      span:nth-child(5) {
+        top: 60px;
+        left: 58px;
+      }
+      span:nth-child(6) {
+        top: 84px;
+        left: 70px;
       }
     }
   }

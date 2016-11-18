@@ -67,42 +67,47 @@ $(document).ready(function(){
 
   messages:{
     name_company:{
-      required: "Введите название компании.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Вкажіть будь-ласка назву компанії",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     site_company:{
-      required: "Введите название вашего сайта",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Вкажіть будь-ласка назву Вашого сайту",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     full_name:{
-      required: "Введите ваше имя.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." ),
-      lettersonly: "Введите только буквы."
+      required: "Вкажіть будь-ласка Ваше ім'я та прізвище",
+      maxlength: $.validator.format( "Кількість символів має бути не більше{0}." ),
+      lettersonly: "Вкажіть тільки букви"
     },
 
     job_position:{
-      required: "Введите вашу должность в компании.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Вкажіть будь-ласка Вашу посаду в компанії",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     phone:{
-      required: "Введите ваш телефон.",
-      phoneUS: "Введите корректный номер телефона"
+      required: "Вкажіть будь-ласка Ваш номер телефону",
+      phoneUS: "Вкажіть будь-ласка правильний номер телефону"
+    },
+
+    mail:{
+      required: "Вкажіть будь-ласка Вашу email адресу",
+      email: "Вкажіть будь-ласка правильну email адресу"
     },
 
     question_1:{
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      maxlength: $.validator.format( "Кількість символів має бути не більше{0}." )
     },
 
     question_2:{
-      required: "Этот вопрос обязательный.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Це питання є обов'язкове",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     question_3:{
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     }
   },
 
