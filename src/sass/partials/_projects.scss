@@ -1,8 +1,8 @@
 .projects {
 
-.inner-visible{
-  overflow: visible;
-}
+  .carousel-inner:hover{
+    overflow: visible;
+  }
 
   .controls_block {
     position: absolute;
@@ -50,6 +50,11 @@
     }
   }
 
+  .item-container{
+    padding: 0;
+    overflow: hidden;
+  }
+
   .item-container:hover {
     & .project-slide-item{
       background-color: $carousel-slide-hover-bg;
@@ -64,8 +69,6 @@
     img{
       filter: none;
     }
-
-
 
     & .btn-dev{
       display: block;
@@ -181,10 +184,6 @@ span.action{
     right:0;
   }
 
-  .item-container{
-    padding: 0;
-    overflow: hidden;
-  }
 
   .flex_col:nth-child(1) .item-container, .flex_col:nth-child(2) .item-container  {
     padding-top: 100px;
@@ -276,139 +275,7 @@ span.action{
 
 }
 
-.project_info {
-  display:none;
-  padding: 15px 0 30px 0;
 
-  .close {
-    padding: 0 15px 0 15px;
-
-    h1 {
-      font-size: 35px;
-
-      span {
-        position: relative;
-      }
-
-      a {
-        position: absolute;
-        left: 90px;
-      }
-    }
-  }
-
-  .current_project {
-    padding: 10px 0 15px 0;
-
-    .description {
-      background-color: black;
-      padding: 0 40px 22px 40px;
-
-      h1 {
-        font-size: 28px;
-        text-transform: none;
-        margin-bottom: 38px;
-      }
-
-      p {
-        font-size: 18px;
-        margin-left: 12px;
-      }
-    }
-
-    .vacancies {
-      background-color: $gray-base-color;
-
-      h1 {
-        font-size: 22px;
-        position: relative;
-        margin-left: 150px;
-
-        &:before {
-          content: "";
-          display: block;
-          position: absolute;
-          left: -48px;
-          top: -8px;
-          background: url(../img/Projects/vacancies-icon.png) no-repeat;
-          height: 43px;
-          width: 36px;
-        }
-      }
-
-      .resume {
-        margin: 25px 0 25px 102px;
-        h2 {
-          font-size: 18px;
-          display: inline-block;
-          width: 190px;
-        }
-        .btn-desc {
-          -webkit-border-radius: 7px;
-          border-radius: 7px;
-          background-color: $btn-dev-bg;
-          color: $default-color;
-          padding: 7px 15px 7px 15px;
-          margin: 0 20px 0 0;
-          font-size: 14px;
-          border: 1px solid transparent;
-
-          &:hover {
-            border: 1px solid $btn-dev-bg-hover;
-            text-decoration: none;
-          }
-        }
-        .btn-send {
-          -webkit-border-radius: 7px;
-          border-radius: 7px;
-          background-color: $btn-dev-bg;
-          color: $default-color;
-          padding: 7px 15px 7px 15px;
-          font-size: 14px;
-          text-transform: uppercase;
-          font-size: 14px;
-
-          &:hover {
-            border: 1px solid $btn-dev-bg-hover;
-            text-decoration: none;
-          }
-        }
-
-      }
-    }
-  }
-
-  .other_projects {
-    padding: 10px;
-    overflow: auto;
-
-    ul  {
-      list-style: none;
-      padding: 0;
-
-      li {
-        margin-bottom: 30px;
-        padding: 0;
-        border-bottom: 3px solid $dark-gray-base-color;
-
-        &:hover{
-          border-bottom: 3px solid $dark-gray-base-color;
-
-          a {
-            color: $dark-gray-base-color;
-            text-decoration: none;
-          }
-        }
-      }
-
-      a {
-        font-size: 22px;
-        color: $dark-gray-base-color;
-        padding: 0 20px 0 20px;
-      }
-    }
-  }
-}
 
 
 

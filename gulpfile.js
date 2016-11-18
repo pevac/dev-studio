@@ -116,8 +116,8 @@ gulp.task('image:build', function () {
 
 gulp.task("clean", del.bind(null, path.clean));
 
-gulp.task("build", ["clean"], function (cb) {
-    runSequence(["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
+gulp.task("build",  function (cb) {
+    runSequence("clean",["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
