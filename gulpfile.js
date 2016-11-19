@@ -32,6 +32,7 @@ var path = {
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
+            // "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
             "src/js/**/*.js"],
@@ -103,13 +104,12 @@ gulp.task("fonts:build", function() {
 });
 
 gulp.task('image:build', function () {
-    gulp.src(path.src.img) 
-        // .pipe($.imagemin({ 
-        //     progressive: true,
-        //     svgoPlugins: [{removeViewBox: false}],
-        //     interlaced: true, 
-        //     optimizationLevel: 3 
-        // }))
+    gulp.src(path.src.img)
+        .pipe($.changed(path.build + '/images'))
+        .pipe($.cache($.imagemin({
+            progressive: true,
+            interlaced: true
+        })))
         .pipe(gulp.dest(path.build.img)) 
 });
 
