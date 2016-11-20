@@ -53,6 +53,14 @@
   .item-container{
     padding: 0;
     overflow: hidden;
+    .btn-dev{
+      position: absolute;
+      padding: 10px 15px;
+      z-index:1005;
+      border-radius: 7px;
+      display: none;
+      font-size: 16px;
+    }
   }
 
   .item-container:hover {
@@ -72,12 +80,10 @@
 
     & .btn-dev{
       display: block;
-      background-color: $btn-dev-bg;
     }
 
     & .btn-dev:hover{
       display: block;
-      background-color: $btn-dev-bg-hover;
     }
 
     span.action{
@@ -85,14 +91,7 @@
     }
   }
 
-  .btn-dev{
-    position: absolute;
-    padding: 10px 15px;
-    z-index:1005;
-    border-radius: 7px;
-    display: none;
-    font-size: 16px;
-  }
+
 
   .item-top~.btn-dev{
     top:60%;
@@ -272,6 +271,138 @@ span.action{
     }
   }
 
+  .project-view {
+
+    h1{
+      text-transform: uppercase;
+      span{
+        margin-left: 35px;
+      }
+
+      a.close{
+        display: inline-block;
+        float: none;
+        width: 32px;
+        height:32px;
+      }
+    }
+
+    .current_project {
+      padding: 10px 0 15px 0;
+
+      .description {
+        background-color: $yellow-base-color;
+        padding: 0 40px 22px 40px;
+
+        h1 {
+          font-size: 28px;
+          text-transform: none;
+          margin-bottom: 38px;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 18px;
+          margin-left: 12px;
+        }
+      }
+
+      .vacancies {
+        background-color: $gray-base-color;
+
+        .vacancies-container{
+          width: 75%;
+          margin: auto;
+        }
+
+        h2 {
+          font-size: 22px;
+          color: $default-color;
+          position: relative;
+          margin-left: 48px;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -48px;
+            top: -8px;
+            background: url(../img/vacancies-icon.png) no-repeat;
+            height: 43px;
+            width: 36px;
+          }
+        }
+
+        .resume {
+          margin: 25px 0 25px 0;
+          h3{
+            font-size: 18px;
+            display: inline-block;
+            color: $dark-blue-base-color;
+            width: 190px;
+            font-weight: 700;
+          }
+
+          .btn-desc {
+            -webkit-border-radius: 7px;
+            border-radius: 7px;
+            background-color: $default-color;
+            color: $dark-blue-base-color;
+            padding: 7px 15px 7px 15px;
+            margin: 0 20px 0 0;
+            font-size: 14px;
+            border: 1px solid transparent;
+            &:hover{
+              border:1px solid $dark-blue-base-color;
+            }
+          }
+
+          .btn-send {
+            -webkit-border-radius: 7px;
+            border-radius: 7px;
+            padding: 7px 15px 7px 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+            font-size: 14px;
+
+          }
+
+        }
+      }
+    }
+
+    .other_projects {
+      padding: 10px;
+      overflow: auto;
+
+      ul  {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 30px;
+          padding: 0;
+          border-bottom: 3px solid $dark-gray-base-color;
+
+          &:hover, &:focus{
+            border-bottom: 3px solid #000;
+
+            a {
+              color: #000;
+              text-decoration: none;
+            }
+          }
+        }
+
+        a {
+          font-size: 22px;
+          color:$dark-gray-base-color;
+          padding: 0 20px 0 20px;
+        }
+      }
+    }
+
+  }
 
 }
 

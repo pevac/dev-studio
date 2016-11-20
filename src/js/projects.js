@@ -213,10 +213,13 @@
                 nextItem[i].src = data[index].link_url;
             }
         }
-
-
         that.currentDirection = direction;
         that.index = (direction == "next") ? index-1 : index;
+    }
+
+    Carousel.prototype.view = function () {
+        this.$element.toggle();
+
     }
 
     // CAROUSEL PLUGIN DEFINITION
@@ -297,6 +300,12 @@
             Plugin.call($carousel, $carousel.data())
         })
     })
+
+
+    var ProjectViwer = function (element, selectItem) {
+        this.$element = element;
+        this.selectItem;
+    }
 
 }(jQuery);
 
