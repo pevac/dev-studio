@@ -21,7 +21,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-top  item-left">
-                                        <a><img alt=""></a>
+                                        <a><img class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel" role="button" data-project="view">Подиватися вакансії</a>
@@ -30,7 +30,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-top  item-right">
-                                        <a ><img alt=""></a>
+                                        <a ><img class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -40,7 +40,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-bottom item-left">
-                                        <a ><img alt=""></a>
+                                        <a ><img class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -50,7 +50,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-bottom  item-right">
-                                        <a ><img  alt=""></a>
+                                        <a ><img class="project-photo"  alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -64,7 +64,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-top  item-left">
-                                        <a><img alt=""></a>
+                                        <a><img class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -73,7 +73,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-top  item-right">
-                                        <a ><img alt=""></a>
+                                        <a ><img class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -83,7 +83,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-bottom item-left">
-                                        <a ><img alt=""></a>
+                                        <a ><img  class="project-photo" alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -93,7 +93,7 @@
                             <div class="col-sm-6 col-xs-12 flex_col">
                                 <div class="item-container">
                                     <div class="project-slide-item item-bottom  item-right">
-                                        <a ><img  alt=""></a>
+                                        <a ><img class="project-photo"  alt=""></a>
                                     </div>
                                     <span class="action hidden-xs"></span>
                                     <a class="btn btn-primary btn-dev" href="#project-carousel"  role="button" data-project="view">Подиватися вакансії</a>
@@ -105,23 +105,23 @@
                 </div>
         </div>
 
-        <div id="project-view" class="project-view">
+        <div id="project-view" class="project-view collapse">
             <div class="text-center close">
                 <h1 class=" text-center">Наши проекты
-                    <span><a class="close " data-id="form-collapsed"></a></span>
+                    <span><a class="close"></a></span>
                 </h1>
             </div>
             <div class="row">
                 <div class="col-md-9">
                     <div class="current_project">
                         <article class="description clearfix">
-                            <h1 class="text-center">Smart System</h1>
+                            <h1 class="text-center" data-model = "project_name">Smart System</h1>
                             <div class="row">
                                 <div class="col-sm-5">
-                                    <img src="img/Projects/project-photo-big.jpg" alt="">
+                                    <img data-model="link_url"  alt="">
                                 </div>
                                 <div class="col-sm-7">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia labore perferendis, quidem possimus perspiciatis ex autem velit ratione asperiores eum earum quos doloremque tempora neque unde recusandae ipsum mollitia ad itaque. Voluptatum nam adipisci odio consectetur odit maxime possimus sequi aliquam unde veniam molestiae amet itaque dolores, impedit architecto, vero, eius necessitatibus? Harum maxime quam ducimus culpa reprehenderit. Vero, eius.</p>
+                                    <p data-model = "description"></p>
                                 </div>
                             </div>
                         </article>
@@ -149,14 +149,14 @@
                 </div>
                 <div class="col-md-3">
                     <aside class="other_projects">
-                        <ul>
-                            <li><a >Проект 2 Название</a></li>
-                            <li><a >Проект 3 Название</a></li>
-                            <li><a >Проект 4 Название</a></li>
-                            <li><a >Проект 5 Название</a></li>
-                            <li><a>Проект 6 Название</a></li>
-                            <li><a >Проект 7 Название</a></li>
-                            <li><a >Проект 8 Название</a></li>
+                        <ul id="list-projects">
+                            <!--<li><a  href="#project-view" role="button" data-project="select">Проект 2 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 3 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 4 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 5 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 6 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 7 Название</a></li>-->
+                            <!--<li><a href="#project-view" role="button" data-project="select">Проект 8 Название</a></li>-->
                         </ul>
                     </aside>
                 </div>

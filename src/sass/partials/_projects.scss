@@ -384,7 +384,7 @@ span.action{
           padding: 0;
           border-bottom: 3px solid $dark-gray-base-color;
 
-          &:hover, &:focus{
+          &:hover, &:focus, &:active{
             border-bottom: 3px solid #000;
 
             a {
@@ -398,6 +398,11 @@ span.action{
           font-size: 22px;
           color:$dark-gray-base-color;
           padding: 0 20px 0 20px;
+
+          &:hover, &:focus, &:active{
+            text-decoration: none;
+          }
+
         }
       }
     }
