@@ -93,6 +93,12 @@ gulp.task("jshint:build", function(){
         .pipe(jshint.reporter("jshint-stylish"))
 });
 
+gulp.task("js:build", function (cb) {
+    runSequence("jshint:build", "script:build", cb);
+});
+
+
+
 gulp.task("html:build", function() {
     return gulp.src(path.src.html)
         .pipe($.rigger())
@@ -122,7 +128,7 @@ gulp.task('image:build', function () {
 gulp.task("clean", del.bind(null, path.clean));
 
 gulp.task("build", ["clean"],  function (cb) {
-    runSequence(["sass:build", "accets:build", "script:build","html:build", "fonts:build","image:build"], cb);
+    runSequence(["sass:build", "accets:build", "js:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
@@ -144,7 +150,7 @@ gulp.task("watch", function(){
     });
 
     $.watch([path.watch.js], function(event, cb) {
-        gulp.start("script:build");
+        gulp.start("js:build");
     });
 
     $.watch([path.watch.fonts], function(event, cb) {

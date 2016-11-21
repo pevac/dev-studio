@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   $.validator.addMethod( "lettersonly", function( value, element ) {
   return this.optional( element ) || /^[а-я,ґ,', ,і,ї,є\-\a-z]+$/i.test( value );
-} )
+});
 
   // phone mask
   $("#inputPhone").mask("(999) 999-99-99");
@@ -115,7 +115,7 @@ $(document).ready(function(){
   errorPlacement: function(error, element) {
     var placement = $(element).data('error');
     if (placement) {
-      $(placement).append(error)
+      $(placement).append(error);
     } else {
       error.insertAfter(element).data('error');
     }
@@ -167,7 +167,7 @@ $(document).ready(function(){
     $('#formValidate').slideToggle();
     $("#success").toggle();
     $('#btn-form-collapsed').toggle();
-    setTimeout(collapseSuccess, 7000)
+    setTimeout(collapseSuccess, 7000);
   }
 
   function collapseSuccess() {

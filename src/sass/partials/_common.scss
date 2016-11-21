@@ -2,6 +2,11 @@ html {
  height: 100%;
 }
 
+body>.dev-studio>section{
+  padding-top: 150px;
+  padding-bottom: 75px;
+}
+
 body{
   font-family: Beau;
   width: 100%;
@@ -11,12 +16,13 @@ body{
 }
 
 .dev-studio{
-  background-image: url("../img/dev.png");
+  background-image: url("../img/dev.jpg");
   background-repeat: no-repeat;
   background-size: 100%;
   margin-top: 50px;
   flex: 1 0 auto;
 }
+
 
 
 // Fonts

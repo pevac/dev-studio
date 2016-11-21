@@ -1,6 +1,6 @@
 .projects {
-    margin-top: 20%;
-    margin-bottom: 10%;
+    margin-top: 10%;
+
   .carousel-inner:hover{
     overflow: visible;
    }
@@ -290,6 +290,11 @@ span.action{
 
     .current_project {
       padding: 10px 0 15px 0;
+      min-height: 370px;
+
+      img{
+        min-height:200px;
+      }
 
       .description {
         background-color: $yellow-base-color;
@@ -297,7 +302,7 @@ span.action{
 
         h1 {
           font-size: 28px;
-          text-transform: none;
+          text-transform: capitalize;
           margin-bottom: 38px;
           font-weight: 700;
         }
@@ -311,9 +316,11 @@ span.action{
       .vacancies {
         background-color: $gray-base-color;
 
+
         .vacancies-container{
           width: 75%;
           margin: auto;
+
         }
 
         h2 {
@@ -335,13 +342,30 @@ span.action{
         }
 
         .resume {
-          margin: 25px 0 25px 0;
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-around;
+          margin: 25px 0;
+
+          &:only-child{
+            margin: 10px ;
+          }
+
+
+          @media(max-width: 767px){
+            & {flex-wrap: wrap;}
+          }
+
           h3{
             font-size: 18px;
             display: inline-block;
+            text-align: center;
             color: $dark-blue-base-color;
             width: 190px;
             font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 10px;
           }
 
           .btn-desc {
@@ -350,7 +374,7 @@ span.action{
             background-color: $default-color;
             color: $dark-blue-base-color;
             padding: 7px 15px 7px 15px;
-            margin: 0 20px 0 0;
+            margin-bottom: 10px;
             font-size: 14px;
             border: 1px solid transparent;
             &:hover{
@@ -365,7 +389,7 @@ span.action{
             font-size: 14px;
             text-transform: uppercase;
             font-size: 14px;
-
+            margin-bottom: 10px;
           }
 
         }
