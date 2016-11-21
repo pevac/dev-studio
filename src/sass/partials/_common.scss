@@ -1,16 +1,21 @@
+html {
+ height: 100%;
+}
+
 body{
   font-family: Beau;
   width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .dev-studio{
   background-image: url("../img/dev.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  position: absolute;
-  top:30px;
-  left:0;
-  right:0;
+  margin-top: 50px;
+  flex: 1 0 auto;
   //bottom:0;
 }
 
