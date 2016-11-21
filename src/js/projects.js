@@ -119,7 +119,7 @@
 
         if ($next.hasClass('active')) return (this.sliding = false)
 
-        that.setNextItem(type, $next )
+
 
         var relatedTarget = $next[0]
         var slideEvent = $.Event('slide.devcarousel', {
@@ -141,10 +141,13 @@
 
         var slidEvent = $.Event('slid.devcarousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
         if ($.support.transition && this.$element.hasClass('slide')) {
+            that.setNextItem(type, $next )
             $next.addClass(type)
             $next[0].offsetWidth // force reflow
             $active.addClass(direction)
+
             $next.addClass(direction)
+
             $active
                 .one('bsTransitionEnd', function () {
                     $next.removeClass([type, direction].join(' ')).addClass('active')
@@ -161,6 +164,7 @@
             this.sliding = false
             this.$element.trigger(slidEvent)
         }
+
 
         isCycling && this.cycle()
 
@@ -180,7 +184,7 @@
         for (var i = 0, index=0;  i <  that.grid; i++, index++ ){
             if(index > data.length-1){ index = 0;}
             $(activeItem[i]).find(".project-photo")[0].src = data[index].link_url;
-            $(activeItem[i]).find('[data-project="view"]')[0].project = data[index];
+            $(activeItem[i]).find('[data-project="view"]').data("data",data[index]);
             if(data.length <= that.grid && data.length-1 == i) {
                 that.sliding = true;
                 break;
@@ -203,13 +207,13 @@
             for (var i = 0;  i <  that.grid; i++, index++ ){
                 index = this.checkIndex(index)
                 $(nextItem[i]).find(".project-photo")[0].src = data[index].link_url;
-                $(nextItem[i]).find('[data-project="view"]')[0].project = data[index];
+                $(nextItem[i]).find('[data-project="view"]').data("data",data[index]);
             }
         }else {
             for (var i = that.grid-1;  i >=  0; i--, index-- ){
                 index = this.checkIndex(index)
                 $(nextItem[i]).find(".project-photo")[0].src = data[index].link_url;
-                $(nextItem[i]).find('[data-project="view"]')[0].project = data[index];
+                $(nextItem[i]).find('[data-project="view"]').data("data",data[index]);
             }
         }
         that.currentDirection = direction;
@@ -239,9 +243,9 @@
     }
 
     DevCarousel.prototype.view = function (option) {
-        var selectProject = option.selectedProject;
+        var selectProject = option.data;
         var $viewer = this.$element.parents(".projects").find("#project-view");
-        $viewer.data('projects', (new ProjectViwer($viewer,this.data, selectProject)));
+        $viewer.data('dev.projects', (new ProjectViwer($viewer,this.data, selectProject)));
         this.$element.toggle();
         $viewer.toggle();
     }
@@ -254,7 +258,7 @@
             var $this   = $(this);
             var data    = $this.data('devcarousel');
             var options = $.extend({}, DevCarousel.DEFAULTS, $this.data(), typeof option == 'object' && option);
-            var action  = typeof option == 'string' ? option : options.project;
+            var action  = typeof option == 'string' ? option : options.action;
 
             if (!data) {
                 $this.data('devcarousel', (data = new DevCarousel(this, options)))
@@ -271,7 +275,7 @@
             var $this   = $(this)
             var data    = $this.data('projects')
             var options = $.extend({},  $this.data(), typeof option == 'object' && option)
-            var action  = typeof option == 'string' ? option : options.project
+            var action  = typeof option == 'string' ? option : options.action
             if (action) data[action](option)
         })
     }
@@ -310,7 +314,7 @@
         var href
         var $this   = $(this)
         var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-        var options = $.extend({selectedProject:$this[0].project},$this.data, $target.data(), $this.data())
+        var options = $.extend({}, $target.data(), $this.data())
         if ($target.hasClass('carousel')) {
             var slideIndex = $this.attr('data-slide-to')
             if (slideIndex) options.interval = false
@@ -330,7 +334,7 @@
     }
 
     $("#projects")
-        .on('click', '[data-project]', clickHandler)
+        .on('click', '[data-action]', clickHandler)
 
     $(window).on('load', function () {
         $('[data-ride="carousel"]').each(function () {
@@ -349,13 +353,16 @@
 
     ProjectViwer.prototype.select = function (option) {
         var that = this;
-        that.currentProject = option.selectedProject;
+        that.currentProject = option.data;
     }
 
-    ProjectViwer.prototype.changeProject = function () {
+    ProjectViwer.prototype.selectProject = function () {
         var $element = this.$element;
-        var $items = $element.find("[data-model]")
+        var selectedProject = this.currentProject;
+        var $items = $element.find("[data-model]");
     }
+    
+
 
     ProjectViwer.prototype.createListProjects = function () {
         var that = this;
@@ -364,19 +371,13 @@
         var $list = $element.find("#list-projects")[0];
 
         for(var i = 0; i< data.length; i++){
-            var li = $('<li><a  href="#project-view" role="button" data-project="select"></a></li>');
-            $(li).find("a").text(data[i].project_name).data("project",data[i]);
+            var li = $('<li><a  href="#project-view" role="button" data-action="select"></a></li>');
+            $(li).find("a").text(data[i].project_name).data("data",data[i]);
             $($list).append(li);
         }
-
-        var txt1 = "<p>Text.</p>";               // Create element with HTML
-        var txt2 = $("<p></p>").text("Text.");   // Create with jQuery
-        var txt3 = document.createElement("p");  // Create with DOM
-        txt3.innerHTML = "Text.";
-        $("body").append(txt1, txt2, txt3);
     }
 
-}(jQuery);
+}($);
 
 
 
