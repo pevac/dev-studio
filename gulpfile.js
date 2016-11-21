@@ -69,6 +69,11 @@ gulp.task("sass:build", function () {
         .pipe(gulp.dest(path.build.styles));
 });
 
+gulp.task("accets:build", function () {
+    return gulp.src("src/js/**/*.json")
+        .pipe(gulp.dest("build/js/"));
+});
+
 gulp.task("script:build", function(){
     return gulp.src(path.src.js)
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
@@ -116,8 +121,8 @@ gulp.task('image:build', function () {
 
 gulp.task("clean", del.bind(null, path.clean));
 
-gulp.task("build",  function (cb) {
-    runSequence("clean",["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
+gulp.task("build", ["clean"],  function (cb) {
+    runSequence(["sass:build", "accets:build", "script:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
