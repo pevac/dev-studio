@@ -69,13 +69,28 @@
 }
 
 .header .small-menu{
+    
     padding: 0;
 }
 
-@media(max-width: 1127px){
+@media(max-width: 1200px){
     .header li{margin: 0 0 0 40px;}
+}
+
+@media(max-width: 1000px){
+    .header li{margin: 0 0 0 20px;}
 }
 
 @media(max-width: 767px){
     .header li{margin: 0;}
+}
+
+.header .navbar li.active a{
+    background-color: $dark-blue-base-color;
+    color: $yellow-base-color;
+    border-bottom: 2px solid $yellow-base-color;
+}
+
+.header .navbar li.active a:hover{
+    background-color: $dark-blue-base-color;
 }
