@@ -1,0 +1,30 @@
+body{
+  font-family: Beau;
+  width: 100%;
+}
+
+.dev-studio{
+  background-image: url("../img/dev.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top:30px;
+  left:0;
+  right:0;
+  //bottom:0;
+}
+
+
+// Fonts
+@font-face {
+  font-family: 'PFBeauSansProLight';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansProReg';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansProBold';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
+}
