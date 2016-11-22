@@ -359,7 +359,22 @@
         this.currentProject= currentProject;
         this.data = data;
         this.createListProjects(this.data);
+        this.vacancy = null;
     };
+    
+    ProjectViwer.prototype.checkSend = function (option) {
+        var $checked = $(this.$element[0]).find("." + option.vacancy);
+        var $send_resume = $(this.$element[0]).find(".send_resume");
+        if(option.vacancy == this.vacancy){
+            $checked.toggle();
+            $send_resume.hide();
+            this.vacancy = null;
+        }else {
+            $send_resume.hide();
+            $checked.toggle();
+            this.vacancy = option.vacancy;
+        }
+    }
 
     ProjectViwer.prototype.select = function (option) {
         var that = this;
