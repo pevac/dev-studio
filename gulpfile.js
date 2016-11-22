@@ -27,9 +27,12 @@ var path = {
         img: "build/img/"
     },
     src: { 
-        html: "src/*.html", 
+        html: "src/*.html",
         js: ["./bower_components/jquery/dist/jquery.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
             "src/js/**/*.js"],
@@ -113,8 +116,8 @@ gulp.task('image:build', function () {
 
 gulp.task("clean", del.bind(null, path.clean));
 
-gulp.task("build", ["clean"], function (cb) {
-    runSequence(["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
+gulp.task("build",  function (cb) {
+    runSequence("clean",["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {

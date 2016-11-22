@@ -6,37 +6,38 @@ $(document).ready(function(){
   });
 
   $.validator.addMethod( "lettersonly", function( value, element ) {
-  return this.optional( element ) || /^[а-я,ґ,',і,ї,є\-\a-z]+$/i.test( value );
+  return this.optional( element ) || /^[а-я,ґ,', ,і,ї,є\-\a-z]+$/i.test( value );
 } )
 
+  // phone mask
   $("#inputPhone").mask("(999) 999-99-99");
-  $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
 
   $("#formValidate").validate({
    rules:{
      name_company:{
        required: true,
-       maxlength: 20,
+       maxlength: 25
      },
 
-     site_company:{
-       url: true
+     site_company: {
+       required: true,
+       maxlength: 25,
      },
 
      full_name: {
       required: true,
-      maxlength: 20,
+      maxlength: 50,
       lettersonly: true
     },
 
      job_position:{
        required: true,
-       maxlength: 20,
+       maxlength: 50
      },
 
     phone:{
       required: true,
-      phoneUS: true,
+      phoneUS: true
     },
 
     mail:{
@@ -44,7 +45,20 @@ $(document).ready(function(){
       email: true
     },
 
-  },
+     question_1:{
+       maxlength: 200
+     },
+
+     question_2:{
+       required: true,
+       maxlength: 200
+     },
+
+     question_3:{
+       maxlength: 200
+     },
+
+   },
 
   submitHandler: function() {
     sendOrderMessage();
@@ -53,33 +67,47 @@ $(document).ready(function(){
 
   messages:{
     name_company:{
-      required: "Введите название компании.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Вкажіть будь-ласка назву компанії",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     site_company:{
-      url:"Введите корректный  url.",
+      required: "Вкажіть будь-ласка назву Вашого сайту",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     full_name:{
-      required: "Введите ваше имя.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." ),
-      lettersonly: "Введите только буквы."
+      required: "Вкажіть будь-ласка Ваше ім'я та прізвище",
+      maxlength: $.validator.format( "Кількість символів має бути не більше{0}." ),
+      lettersonly: "Вкажіть тільки букви"
     },
 
     job_position:{
-      required: "Введите вашу должность в компании.",
-      maxlength: $.validator.format( "Количество символов должно быть не больше {0}." )
+      required: "Вкажіть будь-ласка Вашу посаду в компанії",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     },
 
     phone:{
-      required: "Введите ваш телефон.",
-      phoneUS: "Введите корректный номер телефона"
+      required: "Вкажіть будь-ласка Ваш номер телефону",
+      phoneUS: "Вкажіть будь-ласка правильний номер телефону"
     },
 
     mail:{
-      email:"Введите корректный  email.",
-      required: "Введите ваш email."
+      required: "Вкажіть будь-ласка Вашу email адресу",
+      email: "Вкажіть будь-ласка правильну email адресу"
+    },
+
+    question_1:{
+      maxlength: $.validator.format( "Кількість символів має бути не більше{0}." )
+    },
+
+    question_2:{
+      required: "Це питання є обов'язкове",
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
+    },
+
+    question_3:{
+      maxlength: $.validator.format( "Кількість символів має бути не більше {0}." )
     }
   },
 
@@ -94,8 +122,7 @@ $(document).ready(function(){
   },
 });
 
-  $.fn.serializeObject = function()
-  {
+  $.fn.serializeObject = function()  {
     var o = {};
     var a = this.serializeArray();
     $.each(a, function() {
@@ -111,43 +138,44 @@ $(document).ready(function(){
     return o;
   };
 
-  $.fn.resetInputValue = function()
-  {
-    var a = this[0];
-    for(var i =0; i<a.length; i++){
-      if(a[i].value){
-        a[i].value = "";
-      }
-    }
-  };
+   $.fn.clearInputs = function() {
+     var a = this[0];
+     var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i;
+     for(var i =0; i<a.length; i++){
+       var t = a[i].type, tag = a[i].tagName.toLowerCase();
+       if (re.test(t) || tag == 'textarea') {
+         a[i].value = "";
+       }
+     }
+    };
+
+  function sendOrderMessage() {
+    var customer = JSON.stringify($("#formValidate").serializeObject());
+    console.log(customer);
+    var url = "/api/customerrequest/";
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: customer,
+      dataType: "json",
+      contentType: "application/json"
+    });
+    $("#formValidate").clearInputs();
+  }
 
   function resize(e) {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight+'px';
   }
 
+  //resize textarea
+  $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
+
   // collapsed form and button
   $('a[data-id="form-collapsed"]').click(function(){
-    $('#formValidate').slideToggle();
     $('#btn-form-collapsed').toggle();
+    $('#formValidate').slideToggle();
   });
-
-  // $("#sendBtn").on("click", sendOrderMessage());
-
-  function sendOrderMessage() {
-      var customer = JSON.stringify($("#formValidate").serializeObject());
-      var url = "/api/customerrequest/";
-      console.log(customer);
-      $.ajax({
-        type: "POST",
-        url: url,
-        data: customer,
-        dataType: "json",
-        contentType: "application/json"
-      });
-     $("#formValidate").resetInputValue();
-    }
-
 
 });
 
