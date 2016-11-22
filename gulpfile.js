@@ -30,7 +30,6 @@ var path = {
         html: "src/*.html",
         js: ["./bower_components/jquery/dist/jquery.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
