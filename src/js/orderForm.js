@@ -7,7 +7,7 @@ $(document).ready(function(){
 
   $.validator.addMethod( "lettersonly", function( value, element ) {
   return this.optional( element ) || /^[а-я,ґ,', ,і,ї,є\-\a-z]+$/i.test( value );
-} )
+});
 
   // phone mask
   $("#inputPhone").mask("(999) 999-99-99");
@@ -115,7 +115,7 @@ $(document).ready(function(){
   errorPlacement: function(error, element) {
     var placement = $(element).data('error');
     if (placement) {
-      $(placement).append(error)
+      $(placement).append(error);
     } else {
       error.insertAfter(element).data('error');
     }
@@ -151,16 +151,27 @@ $(document).ready(function(){
 
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
-    console.log(customer);
     var url = "/api/customerrequest/";
     $.ajax({
       type: "POST",
       url: url,
       data: customer,
+      success: successRequest(),
       dataType: "json",
       contentType: "application/json"
     });
     $("#formValidate").clearInputs();
+  }
+
+  function successRequest() {
+    $('#formValidate').slideToggle();
+    $("#success").toggle();
+    $('#btn-form-collapsed').toggle();
+    setTimeout(collapseSuccess, 7000);
+  }
+
+  function collapseSuccess() {
+    $("#success").toggle();
   }
 
   function resize(e) {
