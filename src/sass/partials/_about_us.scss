@@ -1,22 +1,17 @@
 .connect_us{
   a.close{
-    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAhCAMAAACC5ikkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAAAgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQAAACwdow1AAAAZHRSTlMAQObWBQF5/SARsjLeZfgKoCXTU/KCcG1bSTUUjsWRVQ8axPu5UQNC6VL1txWp3yTgFugYwVSIFyc7WHik0E3vtjMhzKF/B5dG6vTj3Ssx9wymEntPRAnsjfHiCPram7iwP2gsou3CIgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgCxIECypoFqfmAAABEklEQVQ4y43S51bCQBAF4KEIqCgWxFhQQEVRNFiwK4gC9o4NC+B9/2eQQ0wI7pqd+/OeL2d3M0Nkj8vt8ZIqXT4/EFCp7h5AzXqDYLC+fqhZaABQs8EhMNhw2FIYiYxqY+MTIvJOQkw4OjUds6t4Av9kZnYuaar5BTgkmPpli3DOUrrFlhUMK7o1SMdkVo21WFOda1xvfUPhsoZLbrarAMW2tnd29/bbg8GB+VsOc+Kw0lrevPaR2RWOZTPVT4yyaDWlsoQRnZ7ZHtGKdi5hpF80y0t7c+WRMLq+AXIdze0d/PfCBj00P/5TPVbERXt6Fpg0L3jlMBfeOKz6HuUw+vhksa8Ii9XqLFausliDpeibfgD5vZ7I/HPbYAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0xMS0xOFQwNDoxMTo0Mi0wNzowMPgW8EIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTYtMTEtMThUMDQ6MTE6NDItMDc6MDCJS0j+AAAAAElFTkSuQmCC");
-    cursor: pointer;
     display: block;
-    background-repeat: no-repeat;
-    background-size: contain;
-    height:35px;
-    width:35px;
     float: right;
   }
+  
+  margin-bottom: 30px;
+  margin-top: 30px;
 
   .btn-dev{
     padding: 10px 25px;
     font-size: 16px;
     margin-bottom: 15px;
   }
-
-
 
   textarea{
     resize: none;
@@ -57,9 +52,11 @@
   margin-top: 15px;
 
   .order-form-container{
+    margin-top: 15px;
     background-color: $gray-base-color;
 
     form{
+      margin-top: 100px;
       margin:auto;
       padding: 30px 0;
     }
@@ -68,6 +65,27 @@
       font-weight: normal;
     }
 
+  }
+
+  .success{
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 60px;
+    margin-top: 60px;
+
+    p{
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .success-icon{
+    background-image: url("../img/success.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 63px;
+    height: 95px;
+    margin: 30px auto;
   }
 
   .btn-dev{
@@ -137,24 +155,9 @@
 
 }
 
-.btn-dev{
-  color: $btn-dev-color;
-  border: none;
-}
-
-.btn-dev{
-  &:hover,
-  &:focus,
-  &.focus {
-    background-color: $btn-dev-bg-hover;
-  }
-}
-
-
-
 section.about_us{
   position: relative;
-  margin-top:45%;
+  margin-top: 54%;
   width: 100%;
   height:auto;
   padding-bottom:30px;

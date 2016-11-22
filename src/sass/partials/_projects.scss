@@ -1,8 +1,9 @@
 .projects {
+    margin-top: 10%;
 
   .carousel-inner:hover{
     overflow: visible;
-  }
+   }
 
   .controls_block {
     position: absolute;
@@ -46,13 +47,21 @@
 
     img {
       filter: grayscale(100%);
-      min-height: 180px;
+      max-height: 180px;
     }
   }
 
   .item-container{
     padding: 0;
     overflow: hidden;
+    .btn-dev{
+      position: absolute;
+      padding: 10px 15px;
+      z-index:1005;
+      border-radius: 7px;
+      display: none;
+      font-size: 16px;
+    }
   }
 
   .item-container:hover {
@@ -77,7 +86,6 @@
 
     & .btn-dev:hover{
       display: block;
-      background-color: $btn-dev-bg-hover;
     }
 
     span.action{
@@ -85,14 +93,7 @@
     }
   }
 
-  .btn-dev{
-    position: absolute;
-    padding: 10px 15px;
-    z-index:1005;
-    border-radius: 7px;
-    display: none;
-    font-size: 16px;
-  }
+
 
   .item-top~.btn-dev{
     top:60%;
@@ -270,6 +271,262 @@ span.action{
         right: 3px;
       }
     }
+  }
+
+  .project-view {
+
+    h1{
+      text-transform: uppercase;
+      span{
+        margin-left: 35px;
+      }
+
+      a.close{
+        display: inline-block;
+        float: none;
+        width: 32px;
+        height:32px;
+      }
+    }
+
+    .current_project {
+      padding: 10px 0 15px 0;
+      min-height: 370px;
+
+      img{
+        min-height:200px;
+      }
+
+      .description {
+        background-color: $yellow-base-color;
+        padding: 0 40px 22px 40px;
+
+        h1 {
+          font-size: 28px;
+          text-transform: capitalize;
+          margin-bottom: 38px;
+          font-weight: 700;
+        }
+
+        p {
+          font-size: 18px;
+          margin-left: 12px;
+        }
+      }
+
+      .vacancies {
+        background-color: $gray-base-color;
+
+
+        .vacancies-container{
+          width: 75%;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+
+        }
+
+        h2 {
+          font-size: 22px;
+          color: $default-color;
+          position: relative;
+          margin-left: 40px;
+
+          &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: -40px;
+            top: -8px;
+            background: url(../img/vacancies-icon.png) no-repeat;
+            height: 43px;
+            width: 36px;
+          }
+        }
+
+        .resume {
+          display: flex;
+          flex-wrap: nowrap;
+          align-items: center;
+          justify-content: space-between;
+          margin: 25px 0;
+
+          &:only-child{
+            margin: 10px ;
+          }
+
+
+          @media(max-width: 767px){
+            & {flex-wrap: wrap;}
+          }
+
+          h3{
+            font-size: 18px;
+            display: inline-block;
+            text-align: left;
+            color: $dark-blue-base-color;
+            width: 190px;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .btn-desc {
+      -webkit-border-radius: 7px;
+      border-radius: 7px;
+      background-color: $default-color;
+      color: $dark-blue-base-color;
+      padding: 7px 15px 7px 15px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border: 1px solid transparent;
+      &:hover{
+        border:1px solid $dark-blue-base-color;
+      }
+    }
+
+    .btn-send {
+      -webkit-border-radius: 7px;
+      border-radius: 7px;
+      padding: 7px 15px 7px 15px;
+      font-size: 14px;
+      text-transform: uppercase;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .other_projects {
+      padding: 10px;
+      overflow: auto;
+
+      ul  {
+        list-style: none;
+        padding: 0;
+
+        li {
+          margin-bottom: 30px;
+          padding: 0;
+          border-bottom: 3px solid $dark-gray-base-color;
+
+          &:hover, &:focus, &:active{
+            border-bottom: 3px solid #000;
+
+            a {
+              color: #000;
+              text-decoration: none;
+            }
+          }
+        }
+
+        a {
+          font-size: 22px;
+          color:$dark-gray-base-color;
+          padding: 0 20px 0 20px;
+
+          &:hover, &:focus, &:active{
+            text-decoration: none;
+          }
+
+        }
+      }
+    }
+
+  }
+
+  .radio-group label{
+    padding-top: 15px;
+    display: flex;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+    color:$dark-blue-base-color;
+  }
+
+  .radio-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    clear: both;
+  }
+
+  .radio-group label>span{
+    margin-right: 5px;
+    border: none;
+    height: 25px;
+    width: 25px;
+    background-color: $default-color;
+    border-radius: 50%;
+    margin-left: 20px;
+  }
+
+  label >input[type=radio   ]:not(old):checked + span{
+    border: 2px solid $dark-blue-base-color;
+    box-shadow: none;
+  }
+
+  .radio-group input[type=radio]{
+    display: none;
+  }
+
+  .radio-group{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    clear: both;
+  }
+
+  .noalumnus{
+    width: 80%;
+    margin: auto;
+    margin-top: 25px;
+  }
+
+  .alumnus{
+    width: 80%;
+    margin: auto;
+    font-size: 14px;
+    margin-top: 25px;
+    padding: 0;
+    .form-group{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-right:25px;
+      &>div{
+        padding: 0 5px;
+      }
+
+    }
+
+    label{
+      padding: 0;
+      padding-left: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-block;
+    }
+
+   }
+
+
+  input{
+    border-radius: $dev-input-border-radius;
+    border: 1px solid $gray-base-color;
+    box-shadow: 0 1px 1px 1px $gray-base-color inset;
+    padding: 2px;
+    display: inline-block;
+
+    &:focus{
+      box-shadow: none;
+      border: 1px solid $dark-blue-base-color;
+    }
+  }
+
+  .control-label{
+    text-align: right;
   }
 
 
