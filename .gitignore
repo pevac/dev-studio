@@ -1,6 +1,9 @@
+npm-debug.log
+node
+build
 node_modules
 bower_components
-build
+target
+test-results.xml
+.idea
 
-
-npm-debug.log
