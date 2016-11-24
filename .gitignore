@@ -13,14 +13,12 @@ DerivedData
 .tern-project
 *.jsfdia
 *.iml
-.idea
 
 *.o
 *.com
 *.class
 *.dll
 *.exe
-*.o
 *.so
 
 *~
@@ -32,7 +30,6 @@ DerivedData
 Icon?
 ehthumbs.db
 Thumbs.db
-.metadata
 
 
 npm-debug.log
