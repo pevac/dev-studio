@@ -13,6 +13,7 @@ DerivedData
 .tern-project
 *.jsfdia
 *.iml
+.idea
 
 *.o
 *.com
