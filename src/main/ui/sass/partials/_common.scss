@@ -8,7 +8,7 @@ body>.dev-studio>section{
 }
 
 body{
-  font-family: "PFBeauSansProLight", sans-serif;
+  font-family: "PFBeauSansPro Light", sans-serif;
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -27,39 +27,39 @@ body{
 
 // Fonts
 @font-face {
-  font-family: 'PFBeauSansProBlack';
+  font-family: 'PFBeauSansPro Black';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Black.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProBold';
+  font-family: 'PFBeauSansPro Bold';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProLight';
+  font-family: 'PFBeauSansPro Light';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProReg';
+  font-family: 'PFBeauSansPro Reg';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProSemiBold';
+  font-family: 'PFBeauSansPro SemiBold';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProSemiThin';
+  font-family: 'PFBeauSansPro Thin';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Thin.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProSemiThinItal';
+  font-family: 'PFBeauSansPro ThinItal';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-ThinItal.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProSemiThinItal';
+  font-family: 'PFBeauSansPro XThin';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThin.ttf')  format('truetype'),
 }
 @font-face {
-  font-family: 'PFBeauSansProSemiThinItal';
+  font-family: 'PFBeauSansPro XThinItal';
   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThinItal.ttf')  format('truetype'),
 }
 
@@ -76,6 +76,7 @@ a.close{
   background-color: $btn-dev-bg;
   color: $default-color;
   border: none;
+  border-radius: 10px;
   &:hover,
   &:focus,
   &.focus {

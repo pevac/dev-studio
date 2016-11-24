@@ -11,6 +11,7 @@
     padding: 10px 25px;
     font-size: 16px;
     margin-bottom: 15px;
+    font-size: 26px;
   }
 
   textarea{
@@ -112,7 +113,7 @@
   }
 
    label >input[type=radio   ]:not(old):checked + span{
-     border: 2px solid $dark-blue-base-color;
+     border: 3px solid $dark-blue-base-color;
      box-shadow: none;
   }
 
@@ -196,6 +197,7 @@ section.about_us{
       span {
         position: absolute;
         z-index: 1000;
+        font-weight: 700;
       }
 
       span:nth-child(1) {
@@ -256,6 +258,10 @@ section.about_us{
       .about-article{
         padding-bottom:10px;
       }
+      
+      p{
+        color: #fff;
+      }
     }
 
     h1{
@@ -266,13 +272,15 @@ section.about_us{
 
     .about-article{
       flex-grow: 5;
-      padding:20px;
+      padding:25px;
+
     }
 
-    .about-item p{
+    p{
       text-align: left;
-      margin: 15px 0;
-      font-size: 16px;
+      margin: 0;
+      font-size: 20px;
+      color: black;
     }
 
     .about-img{
