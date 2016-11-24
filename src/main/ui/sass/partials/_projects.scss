@@ -67,12 +67,6 @@
   .item-container:hover {
     & .project-slide-item{
       background-color: $carousel-slide-hover-bg;
-      &.item-left::before{
-        border-right-color:  $carousel-slide-hover-bg;
-      }
-      &.item-right::before{
-        border-left-color: $carousel-slide-hover-bg;
-      }
     }
 
     img{
@@ -81,7 +75,7 @@
 
     & .btn-dev{
       display: block;
-      background-color: $btn-dev-bg;
+      background-color: $dark-blue-base-color;
     }
 
     & .btn-dev:hover{
@@ -93,56 +87,60 @@
     }
   }
 
-
-
-  .item-top~.btn-dev{
-    top:60%;
+  .flex_col:nth-child(1) .item-container:hover  .project-slide-item:before,  .flex_col:nth-child(3) .item-container:hover .project-slide-item:before{
+    border-right-color:  $carousel-slide-hover-bg;
+  }
+  .flex_col:nth-child(2) .item-container:hover  .project-slide-item:before, .flex_col:nth-child(4) .item-container:hover .project-slide-item:before{
+    border-left-color: $carousel-slide-hover-bg;
   }
 
-  .item-left~.btn-dev{
+  .flex_col:nth-child(1) .btn-dev{
+    top:60%;
     left: -30px;
   }
 
-  .item-bottom~.btn-dev{
-    bottom:63%;
-  }
-
-  .item-right~.btn-dev{
+  .flex_col:nth-child(2) .btn-dev{
+    top:60%;
     right: -30px;
   }
 
-
-  .item-top~.action{
-    top:40%;
+  .flex_col:nth-child(3) .btn-dev{
+    bottom:63%;
+    left: -30px;
   }
 
-  .item-left~.action{
+  .flex_col:nth-child(4) .btn-dev{
+    right: -30px;
+    bottom:63%;
+  }
+
+
+  .flex_col:nth-child(1) .action{
+    top:40%;
     left: 40px;
   }
 
-  .item-bottom~.action{
-    bottom:40%;
-  }
-
-  .item-right~.action{
+  .flex_col:nth-child(2) .action{
+    top:40%;
     right: 30px;
   }
 
-span.action{
-  background-image: url("../img/watch.png");
-  height: 50px;
-  width: 50px;
-  position: absolute;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+  .flex_col:nth-child(3) .action{
+    bottom:40%;
+    left: 40px;
+  }
 
-  .item-top{
+  .flex_col:nth-child(4) .action{
+    right: 30px;
+    bottom:40%;
+  }
+
+  .flex_col:nth-child(1) .project-slide-item,  .flex_col:nth-child(2) .project-slide-item{
     padding-bottom: 40px;
     align-items: flex-start;
   }
 
-  .item-top::before{
+  .flex_col:nth-child(1) .project-slide-item:before,  .flex_col:nth-child(2) .project-slide-item:before{
     position: absolute;
     content: "";
     height:0;
@@ -150,36 +148,36 @@ span.action{
     top: -100px;
   }
 
-  .item-top.item-left::before{
+  .flex_col:nth-child(1) .project-slide-item:before{
     border-top: 100px solid transparent;
     border-right: 600px solid $carousel-slide-bg;
     left: 0;
   }
 
-  .item-top.item-right::before{
+  .flex_col:nth-child(2) .project-slide-item:before{
     border-top: 100px solid transparent;
     border-left: 600px solid $carousel-slide-bg;
     right: 0;
   }
 
-  .item-bottom{
+  .flex_col:nth-child(3) .project-slide-item,  .flex_col:nth-child(4) .project-slide-item{
     padding-top: 40px;
     align-items: flex-end;
   }
 
-  .item-bottom::before{
+  .flex_col:nth-child(3) .project-slide-item:before,  .flex_col:nth-child(4) .project-slide-item:before{
     position: absolute;
     content: "";
     bottom: -100px;
   }
 
-  .item-bottom.item-left::before{
+  .flex_col:nth-child(3) .project-slide-item:before{
     border-bottom: 100px solid transparent;
     border-right: 600px solid $carousel-slide-bg;
     left:0;
   }
 
-  .item-bottom.item-right::before{
+  .flex_col:nth-child(4) .project-slide-item:before{
     border-bottom: 100px solid transparent;
     border-left: 600px solid $carousel-slide-bg;
     right:0;
@@ -196,6 +194,16 @@ span.action{
 
   .item{
     padding:10px;
+  }
+
+
+  span.action{
+    background-image: url("../img/watch.png");
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   .flex_row>.flex_col{
@@ -240,6 +248,7 @@ span.action{
       span {
         position: absolute;
         z-index: 1000;
+        font-weight: 700;
       }
 
       span:nth-child(1) {
@@ -274,6 +283,17 @@ span.action{
   }
 
   .project-view {
+    a.return{
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAhCAMAAACC5ikkAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABMlBMVEUAAAAgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQgKVQAAACwdow1AAAAZHRSTlMAQObWBQF5/SARsjLeZfgKoCXTU/KCcG1bSTUUjsWRVQ8axPu5UQNC6VL1txWp3yTgFugYwVSIFyc7WHik0E3vtjMhzKF/B5dG6vTj3Ssx9wymEntPRAnsjfHiCPram7iwP2gsou3CIgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAAHdElNRQfgCxIECypoFqfmAAABEklEQVQ4y43S51bCQBAF4KEIqCgWxFhQQEVRNFiwK4gC9o4NC+B9/2eQQ0wI7pqd+/OeL2d3M0Nkj8vt8ZIqXT4/EFCp7h5AzXqDYLC+fqhZaABQs8EhMNhw2FIYiYxqY+MTIvJOQkw4OjUds6t4Av9kZnYuaar5BTgkmPpli3DOUrrFlhUMK7o1SMdkVo21WFOda1xvfUPhsoZLbrarAMW2tnd29/bbg8GB+VsOc+Kw0lrevPaR2RWOZTPVT4yyaDWlsoQRnZ7ZHtGKdi5hpF80y0t7c+WRMLq+AXIdze0d/PfCBj00P/5TPVbERXt6Fpg0L3jlMBfeOKz6HuUw+vhksa8Ii9XqLFausliDpeibfgD5vZ7I/HPbYAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0xMS0xOFQwNDoxMTo0Mi0wNzowMPgW8EIAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTYtMTEtMThUMDQ6MTE6NDItMDc6MDCJS0j+AAAAAElFTkSuQmCC");
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-size: contain;
+      display: inline-block;
+      float: none;
+      width: 32px;
+      height:32px;
+    }
+
 
     h1{
       text-transform: uppercase;
@@ -281,12 +301,6 @@ span.action{
         margin-left: 35px;
       }
 
-      a.close{
-        display: inline-block;
-        float: none;
-        width: 32px;
-        height:32px;
-      }
     }
 
     .current_project {

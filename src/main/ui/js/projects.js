@@ -20,6 +20,7 @@
         this.index       = this.grid - 1;
         this.currentDirection   = "next";
 
+        this.requestProjects(this.setData.bind(this))
         this.options.keyboard && this.$element.on('keydown.devcarousel', $.proxy(this.keydown, this));
 
         this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
@@ -174,14 +175,24 @@
     DevCarousel.prototype.initCarouselItem= function () {
         var that = this;
         var data = that.data;
-        var activeItem = that.$element.find(".item.active .item-container");
+        var nextItem = that.$element.find("[data-repeate]");
+        var $container = $(nextItem[0].outerHTML);
+        var $activeItem = nextItem.parent();
+        if($($activeItem.children()).length >= 4) return
         for (var i = 0, index=0;  i <  that.grid; i++, index++ ){
             if(index > data.length-1){ index = 0;}
-            $(activeItem[i]).find(".project-photo")[0].src = data[index].link_url;
-            $(activeItem[i]).data("data",data[index]);
+            var $slides = $activeItem.children()[i];
+            var $img =  $($slides).find("[data-src]")[0];
+            var dataSrc = $($($img)[0]).attr("data-src");
+            $img.src = data[i][dataSrc];
+            $($slides).data("data",data[index]);
             if(data.length <= that.grid && data.length-1 == i) {
                 that.sliding = true;
                 break;
+            }
+            if(i +1  <  that.grid) {
+                var a = $($container).clone();
+                $activeItem.append(a);
             }
         }
     };
@@ -244,6 +255,19 @@
         return this.data;
     };
 
+     DevCarousel.prototype.requestProjects = function (func) {
+        var callback = func;
+        $.ajax({
+            type: "GET",
+            url: "js/data.json",
+            success: function (result) {
+                callback(result);
+            },
+            dataType: "json",
+            contentType: "application/json"
+        });
+    }
+
     // CAROUSEL PLUGIN DEFINITION
     // ==========================
 
@@ -256,7 +280,6 @@
 
             if (!devcarousel) {
                 $this.data('devcarousel', (devcarousel = new DevCarousel(this, options)));
-                requestProjects(devcarousel.setData.bind(devcarousel));
             }
             if (typeof option == 'number') devcarousel.to(option);
             else if (action) devcarousel[action](option);
@@ -265,14 +288,13 @@
                 var projectData = devcarousel.data;
                 var $viewer = devcarousel.$element.parents(".projects").find("#project-view");
                 var projects    = $viewer.data('dev.projects');
-
                 if (!projects) {
                     $viewer.data('dev.projects', (new ProjectViwer($viewer, projectData, selectProject)));
                 }else {
                     projects.currentProject = selectProject;
-                    projects.selectProject();
+                    projects.viewProject();
+                    $viewer.toggle();
                 }
-                $viewer.toggle();
             }
             else if (options.interval) devcarousel.pause().cycle();
         });
@@ -290,20 +312,6 @@
                 var devcarousel    = $devcarousel.data('devcarousel');
                 devcarousel.$element.toggle();
             }
-        });
-    }
-
-    // callback function added by me
-    function requestProjects (func) {
-        var callback = func;
-        $.ajax({
-            type: "GET",
-            url: "js/data.json",
-            success: function (result) {
-                callback(result);
-            },
-            dataType: "json",
-            contentType: "application/json"
         });
     }
 
@@ -327,7 +335,7 @@
         var href;
         var $this   = $(this);
         var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')); // strip for ie7
-        var options = $.extend({}, $target.data(), $this.data());
+        var options = $.extend({item: $this}, $target.data(), $this.data());
         if ($target.hasClass('carousel')) {
             var slideIndex = $this.attr('data-slide-to');
             if (slideIndex) options.interval = false;
@@ -360,8 +368,11 @@
         this.data = data;
         this.createListProjects(this.data);
         this.vacancy = null;
+        this.view();
     };
-    
+
+
+    //
     ProjectViwer.prototype.checkSend = function (option) {
         var $checked = $(this.$element[0]).find("." + option.vacancy);
         var $send_resume = $(this.$element[0]).find(".send_resume");
@@ -376,17 +387,21 @@
         }
     }
 
+    // select project in list
     ProjectViwer.prototype.select = function (option) {
         var that = this;
         that.currentProject = option.data;
-        this.selectProject();
+        this.viewProject();
+        this.hideSelectedItemList(option);
     };
 
+      // toggle into carousel
     ProjectViwer.prototype.view = function (option) {
         this.$element.toggle();
     };
 
-    ProjectViwer.prototype.selectProject = function () {
+    // change html value
+    ProjectViwer.prototype.viewProject = function () {
         var $element = this.$element;
         var selectedProject = this.currentProject;
         var $items = $element.find("[data-model]");
@@ -405,19 +420,31 @@
         });
     };
 
+    // creat list projects
     ProjectViwer.prototype.createListProjects = function () {
         var that = this;
         var data = this.data;
         var $element = this.$element;
         var $list = $element.find("#list-projects")[0];
-        this.selectProject();
 
         for(var i = 0; i< data.length; i++){
-            var li = $('<li><a  href="#project-view" role="button" data-action="select"></a></li>');
-            $(li).find("a").text(data[i].project_name).data("data",data[i]);
-            $($list).append(li);
+                var li = $('<li  data-target="#project-view" role="button" data-action="select"><a></a></li>');
+                $(li).find("a").text(data[i].project_name);
+                li.data("data" ,data[i]);
+                $($list).append(li);
+                if(data[i].id === this.currentProject.id) {li.toggle()}
         }
+        this.viewProject();
     };
+
+    // hide selected item list
+    ProjectViwer.prototype.hideSelectedItemList = function (option) {
+        var list = this.$element.find("#list-projects>li");
+        list.show();
+        option.item.hide();
+
+
+    }
 }(jQuery);
 
 

@@ -78,6 +78,7 @@
       span {
         position: absolute;
         z-index: 1000;
+        font-weight: 700;
       }
 
       span:nth-child(1) {
@@ -170,6 +171,7 @@
             position: absolute;
             z-index: 1000;
             background-color: $yellow-base-color;
+          font-weight: 700;
         }
         span:nth-child(1){
             width: 42px;
@@ -223,6 +225,7 @@
             position: absolute;
             z-index: 1000;
             background-color: $dark-blue-base-color;
+          font-weight: 700;
         }
         span:nth-child(1){
             width: 36px;
@@ -325,7 +328,7 @@
     
 }
 
-@media(max-width: 980){
+@media(max-width: 980px){
     .bluespanchuks2{margin-left: 2%}
 }
 

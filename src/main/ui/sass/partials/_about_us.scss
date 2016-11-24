@@ -3,6 +3,14 @@
     display: block;
     float: right;
   }
+
+  a.close{
+    background: url("../img/close.png") no-repeat;
+    cursor: pointer;
+    background-size: contain;
+    height:36px;
+    width:36px;
+  }
   
   margin-bottom: 30px;
   margin-top: 30px;
@@ -11,6 +19,7 @@
     padding: 10px 25px;
     font-size: 16px;
     margin-bottom: 15px;
+    font-size: 26px;
   }
 
   textarea{
@@ -48,7 +57,6 @@
     text-align: left;
   }
 
-
   margin-top: 15px;
 
   .order-form-container{
@@ -68,10 +76,17 @@
   }
 
   .success{
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 60px;
-    margin-top: 60px;
+    //display: flex;
+    //flex-direction: column;
+    //align-items: center;
+    width: 70%;
+    margin: 60px auto;
+
+    .close{
+      margin-right: 30px;
+      float: right;
+      //align-self: flex-end;
+    }
 
     p{
       font-size: 18px;
@@ -80,8 +95,7 @@
   }
 
   .success-icon{
-    background-image: url("../img/success.png");
-    background-repeat: no-repeat;
+    background: url("../img/success.png") no-repeat;
     background-size: contain;
     width: 63px;
     height: 95px;
@@ -112,7 +126,7 @@
   }
 
    label >input[type=radio   ]:not(old):checked + span{
-     border: 2px solid $dark-blue-base-color;
+     border: 3px solid $dark-blue-base-color;
      box-shadow: none;
   }
 
@@ -152,7 +166,6 @@
   .control-label{
     text-align: left;
   }
-
 }
 
 section.about_us{
@@ -196,6 +209,7 @@ section.about_us{
       span {
         position: absolute;
         z-index: 1000;
+        font-weight: 700;
       }
 
       span:nth-child(1) {
@@ -256,6 +270,10 @@ section.about_us{
       .about-article{
         padding-bottom:10px;
       }
+      
+      p{
+        color: #fff;
+      }
     }
 
     h1{
@@ -266,13 +284,15 @@ section.about_us{
 
     .about-article{
       flex-grow: 5;
-      padding:20px;
+      padding:25px;
+
     }
 
-    .about-item p{
+    p{
       text-align: left;
-      margin: 15px 0;
-      font-size: 16px;
+      margin: 0;
+      font-size: 20px;
+      color: black;
     }
 
     .about-img{

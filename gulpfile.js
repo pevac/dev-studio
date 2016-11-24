@@ -40,7 +40,6 @@ var path = {
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
             "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
-            // "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
             SOURCE_BASE_DIR + "/js/**/*.js"],
