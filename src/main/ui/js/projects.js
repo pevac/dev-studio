@@ -292,7 +292,7 @@
                     $viewer.data('dev.projects', (new ProjectViwer($viewer, projectData, selectProject)));
                 }else {
                     projects.currentProject = selectProject;
-                    projects.selectProject();
+                    projects.viewProject();
                     $viewer.toggle();
                 }
             }

@@ -91,6 +91,6 @@
     border-bottom: 2px solid $yellow-base-color;
 }
 
-.header .navbar li.active a:hover{
+.header .navbar li.active a:hover, .header .navbar li.active a:focus{
     background-color: $dark-blue-base-color;
 }

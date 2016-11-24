@@ -167,17 +167,19 @@ $(document).ready(function(){
     $('#formValidate').slideToggle();
     $("#success").toggle();
     $('#btn-form-collapsed').toggle();
-    setTimeout(collapseSuccess, 7000);
+    // setTimeout(collapseSuccess, 7000);
   }
 
   function collapseSuccess() {
-    $("#success").toggle();
+    $("#success").slideUp();
   }
 
   function resize(e) {
     this.style.height = 'auto';
     this.style.height = this.scrollHeight+'px';
   }
+
+  $("[data-target='#success']").on("click", collapseSuccess);
 
   //resize textarea
   $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
@@ -187,6 +189,5 @@ $(document).ready(function(){
     $('#btn-form-collapsed').toggle();
     $('#formValidate').slideToggle();
   });
-
 });
 
