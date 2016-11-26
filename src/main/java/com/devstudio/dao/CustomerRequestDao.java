@@ -1,6 +1,6 @@
-package com.devstudio.repositories.model.dao;
+package com.devstudio.dao;
 
-import com.devstudio.entities.CustomerRequest;
+import com.devstudio.entity.CustomerRequest;
 
 import java.util.List;
 

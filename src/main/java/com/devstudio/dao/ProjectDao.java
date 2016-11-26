@@ -1,15 +1,15 @@
-package com.devstudio.repositories.model.dao;
+package com.devstudio.dao;
 
 
-import com.devstudio.entities.Project;
+import com.devstudio.entity.Project;
 
 import java.util.List;
 
-public interface ProjectDao {
+public interface ProjectDao extends GenericDao<Project,Integer> {
 
-    Project findById(int id);
+    /*Project findById(int id);
     List<Project> findAll();
     void save(Project project);
-    void delete(Project project);
+    void delete(Project project);*/
 
 }

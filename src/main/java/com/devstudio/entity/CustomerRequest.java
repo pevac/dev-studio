@@ -1,4 +1,4 @@
-package com.devstudio.entities;
+package com.devstudio.entity;
 
 
 import javax.persistence.Entity;

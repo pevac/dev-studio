@@ -1,7 +1,7 @@
-package com.springapp.restapi;
+package com.devstudio.restapi;
 
-import com.springapp.entities.CustomerRequest;
-import com.springapp.repositories.model.service.CustomerRequestService;
+import com.devstudio.entity.CustomerRequest;
+import com.devstudio.service.CustomerRequestService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

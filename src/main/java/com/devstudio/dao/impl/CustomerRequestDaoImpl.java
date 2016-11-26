@@ -1,6 +1,7 @@
-package com.devstudio.repositories.model.dao;
+package com.devstudio.dao.impl;
 
-import com.devstudio.entities.CustomerRequest;
+import com.devstudio.entity.CustomerRequest;
+import com.devstudio.dao.CustomerRequestDao;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

@@ -1,6 +1,8 @@
-package com.devstudio.repositories.model.dao;
+package com.devstudio.dao.impl;
 
-import com.devstudio.entities.Project;
+
+import com.devstudio.dao.ProjectDao;
+import com.devstudio.entity.Project;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -9,12 +11,12 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Repository
-public class ProjectDaoImpl implements ProjectDao {
+public class ProjectDaoImpl extends GenericDaoImpl<Project,Integer> implements ProjectDao{
 
-    @PersistenceContext
-    private EntityManager em;
+    /*@PersistenceContext
+    private EntityManager em;*/
 
-    public Project findById(int id) {
+   /* public Project findById(int id) {
         return em.find(Project.class, id);
     }
 
@@ -34,5 +36,5 @@ public class ProjectDaoImpl implements ProjectDao {
 
     public void delete(Project project) {
         em.remove(findById(project.getId()));
-    }
+    }*/
 }

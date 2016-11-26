@@ -1,11 +1,11 @@
-package com.devstudio.repositories.model.service;
+package com.devstudio.service;
 
 import java.util.List;
 
 /**
  * Created by Vasyl on 22.11.2016.
  */
-abstract public class AbstractService<T> {
+public interface GenericService<T,E>  {
     abstract T findById(int id);
     abstract List<T> findAll();
     abstract void save(T link);

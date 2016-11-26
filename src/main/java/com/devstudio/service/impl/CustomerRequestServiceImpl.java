@@ -1,11 +1,12 @@
-package com.devstudio.repositories.model.service;
+package com.devstudio.service.impl;
 
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.devstudio.entities.CustomerRequest;
+import com.devstudio.entity.CustomerRequest;
 import com.devstudio.dao.CustomerRequestDao;
+import com.devstudio.service.CustomerRequestService;
 import org.springframework.transaction.annotation.Transactional;
 
 

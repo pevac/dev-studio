@@ -1,21 +1,49 @@
-package com.springapp.repositories.model.service;
+package com.devstudio.service.impl;
 
 
-import com.springapp.entities.Project;
-import com.springapp.repositories.model.dao.ProjectDao;
+import com.devstudio.service.ProjectService;
+import com.devstudio.entity.Project;
+import com.devstudio.dao.ProjectDao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.inject.Inject;
-import javax.inject.Named;
+
+
 import java.util.List;
 
-@Named
-public class ProjectServiceImpl implements ProjectService{
+@Service("projectService")
+public class ProjectServiceImpl implements ProjectService {
 
-    @Inject
+    @Autowired
     private ProjectDao projectDao;
 
+   /* @Override
     public Project findById(int id) {
+        return null;
+    }
+
+    @Override
+    public List<Project> findAll() {
+        return null;
+    }
+
+    @Override
+    public void save(Project project) {
+
+    }
+
+    @Override
+    public void delete(Project project) {
+
+    }*/
+
+    @Override
+    public Project create(Project project) {
+        return projectDao.create(project);
+    }
+
+   /* public Project findById(int id) {
         return projectDao.findById(id);
     }
 
@@ -31,5 +59,5 @@ public class ProjectServiceImpl implements ProjectService{
     @Transactional
     public void delete(Project project) {
         projectDao.delete(project);
-    }
+    }*/
 }

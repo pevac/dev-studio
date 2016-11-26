@@ -1,7 +1,7 @@
-package com.springapp.app;
+package com.devstudio.app;
 
-import com.springapp.context.SpringContext;
-import com.springapp.context.SpringMVCContext;
+import com.devstudio.context.SpringContext;
+import com.devstudio.context.SpringMVCContext;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
