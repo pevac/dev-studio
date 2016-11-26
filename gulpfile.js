@@ -6,7 +6,7 @@ var browserSync = require("browser-sync").create();
 var argv = require("minimist")(process.argv.slice(2));
 var $ = require("gulp-load-plugins")();
 
-var RELEASE = !!argv.release;  
+var RELEASE = !!argv.release;
 var AUTOPREFIXER_BROWSERS = [             
     "ie >= 10",
     "ie_mob >= 10",
@@ -18,36 +18,45 @@ var AUTOPREFIXER_BROWSERS = [
     "android >= 4.4",
     "bb >= 10"
 ];
+// var DEPLOYMENT_NAME = "bionic_dev_studio";
+var SOURCE_BASE_DIR = "src/main/ui";
+var TARGET_DIR = "build";
+var BUILD_BASE_DIR = TARGET_DIR;
+var PROXY_PATHS = BUILD_BASE_DIR;
+
+
 var path = {
     build: { 
-        html: "build/",
-        js: "build/js/",
-        styles: "build/css/",
-        fonts: "build/fonts/",
-        img: "build/img/"
+        html: BUILD_BASE_DIR,
+        js: BUILD_BASE_DIR + "/js",
+        styles: BUILD_BASE_DIR + "/css",
+        fonts: BUILD_BASE_DIR + "/fonts",
+        img: BUILD_BASE_DIR + "/img"
     },
     src: { 
-        html: "src/*.html", 
-        js: ["./bower_components/jquery/dist/jquery.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
+        html: SOURCE_BASE_DIR + "/*.html",
+        js: [
+            "./bower_components/jquery/dist/jquery.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
+            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
             "./bower_components/jquery-validation/dist/jquery.validate.js",
             "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
-            "src/js/**/*.js"],
-        jshint: "src/js/**/*.js",
-        styles: "src/sass/*.scss",
-        fonts: "src/fonts/**/*.*",
-        img: "src/img/**/*.*"
+            SOURCE_BASE_DIR + "/js/**/*.js"],
+        jshint:  SOURCE_BASE_DIR + "/js/**/*.js",
+        styles: SOURCE_BASE_DIR + "/sass/*.scss",
+        fonts: SOURCE_BASE_DIR + "/fonts/**/*.*",
+        img: SOURCE_BASE_DIR + "/img/**/*.*"
     },
     watch: { 
-        html: "src/**/*.html",
-        js: "src/js/**/*.js",
-        styles: "src/sass/**/*.scss",
-        fonts: "src/fonts/**/*.*",
-        img: "src/img/**/*.*",
-        reload: "build/**/*.*"
+        html: SOURCE_BASE_DIR + "/**/*.html",
+        js: SOURCE_BASE_DIR + "/js/**/*.js",
+        styles: SOURCE_BASE_DIR + "/sass/**/*.scss",
+        fonts: SOURCE_BASE_DIR + "/fonts/**/*.*",
+        img: SOURCE_BASE_DIR + "/img/**/*.*",
+        reload: BUILD_BASE_DIR + "/**/*.*"
     },
-    clean: "./build", 
-    dest: "./build" 
+    clean: BUILD_BASE_DIR,
 };
 
 gulp.task("sass:build", function () {
@@ -63,6 +72,11 @@ gulp.task("sass:build", function () {
         }))
         .pipe($.if(!RELEASE, $.sourcemaps.write({sourceRoot: './src/sass'})))
         .pipe(gulp.dest(path.build.styles));
+});
+
+gulp.task("accets:build", function () {
+    return gulp.src("src/main/ui/js/**/*.json")
+        .pipe(gulp.dest(path.build.js));
 });
 
 gulp.task("script:build", function(){
@@ -84,6 +98,12 @@ gulp.task("jshint:build", function(){
         .pipe(jshint.reporter("jshint-stylish"))
 });
 
+gulp.task("js:build", function (cb) {
+    runSequence("jshint:build", "script:build", cb);
+});
+
+
+
 gulp.task("html:build", function() {
     return gulp.src(path.src.html)
         .pipe($.rigger())
@@ -101,26 +121,20 @@ gulp.task("fonts:build", function() {
 });
 
 gulp.task('image:build', function () {
-    gulp.src(path.src.img) 
-        // .pipe($.imagemin({ 
-        //     progressive: true,
-        //     svgoPlugins: [{removeViewBox: false}],
-        //     interlaced: true, 
-        //     optimizationLevel: 3 
-        // }))
-        .pipe(gulp.dest(path.build.img)) 
+   return gulp.src(path.src.img)
+        .pipe(gulp.dest(path.build.img))
 });
 
 gulp.task("clean", del.bind(null, path.clean));
 
-gulp.task("build", ["clean"], function (cb) {
-    runSequence(["sass:build", "script:build","html:build", "fonts:build","image:build"], cb);
+gulp.task("build", ["clean"],  function (cb) {
+    runSequence(["sass:build", "accets:build", "js:build","html:build", "fonts:build","image:build"], cb);
 });
 
 gulp.task("browser-sync", function () {
     browserSync.init({
         server: {
-            baseDir: path.dest
+            baseDir: PROXY_PATHS
         }
     });
     browserSync.watch(path.watch.reload).on("change", browserSync.reload);
@@ -136,7 +150,7 @@ gulp.task("watch", function(){
     });
 
     $.watch([path.watch.js], function(event, cb) {
-        gulp.start("script:build");
+        gulp.start("js:build");
     });
 
     $.watch([path.watch.fonts], function(event, cb) {
@@ -152,6 +166,8 @@ gulp.task("serve", function (cb) {
     runSequence("build", ["browser-sync","watch"], cb);
 });
 
-gulp.task("storm", ["build","watch"]);
+gulp.task("storm", function (cb) {
+    runSequence("build",  "watch", cb);
+});
 
 gulp.task("default", ["serve"]);
