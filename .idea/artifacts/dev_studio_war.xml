@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="dev-studio:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="bionic_dev_studio.war">
+      <element id="artifact" artifact-name="dev-studio:war exploded" />
+    </root>
+  </artifact>
+</component>
