@@ -1,3 +1,11 @@
+.carousel-hidden{
+  overflow: hidden;
+}
+
+.carousel-hidden:hover{
+  overflow: hidden;
+}
+
 .projects {
     margin-top: 10%;
 
@@ -15,7 +23,7 @@
     display: flex;
     z-index: 1000;
     left: calc(50% - 45px);
-    top: calc(50% - 50px);
+    top: calc(50% - 45px);
 
     .controls {
       width: 100%;
