@@ -1,0 +1,84 @@
+html {
+ height: 100%;
+}
+
+body>.dev-studio>section{
+  padding-top: 150px;
+  padding-bottom: 75px;
+}
+
+body{
+  font-family: "PFBeauSansPro Light", sans-serif;
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-studio{
+  background-image: url("../img/dev.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-top: 50px;
+  flex: 1 0 auto;
+}
+
+
+
+// Fonts
+@font-face {
+  font-family: 'PFBeauSansPro Black';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Black.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro Bold';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro Light';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro Reg';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro SemiBold';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro Thin';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Thin.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro ThinItal';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-ThinItal.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro XThin';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThin.ttf')  format('truetype'),
+}
+@font-face {
+  font-family: 'PFBeauSansPro XThinItal';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThinItal.ttf')  format('truetype'),
+}
+
+
+.btn-dev{
+  background-color: $btn-dev-bg;
+  color: $default-color;
+  border: none;
+  border-radius: 10px;
+  &:hover,
+  &:focus,
+  &.focus {
+    background-color: $btn-dev-bg-hover;
+    color: $default-color;
+    text-decoration: none;
+  }
+}
+
+
+
+
+

@@ -6,12 +6,13 @@
   "scripts": {
     "start": "gulp",
     "public": "gulp build --release",
-    "prestart": "npm install && bower install"
+    "prestart": "npm install && bower install",
+    "bower-install": "bower install"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "browser-sync": "^2.17.5",
+    "browser-sync": "^2.18.2",
     "del": "^2.2.2",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "^3.1.1",
@@ -21,7 +22,6 @@
     "gulp-cssmin": "^0.1.7",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.1",
-    "gulp-imagemin": "^3.1.1",
     "gulp-jshint": "^2.0.2",
     "gulp-load-plugins": "^1.4.0",
     "gulp-plumber": "^1.1.0",
@@ -31,7 +31,6 @@
     "gulp-sourcemaps": "^2.2.0",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.10",
-    "imagemin-pngquant": "^5.0.0",
     "jshint": "^2.9.4",
     "jshint-stylish": "^2.2.1",
     "minimist": "^1.2.0",
