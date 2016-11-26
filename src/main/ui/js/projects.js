@@ -1,9 +1,13 @@
-﻿+function ($) {
-    "use strict";
+/*
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ * ======================================================================== */
+
++function ($) {
+    'use strict';
     var DevCarousel = function (element, options) {
         this.$element    = $(element);
         this.$element    = $(element);
-        this.$indicators = this.$element.find(".carousel-indicators");
+        this.$indicators = this.$element.find('.carousel-indicators');
         this.options     = options;
         this.paused      = null;
         this.sliding     = null;
@@ -13,22 +17,22 @@
         // field added by me
         this.data        = null;
         this.grid        = 4;
-        this.index       = -1;
+        this.index       = this.grid - 1;
         this.currentDirection   = "next";
 
-        this.requestProjects(this.setData.bind(this));
-        this.options.keyboard && this.$element.on("keydown.devcarousel", $.proxy(this.keydown, this));
+        this.requestProjects(this.setData.bind(this))
+        this.options.keyboard && this.$element.on('keydown.devcarousel', $.proxy(this.keydown, this));
 
-        this.options.pause == "hover" && !("ontouchstart" in document.documentElement) && this.$element
-            .on("mouseenter.devcarousel", $.proxy(this.pause, this))
-            .on("mouseleave.devcarousel", $.proxy(this.cycle, this));
+        this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
+            .on('mouseenter.devcarousel', $.proxy(this.pause, this))
+            .on('mouseleave.devcarousel', $.proxy(this.cycle, this));
     };
 
     DevCarousel.TRANSITION_DURATION = 600;
 
     DevCarousel.DEFAULTS = {
         interval: 5000,
-        pause: "hover",
+        pause: 'hover',
         wrap: true,
         keyboard: true
     };
@@ -56,36 +60,36 @@
     };
 
     DevCarousel.prototype.getItemIndex = function (item) {
-        this.$items = item.parent().children(".item");
+        this.$items = item.parent().children('.item');
         return this.$items.index(item || this.$active);
     };
 
     DevCarousel.prototype.getItemForDirection = function (direction, active) {
         var activeIndex = this.getItemIndex(active);
-        var willWrap = (direction == "prev" && activeIndex === 0)
-            || (direction == "next" && activeIndex == (this.$items.length - 1));
+        var willWrap = (direction == 'prev' && activeIndex === 0)
+            || (direction == 'next' && activeIndex == (this.$items.length - 1));
         if (willWrap && !this.options.wrap) return active;
-        var delta = direction == "prev" ? -1 : 1;
+        var delta = direction == 'prev' ? -1 : 1;
         var itemIndex = (activeIndex + delta) % this.$items.length;
         return this.$items.eq(itemIndex);
     };
 
     DevCarousel.prototype.to = function (pos) {
         var that        = this;
-        var activeIndex = this.getItemIndex(this.$active = this.$element.find(".item.active"));
+        var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'));
 
         if (pos > (this.$items.length - 1) || pos < 0) return;
 
-        if (this.sliding)       return this.$element.one("slid.devcarousel", function () { that.to(pos); }); // yes, "slid"
+        if (this.sliding)       return this.$element.one('slid.devcarousel', function () { that.to(pos); }); // yes, "slid"
         if (activeIndex == pos) return this.pause().cycle();
 
-        return this.slide(pos > activeIndex ? "next" : "prev", this.$items.eq(pos));
+        return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos));
     };
 
     DevCarousel.prototype.pause = function (e) {
         e || (this.paused = true);
 
-        if (this.$element.find(".next, .prev").length && $.support.transition) {
+        if (this.$element.find('.next, .prev').length && $.support.transition) {
             this.$element.trigger($.support.transition.end);
             this.cycle(true);
         }
@@ -97,29 +101,28 @@
 
     DevCarousel.prototype.next = function () {
         if (this.sliding) return;
-        return this.slide("next");
+        return this.slide('next');
     };
 
     DevCarousel.prototype.prev = function () {
         if (this.sliding) return;
-        return this.slide("prev");
+        return this.slide('prev');
     };
 
     // method override by me
     DevCarousel.prototype.slide = function (type, next) {
-        var $active   = this.$element.find(".item.active");
-        var $inner   = this.$element.find(".carousel-inner");
+        var $active   = this.$element.find('.item.active');
         var $next     = next || this.getItemForDirection(type, $active);
         var isCycling = this.interval;
-        var direction = type == "next" ? "left" : "right";
+        var direction = type == 'next' ? 'left' : 'right';
         var that      = this;
 
-        if ($next.hasClass("active")) return (this.sliding = false);
+        if ($next.hasClass('active')) return (this.sliding = false);
 
 
 
         var relatedTarget = $next[0];
-        var slideEvent = $.Event("slide.devcarousel", {
+        var slideEvent = $.Event('slide.devcarousel', {
             relatedTarget: relatedTarget,
             direction: direction
         });
@@ -131,39 +134,35 @@
         isCycling && this.pause();
 
         if (this.$indicators.length) {
-            this.$indicators.find(".active").removeClass("active");
+            this.$indicators.find('.active').removeClass('active');
             var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)]);
-            $nextIndicator && $nextIndicator.addClass("active");
+            $nextIndicator && $nextIndicator.addClass('active');
         }
-        that.setNextItem(type, $next );
-        var slidEvent = $.Event("slid.devcarousel", { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
-        if ($.support.transition && this.$element.hasClass("slide")) {
-            $inner.css("overflow", "hidden");
 
+        var slidEvent = $.Event('slid.devcarousel', { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
+        if ($.support.transition && this.$element.hasClass('slide')) {
+            that.setNextItem(type, $next );
             $next.addClass(type);
-            $next[0].offsetWidth;// force reflow
+            $next[0].offsetWidth ;// force reflow
             $active.addClass(direction);
             $next.addClass(direction);
             $active
-                .one("bsTransitionEnd", function () {
-                    $next.removeClass([type, direction].join(" ")).addClass("active");
-                    $active.removeClass(["active", direction].join(" "));
+                .one('bsTransitionEnd', function () {
+                    $next.removeClass([type, direction].join(' ')).addClass('active');
+                    $active.removeClass(['active', direction].join(' '));
                     that.sliding = false;
                     setTimeout(function () {
                         that.$element.trigger(slidEvent);
-                        $inner.css("overflow", "visible");
                     }, 0);
                 })
                 .emulateTransitionEnd(DevCarousel.TRANSITION_DURATION);
-
         } else {
-            $active.removeClass("active");
-            $next.addClass("active");
+            $active.removeClass('active');
+            $next.addClass('active');
             this.sliding = false;
             this.$element.trigger(slidEvent);
         }
         isCycling && this.cycle();
-
         return this;
     };
 
@@ -174,88 +173,57 @@
     };
 
     DevCarousel.prototype.initCarouselItem= function () {
-        var $container = this.$element.find(".active");
-        this.setNextItem("next",$container);
-    };
-
-    DevCarousel.prototype.generateSlideItem= function (container) {
-        var $container = container;
-        var $component = this.slideComponent().template;
-        var item = $.parseHTML($component);
-        var slideItem  = [];
-        for (var i = 0;  i <  this.grid; i++ ){
-            var clone = $(item).clone();
-            slideItem.push(clone);
+        var that = this;
+        var data = that.data;
+        var nextItem = that.$element.find("[data-repeate]");
+        var $container = $(nextItem[0].outerHTML);
+        var $activeItem = nextItem.parent();
+        if($($activeItem.children()).length >= 4) return
+        for (var i = 0, index=0;  i <  that.grid; i++, index++ ){
+            if(index > data.length-1){ index = 0;}
+            var $slides = $activeItem.children()[i];
+            var $img =  $($slides).find("[data-src]")[0];
+            var dataSrc = $($($img)[0]).attr("data-src");
+            $img.src = data[i][dataSrc];
+            $($slides).data("data",data[index]);
+            if(data.length <= that.grid && data.length-1 == i) {
+                that.sliding = true;
+                break;
+            }
+            if(i +1  <  that.grid) {
+                var a = $($container).clone();
+                $activeItem.append(a);
+            }
         }
-        return slideItem;
-    };
-
-    DevCarousel.prototype.slideComponent = function () {
-        var obj = {};
-        obj.template = '<div class="col-sm-6 col-xs-12 flex_col" href="#project-carousel" role="button" data-action="view">'+
-                            '<div class="item-container" >'+
-                                '<div class="project-slide-item">'+
-                                    '<a><img class="project-photo" data-src="link_url" alt=""></a>'+
-                                '</div>'+
-                                '<span class="action hidden-xs"></span>'+
-                                '<a class="btn btn-primary btn-dev" >Подивитися вакансії</a>'+
-                            '</div>'+
-                        '</div>' ;
-        return obj;
     };
 
     DevCarousel.prototype.setNextItem = function (type, $next) {
         var that = this;
         var data = that.data;
         var direction = type;
-        var $nextItem = $next.find("[data-repeate]");
-        var $children = $nextItem.children();
+        var nextItem = $next.find(".item-container");
         var index;
-        var $slide;
-        if($($nextItem.children()).length < 4) {
-            var $slideItems =  this.generateSlideItem($nextItem);
-            $nextItem.append($slideItems);
-            $children = $nextItem.children();
-        }
         if(direction == "next"){
-            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(0, direction);
+            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(5, direction);
         } else {
-            index = (that.currentDirection =="next") ? this.getIndex(4, direction)  : this.getIndex(0, direction);
+            index = (that.currentDirection == "next") ? this.getIndex(4, direction)  : this.getIndex(0, direction);
         }
         if(direction == "next"){
             for (var i = 0;  i <  that.grid; i++, index++ ){
                 index = this.checkIndex(index);
-                 $slide =  $children[i];
-                this.initSlideComponent($slide, index);
-                if(data.length <= that.grid ) {
-                    that.sliding = true;
-                    break;
-                }
+                $(nextItem[i]).find(".project-photo")[0].src = data[index].link_url;
+                $(nextItem[i]).data("data",data[index]);
             }
         }else {
-            for (var j = that.grid-1;  j >=  0;  j--, index-- ){
+            for (var j = that.grid-1;  j >=  0; j--, index-- ){
                 index = this.checkIndex(index);
-                 $slide =  $children[j];
-                this.initSlideComponent($slide, index);
-                if(data.length <= that.grid ) {
-                    that.sliding = true;
-                    break;
-                }
+                $(nextItem[j]).find(".project-photo")[0].src = data[index].link_url;
+                $(nextItem[j]).data("data",data[index]);
             }
         }
         that.currentDirection = direction;
         that.index = (direction == "next") ? index-1 : index;
     };
-
-    DevCarousel.prototype.initSlideComponent  = function (item, i) {
-        var $slide = item, index = i;
-        var that = this;
-        var data = that.data;
-        var $img =  $($slide).find("[data-src]")[0];
-        var dataSrc = $($($img)[0]).attr("data-src");
-        $img.src = data[index][dataSrc];
-        $($slide).data("data",data[index]);
-    }
 
     DevCarousel.prototype.getIndex = function (num, direction) {
         var that = this;
@@ -287,7 +255,7 @@
         return this.data;
     };
 
-    DevCarousel.prototype.requestProjects = function (func) {
+     DevCarousel.prototype.requestProjects = function (func) {
         var callback = func;
         $.ajax({
             type: "GET",
@@ -306,22 +274,22 @@
     function Plugin(option) {
         return this.each(function () {
             var $this   = $(this);
-            var devcarousel    = $this.data("devcarousel");
-            var options = $.extend({}, DevCarousel.DEFAULTS, $this.data(), typeof option == "object" && option);
-            var action  = typeof option == "string" ? option : options.action;
+            var devcarousel    = $this.data('devcarousel');
+            var options = $.extend({}, DevCarousel.DEFAULTS, $this.data(), typeof option == 'object' && option);
+            var action  = typeof option == 'string' ? option : options.action;
 
             if (!devcarousel) {
-                $this.data("devcarousel", (devcarousel = new DevCarousel(this, options)));
+                $this.data('devcarousel', (devcarousel = new DevCarousel(this, options)));
             }
-            if (typeof option == "number") devcarousel.to(option);
+            if (typeof option == 'number') devcarousel.to(option);
             else if (action) devcarousel[action](option);
             if(action === "view"){
                 var selectProject = option.data;
                 var projectData = devcarousel.data;
                 var $viewer = devcarousel.$element.parents(".projects").find("#project-view");
-                var projects    = $viewer.data("dev.projects");
+                var projects    = $viewer.data('dev.projects');
                 if (!projects) {
-                    $viewer.data("dev.projects", (new ProjectViwer($viewer, projectData, selectProject)));
+                    $viewer.data('dev.projects', (new ProjectViwer($viewer, projectData, selectProject)));
                 }else {
                     projects.currentProject = selectProject;
                     projects.viewProject();
@@ -335,13 +303,13 @@
     function ProjectPlugin(option) {
         return this.each(function () {
             var $this   = $(this);
-            var data    = $this.data("dev.projects");
-            var options = $.extend({},  $this.data(), typeof option == "object" && option);
-            var action  = typeof option == "string" ? option : options.action;
+            var data    = $this.data('dev.projects');
+            var options = $.extend({},  $this.data(), typeof option == 'object' && option);
+            var action  = typeof option == 'string' ? option : options.action;
             if (action) data[action](option);
             if(action === "view"){
                 var $devcarousel = data.$element.parents(".projects").find(".carousel");
-                var devcarousel    = $devcarousel.data("devcarousel");
+                var devcarousel    = $devcarousel.data('devcarousel');
                 devcarousel.$element.toggle();
             }
         });
@@ -366,16 +334,16 @@
     var clickHandler = function (e) {
         var href;
         var $this   = $(this);
-        var $target = $($this.attr("data-target") || (href = $this.attr("href")) && href.replace(/.*(?=#[^\s]+$)/, "")); // strip for ie7
+        var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')); // strip for ie7
         var options = $.extend({item: $this}, $target.data(), $this.data());
-        if ($target.hasClass("carousel")) {
-            var slideIndex = $this.attr("data-slide-to");
+        if ($target.hasClass('carousel')) {
+            var slideIndex = $this.attr('data-slide-to');
             if (slideIndex) options.interval = false;
             Plugin.call($target, options);
             if (slideIndex) {
-                $target.data("devcarousel").to(slideIndex);
+                $target.data('devcarousel').to(slideIndex);
             }
-        }else if($target.hasClass("project-view")){
+        }else if($target.hasClass('project-view')){
             ProjectPlugin.call($target,options);
         }else {
             return;
@@ -384,10 +352,10 @@
     };
 
     $("#projects")
-        .on("click", "[data-action]", clickHandler);
+        .on('click', '[data-action]', clickHandler);
 
-    $(window).on("load", function () {
-        $("[data-ride='carousel']").each(function () {
+    $(window).on('load', function () {
+        $('[data-ride="carousel"]').each(function () {
             var $carousel = $(this);
             Plugin.call($carousel, $carousel.data());
         });
@@ -402,16 +370,18 @@
         this.vacancy = null;
         this.view();
     };
+
+
     //
     ProjectViwer.prototype.checkSend = function (option) {
         var $checked = $(this.$element[0]).find("." + option.vacancy);
-        var $sendResume = $(this.$element[0]).find(".sendResume");
+        var $send_resume = $(this.$element[0]).find(".send_resume");
         if(option.vacancy == this.vacancy){
             $checked.toggle();
-            $sendResume.hide();
+            $send_resume.hide();
             this.vacancy = null;
         }else {
-            $sendResume.hide();
+            $send_resume.hide();
             $checked.toggle();
             this.vacancy = option.vacancy;
         }
@@ -455,14 +425,14 @@
         var that = this;
         var data = this.data;
         var $element = this.$element;
-        var $list = $element.find(" #list-projects")[0];
+        var $list = $element.find("#list-projects")[0];
 
         for(var i = 0; i< data.length; i++){
                 var li = $('<li  data-target="#project-view" role="button" data-action="select"><a></a></li>');
                 $(li).find("a").text(data[i].project_name);
                 li.data("data" ,data[i]);
                 $($list).append(li);
-                if(data[i].id === this.currentProject.id) {li.toggle();}
+                if(data[i].id === this.currentProject.id) {li.toggle()}
         }
         this.viewProject();
     };
@@ -472,9 +442,163 @@
         var list = this.$element.find("#list-projects>li");
         list.show();
         option.item.hide();
+
+
     }
 }(jQuery);
 
 
 
+
+
+// +function ($) {
+//     var BsCarousel = $().carousel.Constructor;
+//
+//     var DevCarousel = function () {
+//         this.data        = null
+//         this.grid        = 4
+//         this.index       = this.grid - 1
+//         this.currentDirection   = "next";
+//         BsCarousel.apply(this, arguments);
+//     }
+//
+//     DevCarousel.TRANSITION_DURATION = 600
+//
+//     DevCarousel.DEFAULTS = {
+//         interval: 5000,
+//         pause: 'hover',
+//         wrap: true,
+//         keyboard: true
+//     }
+//
+//     DevCarousel.prototype = Object.create(BsCarousel.prototype);
+//     DevCarousel.prototype.constructor = DevCarousel;
+//
+//     DevCarousel.prototype.next = function () {
+//         this.setNextItem("next");
+//         BsCarousel.prototype.next.apply(this);
+//     }
+//
+//     DevCarousel.prototype.prev = function () {
+//         this.setNextItem("prev");
+//         BsCarousel.prototype.prev.apply(this);
+//     }
+//
+//     // method added by me
+//     DevCarousel.prototype.initCarouselItem= function () {
+//         var that = this;
+//         var data = that.data;
+//         var activeItem = that.$element.find(".item.active img");
+//         for (var i = 0, index=0;  i <  that.grid; i++, index++ ){
+//             if(index > data.length-1){ index = 0;}
+//             activeItem[i].src = data[index].link_url;
+//             if(data.length <= that.grid && data.length-1 == i) {
+//                 that.sliding = true;
+//                 break;
+//             }
+//         }
+//     }
+//     DevCarousel.prototype.setData = function (data) {
+//         this.data = data;
+//         this.initCarouselItem();
+//     }
+//     DevCarousel.prototype.setNextItem = function (type) {
+//         console.log(this);
+//         var $active   = this.$element.find('.item.active')
+//         var $next     =  this.getItemForDirection(type, $active)
+//         var that = this;
+//         var data = that.data;
+//         var direction = type;
+//         var nextItem = $next.find("img");
+//         var index;
+//
+//         if(direction == "next"){
+//             index = (that.currentDirection == "next") ? that.index + 1 : that.index + 5;
+//         } else {
+//             index = (that.currentDirection == "next") ? that.index - 4  : that.index;
+//         }
+//         if(direction == "next"){
+//             for (var i = 0;  i <  that.grid; i++, index++ ){
+//                 if(index > data.length-1){ index = 0;}
+//                 if(index < 0){index = data.length - 1}
+//                 nextItem[i].src = data[index].link_url;
+//             }
+//         }else {
+//             for (var i = that.grid-1;  i >=  0; i--, index-- ){
+//                 if(index > data.length-1){ index = 0;}
+//                 if(index < 0){index = data.length - 1}
+//                 nextItem[i].src = data[index].link_url;
+//             }
+//         }
+//         that.currentDirection = direction;
+//         that.index = (direction == "next") ? index-1 : index;
+//     }
+//
+//
+//     // callback function added by me
+//     function requestProjects (func) {
+//         var callback = func;
+//         $.ajax({
+//             type: "GET",
+//             url: "js/data.json",
+//             success: function (result) {
+//                 callback(result);
+//             },
+//             dataType: "json",
+//             contentType: "application/json"
+//         });
+//     }
+//
+//     // CAROUSEL PLUGIN DEFINITION
+//     // ==========================
+//
+//     function Plugin(option) {
+//         return this.each(function () {
+//             var $this   = $(this)
+//             var data    = $this.data('bs.carousel')
+//             var options = $.extend({}, DevCarousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+//             var action  = typeof option == 'string' ? option : options.project
+//
+//             if (!data) {
+//                 $this.data('bs.carousel', (data = new DevCarousel(this, options)))
+//                 requestProjects(data.setData.bind(data));
+//             }
+//             if (typeof option == 'number') data.to(option)
+//             else if (action) data[action]()
+//             else if (options.interval) data.pause().cycle()
+//         })
+//     }
+//
+//     $.fn.devcarousel             = Plugin
+//     $.fn.devcarousel.Constructor = DevCarousel
+//
+//     var clickHandler = function (e) {
+//         var href
+//         var $this   = $(this)
+//         var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+//         if (!$target.hasClass('carousel')) return
+//         var options = $.extend({}, $target.data(), $this.data())
+//         var slideIndex = $this.attr('data-project-to')
+//         if (slideIndex) options.interval = false
+//
+//         Plugin.call($target, options)
+//
+//         if (slideIndex) {
+//             $target.data('bs.carousel').to(slideIndex)
+//         }
+//
+//         e.preventDefault()
+//     }
+//
+//     $(document)
+//         .on('click.bs.carousel.data-api', '[data-project]', clickHandler)
+//         .on('click.bs.carousel.data-api', '[data-project-to]', clickHandler)
+//
+//     $(window).on('load', function () {
+//         $('[data-ride="project-carousel"]').each(function () {
+//             var $carousel = $(this)
+//             Plugin.call($carousel, $carousel.data())
+//         })
+//     })
+// }
 

@@ -1,13 +1,12 @@
 ﻿$(document).ready(function(){
-  "use strict";
-  $.validator.addMethod("phoneUS", function(phone_number, element) {
-    phone_number = phone_number.replace(/\s+/g, "");
+  $.validator.addMethod('phoneUS', function(phone_number, element) {
+    phone_number = phone_number.replace(/\s+/g, '');
     return this.optional(element) || phone_number.length > 5 &&
     phone_number.match(/^[\d\(\)\ -]{14}$/);
   });
 
   $.validator.addMethod( "lettersonly", function( value, element ) {
-  return this.optional( element ) || /^[а-я,ґ,", ,і,ї,є\-\a-z]+$/i.test( value );
+  return this.optional( element ) || /^[а-я,ґ,', ,і,ї,є\-\a-z]+$/i.test( value );
 });
 
   // phone mask
@@ -112,13 +111,13 @@
     }
   },
 
-  errorElement : "div",
+  errorElement : 'div',
   errorPlacement: function(error, element) {
-    var placement = $(element).data("error");
+    var placement = $(element).data('error');
     if (placement) {
       $(placement).append(error);
     } else {
-      error.insertAfter(element).data("error");
+      error.insertAfter(element).data('error');
     }
   },
 });
@@ -131,9 +130,9 @@
         if (!o[this.name].push) {
           o[this.name] = [o[this.name]];
         }
-        o[this.name].push(this.value || "");
+        o[this.name].push(this.value || '');
       } else {
-        o[this.name] = this.value || "";
+        o[this.name] = this.value || '';
       }
     });
     return o;
@@ -144,7 +143,7 @@
      var re = /^(?:color|date|datetime|email|month|number|password|range|search|tel|text|time|url|week)$/i;
      for(var i =0; i<a.length; i++){
        var t = a[i].type, tag = a[i].tagName.toLowerCase();
-       if (re.test(t) || tag == "textarea") {
+       if (re.test(t) || tag == 'textarea') {
          a[i].value = "";
        }
      }
@@ -165,9 +164,9 @@
   }
 
   function successRequest() {
-    $("#formValidate").slideToggle();
+    $('#formValidate').slideToggle();
     $("#success").toggle();
-    $("#btn-form-collapsed").toggle();
+    $('#btn-form-collapsed').toggle();
     // setTimeout(collapseSuccess, 7000);
   }
 
@@ -176,9 +175,8 @@
   }
 
   function resize(e) {
-    var self = this;
-    self.style.height = "auto";
-    self.style.height = this.scrollHeight+"px";
+    this.style.height = 'auto';
+    this.style.height = this.scrollHeight+'px';
   }
 
   $("[data-target='#success']").on("click", collapseSuccess);
@@ -187,9 +185,9 @@
   $("#formValidate textarea").on("keyup cut paste keydown keypress change", resize);
 
   // collapsed form and button
-  $("a[data-id='form-collapsed']").click(function(){
-    $("#btn-form-collapsed").toggle();
-    $("#formValidate").slideToggle();
+  $('a[data-id="form-collapsed"]').click(function(){
+    $('#btn-form-collapsed').toggle();
+    $('#formValidate').slideToggle();
   });
 });
 
