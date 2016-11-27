@@ -1,4 +1,4 @@
-package com.springapp.context;
+package com.devstudio.context;
 
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
@@ -17,7 +17,7 @@ import java.util.Properties;
 
 
 @Configuration
-@ComponentScan("com.springapp")
+@ComponentScan("com.devstudio")
 @EnableTransactionManagement
 public class SpringContext {
 
@@ -26,9 +26,9 @@ public class SpringContext {
         BasicDataSource dataSource = new BasicDataSource();
 
 
-        dataSource.setUrl("jdbc:mysql://localhost:3306/devstudio");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/Adv");
         dataSource.setUsername("root");
-        dataSource.setPassword("1234");
+        dataSource.setPassword("root");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
         dataSource.setMaxTotal(20);
@@ -43,7 +43,7 @@ public class SpringContext {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 
         entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan("com.springapp.entities");
+        entityManagerFactoryBean.setPackagesToScan("com.devstudio.entity");
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);

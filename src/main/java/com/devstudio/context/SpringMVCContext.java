@@ -1,4 +1,4 @@
-package com.springapp.context;
+package com.devstudio.context;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"com.springapp.restapi"})
+@ComponentScan(basePackages = {"com.devstudio.restapi"})
 public class SpringMVCContext extends WebMvcConfigurerAdapter {
 
 
@@ -22,7 +22,13 @@ public class SpringMVCContext extends WebMvcConfigurerAdapter {
     }
 
 
-
+    @Bean
+    public InternalResourceViewResolver jspViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("/WEB-INF/");
+        bean.setSuffix(".html");
+        return bean;
+    }
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {

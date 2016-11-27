@@ -1,7 +1,7 @@
-package com.springapp.restapi;
+package com.devstudio.restapi;
 
-import com.springapp.entities.CustomerRequest;
-import com.springapp.repositories.model.service.CustomerRequestService;
+import com.devstudio.entity.CustomerRequest;
+import com.devstudio.service.CustomerRequestService;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class CustomerRequestController {
     @Inject
     CustomerRequestService service;
 
-    @RequestMapping(value = "/1", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<CustomerRequest>> getCustomerRequests(ModelMap model) {
         List<CustomerRequest> list = service.findAll();
         return new ResponseEntity<List<CustomerRequest>>(list, HttpStatus.OK);

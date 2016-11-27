@@ -1,11 +1,11 @@
-package com.springapp.entities;
+package com.devstudio.entity;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name = "project")
-public class Project {
+public class Project extends GenericEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

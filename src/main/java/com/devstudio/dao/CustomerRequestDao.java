@@ -1,6 +1,6 @@
-package com.springapp.repositories.model.dao;
+package com.devstudio.dao;
 
-import com.springapp.entities.CustomerRequest;
+import com.devstudio.entity.CustomerRequest;
 
 import java.util.List;
 
