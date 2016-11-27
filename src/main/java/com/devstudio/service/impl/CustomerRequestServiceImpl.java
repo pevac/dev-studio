@@ -1,16 +1,13 @@
-package com.springapp.repositories.model.service;
+package com.devstudio.service.impl;
 
-import java.io.IOException;
 import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.springapp.entities.CustomerRequest;
-import com.springapp.repositories.model.dao.CustomerRequestDao;
+import com.devstudio.entity.CustomerRequest;
+import com.devstudio.dao.CustomerRequestDao;
+import com.devstudio.service.CustomerRequestService;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-
-
 
 
 @Named

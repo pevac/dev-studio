@@ -1,8 +1,8 @@
-package com.springapp.repositories.model.service;
+package com.devstudio.service;
 
 import java.util.List;
 
-import com.springapp.entities.CustomerRequest;
+import com.devstudio.entity.CustomerRequest;
 
 public interface CustomerRequestService {
 	 CustomerRequest findById(int id);

@@ -1,4 +1,4 @@
-package com.springapp.entities;
+package com.devstudio.entity;
 
 
 import javax.persistence.Entity;

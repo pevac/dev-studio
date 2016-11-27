@@ -1,23 +1,20 @@
-package com.springapp.clienttest;
+package com.devstudio.clienttest;
 
-//import com.springapp.entities.AdvList;
-//import com.springapp.entities.Advertisement;
-import com.springapp.entities.CustomerRequest;
+//import com.devstudio.entity.AdvList;
+//import com.devstudio.entity.Advertisement;
+import com.devstudio.entity.CustomerRequest;
+import com.devstudio.entity.Project;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class Maintest {
     public static void main(String[] args) {
         try {
-            CustomerRequest customerRequest = new CustomerRequest();
-            customerRequest.setFull_name("Ivamov");
-            String url = "http://localhost:8080/api/customerrequest/";
+            Project project = new Project();
+            project.setProjectName("Ivamf getgs ov");
+            String url = "http://localhost:8080/api/project/";
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.postForObject(url, customerRequest, CustomerRequest.class);
+            restTemplate.postForObject(url, project, Project.class);
         } catch (RestClientException e) {
             e.printStackTrace();
         }
