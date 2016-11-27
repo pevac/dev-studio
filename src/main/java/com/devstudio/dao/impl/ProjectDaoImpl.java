@@ -15,11 +15,11 @@ import java.util.List;
 public class ProjectDaoImpl extends GenericDaoImpl<Project,Integer> implements ProjectDao{
 
 
-    public List<Project> findAll() {
-        TypedQuery<Project> query = this.em.createQuery("SELECT m FROM Project m",  Project.class);
-        List<Project> listOfProjects = query.getResultList();
-        return listOfProjects;
-    }
+//    public List<Project> findAll() {
+//        TypedQuery<Project> query = this.em.createQuery("SELECT m FROM Project m",  Project.class);
+//        List<Project> listOfProjects = query.getResultList();
+//        return listOfProjects;
+//    }
     /*@PersistenceContext
     private EntityManager em;*/
 

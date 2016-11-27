@@ -8,8 +8,8 @@ import java.util.List;
  * Created by Vasya on 26.11.2016.
  */
 public interface GenericDao<T,E> {
-   /* public T findByKey(T o, E key);
-    public List<T> findAll();*/
+   /* public T findByKey(T o, E key);*/
+    public List<T> findAll();
     T create (T newInstance);
     //public T read(E id);
     //public void update(T instance);

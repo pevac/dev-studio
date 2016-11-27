@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.List;
@@ -32,6 +33,14 @@ public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
         return newInstance;
     }
 
+    public List<T> findAll() {
+        final StringBuffer queryString = new StringBuffer(
+                "SELECT o from ");
+        queryString.append(type.getSimpleName()).append(" o ");
+        TypedQuery<T> query = this.em.createQuery(queryString.toString(),  type);
+        List<T> listOfObjects = query.getResultList();
+        return listOfObjects;
+    }
 //    @Override
 //    public T read(E id) {
 //        return null;

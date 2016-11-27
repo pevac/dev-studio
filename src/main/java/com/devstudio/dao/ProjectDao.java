@@ -11,5 +11,5 @@ public interface ProjectDao extends GenericDao<Project,Integer> {
     List<Project> findAll();
     void save(Project project);
     void delete(Project project);*/
-    public List<Project> findAll();
+  //  public List<Project> findAll();
 }
