@@ -11,7 +11,7 @@ public class Maintest {
     public static void main(String[] args) {
         try {
             Project project = new Project();
-            project.setProjectName("Ivamov");
+            project.setProjectName("Ivamf getgs ov");
             String url = "http://localhost:8080/api/project/";
             RestTemplate restTemplate = new RestTemplate();
             restTemplate.postForObject(url, project, Project.class);

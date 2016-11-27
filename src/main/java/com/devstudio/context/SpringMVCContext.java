@@ -7,6 +7,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 
 @EnableWebMvc
@@ -21,7 +22,13 @@ public class SpringMVCContext extends WebMvcConfigurerAdapter {
     }
 
 
-
+    @Bean
+    public InternalResourceViewResolver jspViewResolver() {
+        InternalResourceViewResolver bean = new InternalResourceViewResolver();
+        bean.setPrefix("/WEB-INF/");
+        bean.setSuffix(".html");
+        return bean;
+    }
 
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {

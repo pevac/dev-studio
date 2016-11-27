@@ -46,11 +46,11 @@ public class ProjectServiceImpl implements ProjectService {
    /* public Project findById(int id) {
         return projectDao.findById(id);
     }
-
+*/
     public List<Project> findAll() {
         return projectDao.findAll();
     }
-
+/*
     @Transactional
     public void save(Project project) {
         projectDao.save(project);

@@ -13,8 +13,8 @@ import java.util.List;
 /**
  * Created by Vasya on 26.11.2016.
  */
-//@Repository
-public class GenericDaoImpl<T,E> implements GenericDao<T,E>{
+@Repository
+public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
     @PersistenceContext
     protected EntityManager em;
     Class<T> type;
@@ -27,25 +27,25 @@ public class GenericDaoImpl<T,E> implements GenericDao<T,E>{
 
 
     @Override
-    public T create(T newInstance) {
-        em.persist(newInstance);
+    public T create(final T newInstance) {
+        this.em.persist(newInstance);
         return newInstance;
     }
 
-    @Override
-    public T read(E id) {
-        return null;
-    }
-
-    @Override
-    public void update(T instance) {
-
-    }
-
-    @Override
-    public void delete(T instance) {
-
-    }
+//    @Override
+//    public T read(E id) {
+//        return null;
+//    }
+//
+//    @Override
+//    public void update(T instance) {
+//
+//    }
+//
+//    @Override
+//    public void delete(T instance) {
+//
+//    }
 
 
 

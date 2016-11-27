@@ -22,7 +22,7 @@ public class CustomerRequestController {
     @Inject
     CustomerRequestService service;
 
-    @RequestMapping(value = "/1", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<List<CustomerRequest>> getCustomerRequests(ModelMap model) {
         List<CustomerRequest> list = service.findAll();
         return new ResponseEntity<List<CustomerRequest>>(list, HttpStatus.OK);
