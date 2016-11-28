@@ -2,6 +2,8 @@ package com.devstudio.restapi;
 
 import com.devstudio.entity.CustomerRequest;
 import com.devstudio.service.CustomerRequestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,8 @@ import java.util.List;
 public class CustomerRequestController {
     List<CustomerRequest> list = null;
 
-    @Inject
+    @Autowired
+    @Qualifier("customerRequestService")
     CustomerRequestService service;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -31,7 +34,7 @@ public class CustomerRequestController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity<CustomerRequest> postCustomerRequest(@RequestBody CustomerRequest customerRequest) {
-        service.save(customerRequest);
+        service.create(customerRequest);
         return new ResponseEntity<CustomerRequest>(customerRequest, HttpStatus.CREATED);
     }
 

@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "project")
-public class Project extends GenericEntity {
+public class Project {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

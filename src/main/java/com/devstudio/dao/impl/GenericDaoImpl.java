@@ -1,7 +1,6 @@
 package com.devstudio.dao.impl;
 
 import com.devstudio.dao.GenericDao;
-import com.devstudio.entity.GenericEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;

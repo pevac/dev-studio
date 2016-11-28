@@ -10,11 +10,11 @@ import org.springframework.web.client.RestTemplate;
 public class Maintest {
     public static void main(String[] args) {
         try {
-            Project project = new Project();
-            project.setProjectName("Isaffsfdfv");
-            String url = "http://localhost:8080/api/project/";
+            CustomerRequest customerRequest = new CustomerRequest();
+            customerRequest.setFull_name("fgjhsdfasd");
+            String url = "http://localhost:8080/api/customerrequest/";
             RestTemplate restTemplate = new RestTemplate();
-            restTemplate.postForObject(url, project, Project.class);
+            restTemplate.postForObject(url, customerRequest, CustomerRequest.class);
         } catch (RestClientException e) {
             e.printStackTrace();
         }
