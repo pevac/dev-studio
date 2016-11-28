@@ -1,7 +1,6 @@
 package com.devstudio.dao.impl;
 
 import com.devstudio.dao.GenericDao;
-import com.devstudio.entity.GenericEntity;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -16,6 +15,11 @@ import java.util.List;
  */
 @Repository
 public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
+
+    /**
+     * By defining this class as abstract, we prevent Spring from creating
+     * instance of this class
+     */
     @PersistenceContext
     protected EntityManager em;
     Class<T> type;
