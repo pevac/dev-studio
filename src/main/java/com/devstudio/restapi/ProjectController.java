@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by sitis on 26.11.2016.
  */
-@RestController
+@RestController("projectController")
 @RequestMapping("/api/project")
 public class ProjectController {
 

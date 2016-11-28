@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@Component("projectDao")
+@Repository("projectDao")
 public class ProjectDaoImpl extends GenericDaoImpl<Project,Integer> implements ProjectDao{
 
 
