@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public abstract class GenericServiceImpl<T,E> implements GenericService<T,E> {
 
-    @Autowired
+
     private GenericDao<T,E> genericDao;
     public GenericServiceImpl(GenericDao<T,E> genericDao) {
         this.genericDao=genericDao;

@@ -16,60 +16,15 @@ import java.util.List;
 
 @Service("projectService")
 public class ProjectServiceImpl extends GenericServiceImpl<Project,Integer> implements ProjectService {
-   /* private ProjectDao projectDao;
+
+    private ProjectDao projectDao;
     public ProjectServiceImpl(){
 
     }
     @Autowired
-    public ProjectServiceImpl(GenericDao<Project, Integer> genericDao) {
+    public ProjectServiceImpl(@Qualifier("projectDao") GenericDao<Project, Integer> genericDao) {
         super(genericDao);
         this.projectDao = (ProjectDao) genericDao;
-    }*/
-   /* @Autowired
-    private ProjectDao projectDao;
-
-   *//* @Override
-    public Project findById(int id) {
-        return null;
     }
 
-    @Override
-    public List<Project> findAll() {
-        return null;
-    }
-
-    @Override
-    public void save(Project project) {
-
-    }
-
-    @Override
-    public void delete(Project project) {
-
-    }*//*
-
-    @Override
-    public Project create(Project project) {
-        return projectDao.create(project);
-    }
-
-   *//* public Project findById(int id) {
-        return projectDao.findById(id);
-    }
-*//*
-    public List<Project> findAll() {
-        return projectDao.findAll();
-    }
-*//*
-    @Transactional
-    public void save(Project project) {
-        projectDao.save(project);
-    }
-
-    @Transactional
-    public void delete(Project project) {
-        projectDao.delete(project);
-    }*//*
-
-*/
 }

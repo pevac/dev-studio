@@ -4,6 +4,7 @@ import com.devstudio.entity.CustomerRequest;
 import com.devstudio.entity.Project;
 import com.devstudio.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
@@ -19,6 +20,7 @@ import java.util.List;
 public class ProjectController {
 
     @Autowired
+    @Qualifier("projectService")
     ProjectService service;
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
