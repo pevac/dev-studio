@@ -221,7 +221,7 @@
             $children = $nextItem.children();
         }
         if(direction == "next"){
-            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(0, direction);
+            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(1, direction);
         } else {
             index = (that.currentDirection =="next") ? this.getIndex(4, direction)  : this.getIndex(0, direction);
         }
