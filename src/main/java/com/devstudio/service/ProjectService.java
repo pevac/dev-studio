@@ -5,10 +5,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public interface ProjectService {
+public interface ProjectService extends GenericService<Project,Integer> {
 
-    @Transactional
+   /* @Transactional
     Project create(Project project);
 
-    List<Project> findAll();
+    List<Project> findAll();*/
 }

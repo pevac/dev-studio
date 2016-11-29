@@ -73,6 +73,16 @@
     padding: 0;
 }
 
+.white_block{
+    width: 12%;
+    height: $navbar-height;
+    background-color: $default-color;
+    position: absolute;
+    z-index: -500;
+    top: 0;
+    right: 0;
+}
+
 @media(max-width: 1200px){
     .header li{margin: 0 0 0 40px;}
 }
@@ -83,6 +93,7 @@
 
 @media(max-width: 767px){
     .header li{margin: 0;}
+    .white_block{display: none;}
 }
 
 .header .navbar li.active a{
