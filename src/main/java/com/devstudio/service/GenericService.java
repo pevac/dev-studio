@@ -9,6 +9,13 @@ import java.util.List;
  */
 public interface GenericService<T,E>  {
     public List<T> findAll();
-    @Transactional
-    T create (T newInstance);
+
+    public T create (T newInstance);
+
+    public T read (E key);
+
+    public void update(T instance);
+
+    public void delete(T instance);
+
 }

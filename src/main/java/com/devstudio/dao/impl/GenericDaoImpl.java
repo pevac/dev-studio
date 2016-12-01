@@ -1,6 +1,7 @@
 package com.devstudio.dao.impl;
 
 import com.devstudio.dao.GenericDao;
+
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -25,9 +26,9 @@ public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
     Class<T> type;
 
     public GenericDaoImpl() {
-        Type t = getClass().getGenericSuperclass();
+        Type t = this.getClass().getGenericSuperclass();
         ParameterizedType pt = (ParameterizedType) t;
-        type = (Class) pt.getActualTypeArguments()[0];
+        this.type = (Class) pt.getActualTypeArguments()[0];
     }
 
 
@@ -37,6 +38,7 @@ public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
         return newInstance;
     }
 
+    @Override
     public List<T> findAll() {
         final StringBuffer queryString = new StringBuffer(
                 "SELECT o from ");
@@ -45,51 +47,24 @@ public abstract class GenericDaoImpl<T,E> implements GenericDao<T,E>{
         List<T> listOfObjects = query.getResultList();
         return listOfObjects;
     }
-//    @Override
-//    public T read(E id) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void update(T instance) {
-//
-//    }
-//
-//    @Override
-//    public void delete(T instance) {
-//
-//    }
-
-
-
-
-    /*@Override
-    public T findByKey(T o, E key) {
-        return null;
+    @Override
+    public T read(E key) {
+        return this.em.find(this.type,key);
     }
 
     @Override
-    public List<T> findAll() {
-        return null;
-    }
-
-    @Override
-    public void save(T o) {
-        if((T.getId())==null)
-            em.persist(o);
-        else
-            em.merge(o);
+    public void update(T instance) {
+        this.em.merge(instance);
 
     }
 
     @Override
-    public void update(T o) {
-
+    public void delete(T instance) {
+        this.em.remove(instance);
     }
 
-    @Override
-    public void remove(T o) {
-        if((T.getId)!=null)
-            em.remove(o);
-    }*/
+
+
+
+
 }

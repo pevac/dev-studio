@@ -14,6 +14,8 @@ import java.util.List;
 public abstract class GenericServiceImpl<T,E> implements GenericService<T,E> {
 
 
+
+
     private GenericDao<T,E> genericDao;
     public GenericServiceImpl(GenericDao<T,E> genericDao) {
         this.genericDao=genericDao;
@@ -22,11 +24,26 @@ public abstract class GenericServiceImpl<T,E> implements GenericService<T,E> {
     public GenericServiceImpl() {
     }
 
+    public List<T> findAll(){
+        return genericDao.findAll();
+    }
+
     public T create(final T newInstance){
 
         return genericDao.create(newInstance);
     }
-    public List<T> findAll(){
-        return genericDao.findAll();
+
+    public T read(final E key){
+        return genericDao.read(key);
     }
+
+    public void update(T instance){
+        genericDao.update(instance);
+    }
+
+    public void delete(T instance) {
+        genericDao.delete(instance);
+    }
+
+
 }

@@ -12,8 +12,7 @@ public interface GenericDao<T,E> {
     public List<T> findAll();
     T create (T newInstance);
 
-
-    //public T read(E id);
-    //public void update(T instance);
-    //public void delete(T instance);
+    public T read(E key);
+    public void update(T instance);
+    public void delete(T instance);
 }
