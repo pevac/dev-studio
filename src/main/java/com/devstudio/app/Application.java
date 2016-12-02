@@ -28,6 +28,7 @@ public class Application implements WebApplicationInitializer {
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping("/");
 
+
         FilterRegistration charEncodingfilterReg = container.addFilter("CharacterEncodingFilter", CharacterEncodingFilter.class);
         charEncodingfilterReg.setInitParameter("encoding", "UTF-8");
         charEncodingfilterReg.setInitParameter("forceEncoding", "true");

@@ -9,6 +9,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+import javax.servlet.MultipartConfigElement;
+
 
 @EnableWebMvc
 @Configuration
@@ -30,6 +32,13 @@ public class SpringMVCContext extends WebMvcConfigurerAdapter {
         return bean;
     }
 
+    @Bean
+    public MultipartConfigElement multipartConfigElement() {
+        MultipartConfigFactory factory = new MultipartConfigFactory();
+        factory.setMaxFileSize("128KB");
+        factory.setMaxRequestSize("128KB");
+        return factory.createMultipartConfig();
+    }
     @Bean(name = "multipartResolver")
     public CommonsMultipartResolver getMultipartResolver() {
         return new CommonsMultipartResolver();
