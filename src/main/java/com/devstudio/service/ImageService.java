@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 public class ImageService {
-    FileManager fileManager;
+    FileManager fileManager=new FileManager();
     final static private String TYPE="images";
 
     public void saveImage(MultipartFile file){
