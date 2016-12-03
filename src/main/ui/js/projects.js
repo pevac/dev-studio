@@ -197,12 +197,15 @@
                                 '<div class="project-slide-item">'+
                                     '<a><img class="project-photo" data-src="link_url" alt=""></a>'+
                                 '</div>'+
-                                '<span class="action hidden-xs"></span>'+
-                                '<a class="btn btn-primary btn-dev" >Подивитися вакансії</a>'+
+
                             '</div>'+
                         '</div>' ;
         return obj;
     };
+    // '<span class="action hidden-xs"></span>'+
+    // '<a class="btn btn-primary btn-dev" >Подивитися вакансії</a>'+
+    //  '<span class="has-vacancy">Є вакансія</span>'+
+
 
     DevCarousel.prototype.setNextItem = function (type, $next) {
         var that = this;
@@ -218,7 +221,7 @@
             $children = $nextItem.children();
         }
         if(direction == "next"){
-            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(0, direction);
+            index = (that.currentDirection == "next") ? this.getIndex(1, direction) : this.getIndex(1, direction);
         } else {
             index = (that.currentDirection =="next") ? this.getIndex(4, direction)  : this.getIndex(0, direction);
         }
@@ -249,12 +252,18 @@
 
     DevCarousel.prototype.initSlideComponent  = function (item, i) {
         var $slide = item, index = i;
+
+        $($slide).find(".has-vacancy").remove();
         var that = this;
         var data = that.data;
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
         $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);
+        data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];
+        if(data[i].vacancies.length > 0){
+            var child = $($slide).find("div.item-container").append($('<span class="has-vacancy">Є вакансія</span>'));
+        }
     }
 
     DevCarousel.prototype.getIndex = function (num, direction) {
@@ -380,11 +389,12 @@
         }else {
             return;
         }
-        e.preventDefault();
+        // e.preventDefault();
     };
 
     $("#projects")
-        .on("click", "[data-action]", clickHandler);
+        .on("click", "[data-action]", clickHandler)
+        .on("change", "[data-action]", clickHandler);
 
     $(window).on("load", function () {
         $("[data-ride='carousel']").each(function () {
@@ -401,21 +411,178 @@
         this.createListProjects(this.data);
         this.vacancy = null;
         this.view();
+
     };
+
+    ProjectViwer.prototype.vacancyComponent = function (arg) {
+        var obj = {};
+        var item = arg;
+
+        obj.template =
+            '<div class="vacancy">'+
+            '<div class="resume">'+
+            '<h3 data-vacancy="job_name"></h3>'+
+            '<a class="btn btn-dev btn-desc" href="#project-view" role="button" data-view="vacancy-description" data-action="toggleVacancy">Опис вакансії</a>'+
+            '<a class="btn btn-dev btn-send" href="#project-view" role="button" data-view="send_resume"   data-action="toggleVacancy">Відіслати резюме</a>'+
+            '</div>'+
+            '<div class="vacancy-description collapse-view collapse" >'+
+                '<p data-vacancy="description"></p>'+
+            '</div>'+
+            '<div id="ok" class="ok success collapse-view  text-center collapse" >'+
+            '<div class="clearfix">'+
+               '<a class="close" href="#project-view" role="button" data-view="ok"   data-action="toggleVacancy"></a>'+
+            '</div>'+
+            '<div class="ok-icon"></div>'+
+            '<p>Дякуємо, Ваша резюме</p>'+
+            '<p>успішно відправлено</p>'+
+            '</div>'+
+            '<div class="send_resume collapse-view  collapse">'+
+            '<div class="flex_row">'+
+            '<div class="col-xs-6 flex_col">'+
+            '<form class="alumnus">'+
+            '<p>Якщо ти - випускник Bionic можеш подати резюме, ввівши логін і пароль Bionic</p>'+
+            '<div class="form-group row">'+
+            '<div class="col-xs-4 text-right">'+
+            '<label for="inputLogin' + item.id   + '" class="control-label">login</label>'+
+            '</div>'+
+            '<div class=" col-sm-8">'+
+            '<input type="text" name="login"  class="form-control" id="inputLogin' + item.id   + '"  required>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group row">'+
+            '<div class="col-xs-4  text-right">'+
+            '<label for="inputPassword' + item.id   + '" class="control-label">password</label>'+
+            '</div>'+
+            '<div class="col-xs-8">'+
+            '<input type="password" name="password"  class="form-control" id="inputPassword' + item.id   + '"  required>'+
+            '</div>'+
+            '</div>'+
+            '<div class="form-group row">'+
+            '<div class="text-center">'+
+            '<button type="submit"   class="btn  btn-dev  btn-send">Відіслати резюме</button>'+
+            '</div>'+
+            '</div>'+
+            '</form>'+
+            '</div>'+
+            '<div class="col-xs-6 flex_col">'+
+            '<form class="noalumnus">'+
+            '<p>Завантажте, будь-ласка, своє резюме (PDF, RTF, DOC, DOCX)</p>'+
+            '<div class="form-group upload-form  row">'+
+            '<label for="uploadResume' + item.id   + '" > <input type="file" data-target="#project-view" data-action="uploadFile" class="upload-resume" data-show-preview="false" id = "uploadResume' + item.id   + '" required><span class="upload-icon"></span>'+
+            '<span>Виберіть файл для загрузки</span> </label>'+
+            '</div>'+
+            '<div class="form-group row">'+
+            '<div class="text-center">'+
+            '<button type="button"   class="btn  btn-dev  btn-send" data-target="#project-view" data-action="sendUploadFile">Відіслати резюме</button>'+
+            '</div>'+
+            '</div>'+
+            '</form>'+
+            '</div>'+
+            '</div>'+
+            '</div>'+
+            '</div>';
+        return obj;
+    };
+
+    ProjectViwer.prototype.successComponent = function () {
+        var obj={};
+        obj.template = '<div id="ok" class="success text-center " >'+
+                            '<div class="clearfix">'+
+                                '<a class="close collapsed" data-target="#ok"></a>'+
+                            '</div>'+
+                            '<div class="ok-icon"></div>'+
+                            '<p>Дякуємо, Ваша резюме</p>'+
+                            '<p>успішно відправлено</p>'+
+                        '</div>';
+    };
+
     //
-    ProjectViwer.prototype.checkSend = function (option) {
-        var $checked = $(this.$element[0]).find("." + option.vacancy);
-        var $sendResume = $(this.$element[0]).find(".sendResume");
-        if(option.vacancy == this.vacancy){
-            $checked.toggle();
+    ProjectViwer.prototype.toggleVacancy = function (option) {
+        var $parent = $(option.item[0]).parents(".vacancy");
+        var $checked = $parent.find("." + option.view);
+        var $sendResume = $(this.$element[0]).find(".collapse-view");
+        var vacancy = $parent.data().data;
+        if(option.view == "ok") {
+            $checked.hide();
+        }else   if(this.vacancy && vacancy.id == this.vacancy.id && this.viewVacancy == option.view) {
+          $checked.toggle();
+          $sendResume.hide();
+         this.vacancy =null;
+      }   else {
             $sendResume.hide();
-            this.vacancy = null;
-        }else {
-            $sendResume.hide();
             $checked.toggle();
-            this.vacancy = option.vacancy;
+         this.vacancy = vacancy;
         }
-    }
+
+        this.viewVacancy = option.view;
+    };
+
+    ProjectViwer.prototype.uploadFile = function (option) {
+        var $input = option.item;
+        if($input[0].files.length<=0) return;
+        var $parent = $input.parents(".upload-form ");
+        var file = $input[0].files[0];
+        var error = true;
+        $($parent).find(".file-upload").remove();
+        if(file.name.length < 1) {
+              error= false;
+        }
+        else if(file.type != 'application/msword'&&file.type != 'application/pdf'&&file.type != 'application/rtf'
+            &&file.type != 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'  ){
+            $parent.append($('<div class="file-upload file-error">Не коректний формат файла</div>'));
+            error= false;
+        }
+        else if(file.size > 52428800) {
+            $parent.append($('<div class="file-upload file-error">Ви вибрали надто великий файл</div>'));
+            error= false;
+        }else {
+            $parent.append($('<div class="file-upload file-success">'+ file.name +'</div>'));
+            error = true;
+        }
+        $input.data("error", error)
+    };
+
+    ProjectViwer.prototype.successSendFile = function (item) {
+        var $element = this.$element;
+        var $collapse = $element.find(".collapse-view");
+        $collapse.hide();
+        var $item = item.find(".ok");
+        $item.show();
+        $element.find("input[type='file']").val("");
+    };
+    
+    ProjectViwer.prototype.sendUploadFile = function (option) {
+        var $parent =  option.item.parents(".vacancy");
+        var $input =$parent.find("input[type='file']");
+        if(!$input.data().error) return;
+        var file = $input[0].files[0]
+        this.requestResumeFile(file, $parent);
+        file = null;
+    };
+
+
+    ProjectViwer.prototype.requestResumeFile = function (data, $item) {
+        var file = data;
+        var that = this;
+        var formData = new FormData("file", file);
+        $.ajax({
+            type: "POST",
+            url: "/api/customerrequest/",
+            success: function(data){
+                that.successSendFile($item);
+            },
+            error: function(data){
+                that.successSendFile($item);
+            },
+
+            data: formData,
+            // Options to tell jQuery not to process data or worry about the content-type
+            cache: false,
+            contentType: false,
+            processData: false
+        });
+    };
+
 
     // select project in list
     ProjectViwer.prototype.select = function (option) {
@@ -442,18 +609,55 @@
             var tag = that.tagName.toLowerCase();
             if( text.test(tag)){
                  model = $(that).attr("data-model");
-                that.innerHTML = selectedProject[model];
+                 that.innerHTML = selectedProject[model];
             }else if(that.tagName == "img".toUpperCase()){
                  model = $(that).attr("data-model");
                 that.src = selectedProject[model];
             }
         });
+        this.createListVacancies(selectedProject);
     };
+
+    ProjectViwer.prototype.createListVacancies = function (item) {
+        var project = item;
+        var vacancies = (project.vacancies && project.vacancies.length>=0 ) ? project.vacancies : [];
+        var $container = this.$element.find(".vacancies");
+        // var $vacancy = $.parseHTML(this.vacancyComponent().template)
+        $container.children().remove();
+        if(vacancies.length>0){
+            $container.append($("<h2>Вакансіі:</h2>"))
+            for(var i = 0; i< vacancies.length; i++){
+                var $vacancy = $.parseHTML(this.vacancyComponent(vacancies[i]).template)
+                var clone = $($vacancy).clone();
+                $container.append(clone);
+                var $model = $($($container.children()[i+1])).find("[data-vacancy]");
+                this.initVacancyItem($model, vacancies[i]);
+                $($container.children()[i+1]).data("data", vacancies[i]);
+            }
+        }else if(vacancies.length<=0){
+            $container.append($('<div class="vacancy-absent">На цьому проекті вакансій зараз немає</div>'))
+        }
+    };
+
+    ProjectViwer.prototype.initVacancyItem = function ($item, model) {
+        var $vacancyItems = $item;
+        var data = model;
+        var text =  /^(?:p|a|h1|h2|h3|h4|h5|h6|span|div)$/i;
+        $vacancyItems.each(function () {
+            var that = this;
+            var attr;
+            var tag = that.tagName.toLowerCase();
+            if( text.test(tag)){
+                attr = $(that).attr("data-vacancy");
+                that.innerHTML = data[attr];
+            }
+        });
+    }
 
     // creat list projects
     ProjectViwer.prototype.createListProjects = function () {
         var that = this;
-        var data = this.data;
+        var data = this.data ? this.data : [];
         var $element = this.$element;
         var $list = $element.find(" #list-projects")[0];
 
