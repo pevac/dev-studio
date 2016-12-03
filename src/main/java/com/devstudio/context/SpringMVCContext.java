@@ -35,9 +35,10 @@ public class SpringMVCContext extends WebMvcConfigurerAdapter {
 
 
     @Bean(name = "multipartResolver")
-    public CommonsMultipartResolver getMultipartResolver() {
-        return new CommonsMultipartResolver();
+    public CommonsMultipartResolver multipartResolver() {
+
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
     }
-
-
 }

@@ -3,10 +3,7 @@ package com.devstudio.restapi;
 import com.devstudio.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -21,7 +18,7 @@ public class ImageController {
 
 
     @RequestMapping(value="/", method=RequestMethod.POST)
-    public @ResponseBody String handleFileUpload(@RequestBody MultipartFile file){
+    public @ResponseBody String handleFileUpload(@RequestParam("file") MultipartFile file){
         if (!file.isEmpty()) {
             imageService.saveImage(file);
             return "The file was uploaded";
