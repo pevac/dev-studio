@@ -26,9 +26,9 @@ public class SpringContext {
         BasicDataSource dataSource = new BasicDataSource();
 
 
-        dataSource.setUrl("jdbc:mysql://localhost:3306/devstudio");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/Adv");
         dataSource.setUsername("root");
-        dataSource.setPassword("1234");
+        dataSource.setPassword("root");
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 
         dataSource.setMaxTotal(20);
