@@ -15,6 +15,7 @@ DerivedData
 *.iml
 .idea
 
+
 *.o
 *.com
 *.class
@@ -49,3 +50,4 @@ src/main/webapp/sass
 src/main/webapp/fonts
 src/main/webapp/img
 src/main/webapp/template
+src/main/java/com/springapp
