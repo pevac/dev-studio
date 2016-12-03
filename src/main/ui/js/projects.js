@@ -195,7 +195,7 @@
         obj.template = '<div class="col-sm-6 col-xs-12 flex_col" href="#project-carousel" role="button" data-action="view">'+
                             '<div class="item-container" >'+
                                 '<div class="project-slide-item">'+
-                                    '<a><img class="project-photo" data-src="link_url" alt=""></a>'+
+                                    '<a><img class="project-photo" data-src="linkUrl" alt=""></a>'+
                                 '</div>'+
 
                             '</div>'+
@@ -300,7 +300,8 @@
         var callback = func;
         $.ajax({
             type: "GET",
-            url: "js/data.json",
+            //url: "js/data.json",
+            url: "/api/project/",
             success: function (result) {
                 callback(result);
             },
@@ -663,7 +664,7 @@
 
         for(var i = 0; i< data.length; i++){
                 var li = $('<li  data-target="#project-view" role="button" data-action="select"><a></a></li>');
-                $(li).find("a").text(data[i].project_name);
+                $(li).find("a").text(data[i].projectName);
                 li.data("data" ,data[i]);
                 $($list).append(li);
                 if(data[i].id === this.currentProject.id) {li.toggle();}
