@@ -7,7 +7,7 @@
 }
 
 .projects {
-    margin-top: 10%;
+    /*margin-top: 10%;*/
 
   .carousel-inner:hover{
     overflow: visible;
@@ -80,7 +80,10 @@
     img{
       filter: none;
     }
-
+    & .has-vacancy{
+      color:red;
+      font-weight: 600;
+    }
     & .btn-dev{
       display: block;
       background-color: $dark-blue-base-color;
@@ -122,6 +125,30 @@
     bottom:63%;
   }
 
+  .flex_col:nth-child(1) .has-vacancy{
+    top:85%;
+    left: 25px;
+  }
+
+  .flex_col:nth-child(2) .has-vacancy{
+    top:85%;
+    right: 25px;
+  }
+
+  .flex_col:nth-child(3) .has-vacancy{
+    bottom:85%;
+    left: 25px;
+  }
+
+  .flex_col:nth-child(4) .has-vacancy{
+    right: 25px;
+    bottom:85%;
+  }
+
+.has-vacancy{
+  position: absolute;
+  font-size: 18px;
+}
 
   .flex_col:nth-child(1) .action{
     top:40%;
@@ -336,11 +363,149 @@
         }
       }
 
-      .vacancies {
+      .flex_row>.flex_col{
+        display: flex;
+        justify-content: center;
+      }
+
+     form {
+       display: flex;
+       flex-direction: column;
+     }
+
+      .success{
+        width: 70%;
+        margin: 60px auto;
+
+        .close{
+          margin-right: 30px;
+          float: right;
+        }
+
+        p{
+          font-size: 24px;
+          font-weight: 700;
+        }
+      }
+
+      .ok-icon{
+        background: url("../img/ok.png") no-repeat;
+        background-size: contain;
+        width: 34px;
+        height: 34px;
+        margin: 30px auto;
+      }
+
+
+      .upload-form{
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        div.file-error{
+          position: relative;
+        }
+
+        div.file-error:before{
+          background: url("../img/error_upload.png")  no-repeat;
+          width: 28px;
+          height: 30px;
+          position: absolute;
+          top: -3px;
+          left: -32px;
+          display: inline-block;
+          background-size: contain;
+          content: "";
+        }
+
+
+
+
+        div.file-success{
+          position: relative;
+        }
+
+        .file-success:after{
+          background: url("../img/ok.png")  no-repeat;
+          width: 20px;
+          height: 20px;
+          position: absolute;
+          top: -1px;
+          right: -25px;
+          display: inline-block;
+          background-size: contain;
+          content: "";
+        }
+
+        label{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          span{
+            display: block;
+            padding-top: 10px;
+          }
+
+          .upload-icon{
+            background-image: url("../img/upload.png");
+            z-index: 1000;
+            display: block;
+            background-size: contain;
+            width: 30px;
+            height: 30px;
+
+          }
+        }
+      }
+
+
+      .flex_row{
+        display: flex;
+      }
+
+      .vacancies{
         background-color: $gray-base-color;
+        min-height: 100px;
+        padding-top: 15px;
+        padding-bottom: 25px;
+
+        .vacancy-description{
+          background-color: $default-color;
+          width: 40%;
+          margin: auto;
+          padding: 10px;
+
+        }
+
+        .vacancy-absent{
+          font-size: 20px;
+          display: inline-block;
+          align-self: center;
+          margin-left: 30px;
+          padding: 5px;
+          color: $default-color;
+          background-color: $gray-base-color;
+          border: 1px solid $default-color;
+
+          &:hover{
+            background-color: $default-color;
+            color: $dark-blue-base-color;
+          }
+        }
+        a.close{
+          display: block;
+          background: url("../img/close.png") no-repeat;
+          cursor: pointer;
+          background-size: contain;
+          height:30px;
+          width:30px;
+        }
 
 
-        .vacancies-container{
+        .vacancy{
           width: 75%;
           margin: auto;
           display: flex;
@@ -348,18 +513,26 @@
 
         }
 
+        .upload-resume{
+          display: none;
+        }
+
         h2 {
           font-size: 22px;
+          font-weight: 600;
           color: $default-color;
+          width: 75%;
+          margin: auto;
+          margin-top: 25px;
           position: relative;
-          margin-left: 40px;
+          left: 40px;
 
           &:before {
             content: "";
-            display: block;
+            display: inline-block;
             position: absolute;
-            left: -40px;
             top: -8px;
+            left: -40px;
             background: url(../img/vacancies-icon.png) no-repeat;
             height: 43px;
             width: 36px;
@@ -371,7 +544,7 @@
           flex-wrap: nowrap;
           align-items: center;
           justify-content: space-between;
-          margin: 25px 0;
+          margin: 25px 0 15px 0;
 
           &:only-child{
             margin: 10px ;
@@ -405,8 +578,8 @@
       margin-bottom: 10px;
       font-size: 14px;
       border: 1px solid transparent;
-      &:hover{
-        border:1px solid $dark-blue-base-color;
+      &:hover, &:active, &:focus{
+        border: 1px solid $dark-blue-base-color;
       }
     }
 
@@ -418,6 +591,9 @@
       text-transform: uppercase;
       font-size: 14px;
       margin-bottom: 10px;
+      &:hover, &:active, &:focus{
+        border:none;
+      }
     }
 
     .other_projects {
@@ -503,12 +679,12 @@
 
   .noalumnus{
     width: 80%;
-    margin: auto;
+    //margin: auto;
   }
 
   .alumnus{
     width: 80%;
-    margin: auto;
+    //margin: auto;
     font-size: 14px;
     padding: 0;
     .form-group{
