@@ -152,12 +152,14 @@
 
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
-    var url = "/api/customerrequest/";
+    var url = "/api/customerrequest/" ;
     $.ajax({
       type: "POST",
       url: url,
       data: customer,
-      success: successRequest(),
+      success: function () {
+        successRequest();
+      },
       dataType: "json",
       contentType: "application/json"
     });

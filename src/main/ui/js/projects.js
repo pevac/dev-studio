@@ -300,8 +300,8 @@
         var callback = func;
         $.ajax({
             type: "GET",
-            //url: "js/data.json",
-            url: "/api/project/",
+            url: "js/data.json",
+            // url: "/api/project/",
             success: function (result) {
                 callback(result);
             },
@@ -440,7 +440,7 @@
             '<div class="send_resume collapse-view  collapse">'+
             '<div class="flex_row">'+
             '<div class="col-xs-6 flex_col">'+
-            '<form class="alumnus">'+
+            '<form  class="alumnus">'+
             '<p>Якщо ти - випускник Bionic можеш подати резюме, ввівши логін і пароль Bionic</p>'+
             '<div class="form-group row">'+
             '<div class="col-xs-4 text-right">'+
@@ -460,13 +460,13 @@
             '</div>'+
             '<div class="form-group row">'+
             '<div class="text-center">'+
-            '<button type="submit"   class="btn  btn-dev  btn-send">Відіслати резюме</button>'+
+            '<button type="button"   class="btn  btn-dev  btn-send"  data-target="#project-view" data-action="sendResume">Відіслати резюме</button>'+
             '</div>'+
             '</div>'+
             '</form>'+
             '</div>'+
             '<div class="col-xs-6 flex_col">'+
-            '<form class="noalumnus">'+
+            '<form class="noalumnus" enctype="multipart/form-data">'+
             '<p>Завантажте, будь-ласка, своє резюме (PDF, RTF, DOC, DOCX)</p>'+
             '<div class="form-group upload-form  row">'+
             '<label for="uploadResume' + item.id   + '" > <input type="file" data-target="#project-view" data-action="uploadFile" class="upload-resume" data-show-preview="false" id = "uploadResume' + item.id   + '" required><span class="upload-icon"></span>'+
@@ -506,17 +506,37 @@
         if(option.view == "ok") {
             $checked.hide();
         }else   if(this.vacancy && vacancy.id == this.vacancy.id && this.viewVacancy == option.view) {
-          $checked.toggle();
-          $sendResume.hide();
+          $checked.slideToggle();
+          $sendResume.slideUp();
          this.vacancy =null;
       }   else {
-            $sendResume.hide();
-            $checked.toggle();
+            $sendResume.slideUp();
+            $checked.slideToggle();
          this.vacancy = vacancy;
         }
 
         this.viewVacancy = option.view;
     };
+    
+    ProjectViwer.prototype.sendResume = function (option) {
+        var $parent =  option.item.parents(".vacancy");
+        var that = this;
+        var form  = option.item.parents(".alumnus");
+        var formData = JSON.stringify(form.serializeObject());
+        $.ajax({
+            type: "POST",
+            url: "api/resume",
+            data: formData,
+            success: function () {
+                that.successSendFile($parent);
+            },
+            dataType: "json",
+            contentType: "application/json"
+        });
+        form.find($("input")).each(function(){
+            $(this).val('');
+        });
+    }
 
     ProjectViwer.prototype.uploadFile = function (option) {
         var $input = option.item;
@@ -572,11 +592,7 @@
             success: function(data){
                 that.successSendFile($item);
             },
-            error: function(data){
-                that.successSendFile($item);
-            },
-
-            data: formData,
+             data: formData,
             // Options to tell jQuery not to process data or worry about the content-type
             cache: false,
             contentType: false,
@@ -595,7 +611,7 @@
 
       // toggle into carousel
     ProjectViwer.prototype.view = function (option) {
-        this.$element.toggle();
+        this.$element.slideToggle();
     };
 
     // change html value
@@ -626,7 +642,7 @@
         // var $vacancy = $.parseHTML(this.vacancyComponent().template)
         $container.children().remove();
         if(vacancies.length>0){
-            $container.append($("<h2>Вакансіі:</h2>"))
+            $container.append($("<h2>Вакансії:</h2>"))
             for(var i = 0; i< vacancies.length; i++){
                 var $vacancy = $.parseHTML(this.vacancyComponent(vacancies[i]).template)
                 var clone = $($vacancy).clone();
@@ -667,7 +683,7 @@
                 $(li).find("a").text(data[i].projectName);
                 li.data("data" ,data[i]);
                 $($list).append(li);
-                if(data[i].id === this.currentProject.id) {li.toggle();}
+                if(data[i].id === this.currentProject.id) {li.slideToggle();}
         }
         this.viewProject();
     };
