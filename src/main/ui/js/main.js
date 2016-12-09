@@ -38,8 +38,9 @@ $(document).ready(function () {
         });
     });
 
+
     // init carousel
-    $("#projects").devcarousel();
+    $("#projects").devcarousel(ServerApi);
 
 });
 

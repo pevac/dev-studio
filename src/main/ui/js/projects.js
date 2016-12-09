@@ -1,6 +1,6 @@
 ﻿+function ($) {
     "use strict";
-    var DevCarousel = function (element, options) {
+    var DevCarousel = function ( element, api, options) {
         this.$element    = $(element);
         this.$element    = $(element);
         this.$indicators = this.$element.find(".carousel-indicators");
@@ -15,8 +15,10 @@
         this.grid        = 4;
         this.index       = -1;
         this.currentDirection   = "next";
+        this.api = api;
 
-        this.requestProjects(this.setData.bind(this));
+        // this.requestProjects(this.setData.bind(this));
+        this.api.getProjects(this.setData.bind(this));
         this.options.keyboard && this.$element.on("keydown.devcarousel", $.proxy(this.keydown, this));
 
         this.options.pause == "hover" && !("ontouchstart" in document.documentElement) && this.$element
@@ -296,24 +298,24 @@
         return this.data;
     };
 
-    DevCarousel.prototype.requestProjects = function (func) {
-        var callback = func;
-        $.ajax({
-            type: "GET",
-            url: "js/data.json",
-            // url: "/api/project/",
-            success: function (result) {
-                callback(result);
-            },
-            dataType: "json",
-            contentType: "application/json"
-        });
-    }
+    // DevCarousel.prototype.requestProjects = function (func) {
+    //     var callback = func;
+    //     var url = SERVER_API_ACTION.getProjectsUrl;
+    //     $.ajax({
+    //         type: "GET",
+    //         url: url,
+    //         success: function (result) {
+    //             callback(result);
+    //         },
+    //         dataType: "json",
+    //         contentType: "application/json"
+    //     });
+    // }
 
     // CAROUSEL PLUGIN DEFINITION
     // ==========================
 
-    function Plugin(option) {
+    function Plugin(api, option) {
         return this.each(function () {
             var $this   = $(this);
             var devcarousel    = $this.data("devcarousel");
@@ -321,7 +323,7 @@
             var action  = typeof option == "string" ? option : options.action;
 
             if (!devcarousel) {
-                $this.data("devcarousel", (devcarousel = new DevCarousel(this, options)));
+                $this.data("devcarousel", (devcarousel = new DevCarousel( this,api, options)));
             }
             if (typeof option == "number") devcarousel.to(option);
             else if (action) devcarousel[action](option);
@@ -381,7 +383,7 @@
         if ($target.hasClass("carousel")) {
             var slideIndex = $this.attr("data-slide-to");
             if (slideIndex) options.interval = false;
-            Plugin.call($target, options);
+            Plugin.call($target, null, options);
             if (slideIndex) {
                 $target.data("devcarousel").to(slideIndex);
             }
@@ -400,7 +402,7 @@
     $(window).on("load", function () {
         $("[data-ride='carousel']").each(function () {
             var $carousel = $(this);
-            Plugin.call($carousel, $carousel.data());
+            Plugin.call($carousel, ServerApi, $carousel.data());
         });
     });
 
@@ -523,9 +525,10 @@
         var that = this;
         var form  = option.item.parents(".alumnus");
         var formData = JSON.stringify(form.serializeObject());
+        var url = SERVER_API_ACTION.sendResume;
         $.ajax({
             type: "POST",
-            url: "api/resume",
+            url: url,
             data: formData,
             success: function () {
                 that.successSendFile($parent);
@@ -586,9 +589,10 @@
         var file = data;
         var that = this;
         var formData = new FormData("file", file);
+        var url = SERVER_API_ACTION.sendResumeFile;
         $.ajax({
             type: "POST",
-            url: "/api/customerrequest/",
+            url: url,
             success: function(data){
                 that.successSendFile($item);
             },

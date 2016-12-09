@@ -152,17 +152,19 @@
 
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
-    var url = "/api/customerrequest/" ;
-    $.ajax({
-      type: "POST",
-      url: url,
-      data: customer,
-      success: function () {
-        successRequest();
-      },
-      dataType: "json",
-      contentType: "application/json"
-    });
+    ServerApi.sendOrderForm(customer, successRequest);
+    // var url = SERVER_API_ACTION.sendOrderFormUrl ;
+    // $.ajax({
+    //   type: "POST",
+    //   url: url,
+    //   data: customer,
+    //   success: function () {
+    //     successRequest();
+    //   },
+    //   dataType: "json",
+    //   contentType: "application/json"
+    // });
+    // successRequest();
     $("#formValidate").clearInputs();
   }
 
@@ -170,7 +172,6 @@
     $("#formValidate").slideToggle();
     $("#success").toggle();
     $("#btn-form-collapsed").toggle();
-    // setTimeout(collapseSuccess, 7000);
   }
 
   function collapseSuccess() {
