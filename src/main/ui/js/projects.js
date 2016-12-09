@@ -217,7 +217,7 @@
         var $children = $nextItem.children();
         var index;
         var $slide;
-        if($($nextItem.children()).length < 4) {
+        if($($nextItem.children()).length < this.grid) {
             var $slideItems =  this.generateSlideItem($nextItem);
             $nextItem.append($slideItems);
             $children = $nextItem.children();
