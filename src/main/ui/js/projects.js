@@ -343,7 +343,7 @@
                 var $viewer = devcarousel.$element.parents(".projects").find("#project-view");
                 var projects    = $viewer.data("dev.projects");
                 if (!projects) {
-                    $viewer.data("dev.projects", (new ProjectViwer($viewer, projectData, selectProject)));
+                    $viewer.data("dev.projects", (new ProjectViwer($viewer, projectData, selectProject, ServerApi)));
                 }else {
                     projects.currentProject = selectProject;
                     projects.viewProject();
@@ -417,12 +417,13 @@
     });
 
 
-    var ProjectViwer = function (element, data, currentProject) {
+    var ProjectViwer = function (element, data, currentProject, api) {
         this.$element = element;
         this.currentProject= currentProject;
         this.data = data;
         this.createListProjects(this.data);
         this.vacancy = null;
+        this.serverApi = api;
         this.view();
 
     };
@@ -535,17 +536,18 @@
         var that = this;
         var form  = option.item.parents(".alumnus");
         var formData = JSON.stringify(form.serializeObject());
-        var url = SERVER_API_ACTION.sendResume;
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: formData,
-            success: function () {
-                that.successSendFile($parent);
-            },
-            dataType: "json",
-            contentType: "application/json"
-        });
+        this.serverApi.sendResume(formData, that.successSendFile, $parent)
+        // var url = SERVER_API_ACTION.sendResume;
+        // $.ajax({
+        //     type: "POST",
+        //     url: url,
+        //     data: formData,
+        //     success: function () {
+        //         that.successSendFile($parent);
+        //     },
+        //     dataType: "json",
+        //     contentType: "application/json"
+        // });
         form.find($("input")).each(function(){
             $(this).val('');
         });
@@ -599,19 +601,22 @@
         var file = data;
         var that = this;
         var formData = new FormData("file", file);
-        var url = SERVER_API_ACTION.sendResumeFile;
-        $.ajax({
-            type: "POST",
-            url: url,
-            success: function(data){
-                that.successSendFile($item);
-            },
-             data: formData,
-            // Options to tell jQuery not to process data or worry about the content-type
-            cache: false,
-            contentType: false,
-            processData: false
-        });
+        this.serverApi.sendResumeFile(formData, that.successSendFile, $item)
+
+
+        // var url = SERVER_API_ACTION.sendResumeFile;
+        // $.ajax({
+        //     type: "POST",
+        //     url: url,
+        //     success: function(data){
+        //         that.successSendFile($item);
+        //     },
+        //      data: formData,
+        //     // Options to tell jQuery not to process data or worry about the content-type
+        //     cache: false,
+        //     contentType: false,
+        //     processData: false
+        // });
     };
 
 
