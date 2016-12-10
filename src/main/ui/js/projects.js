@@ -12,14 +12,16 @@
         this.$items      = null;
         // field added by me
         this.data        = null;
-        this.grid        = 4;
+        this.grid = 4;
         this.index       = -1;
         this.currentDirection   = "next";
         this.api = api;
 
         // this.requestProjects(this.setData.bind(this));
         this.api.getProjects(this.setData.bind(this));
+        this.resize();
         this.options.keyboard && this.$element.on("keydown.devcarousel", $.proxy(this.keydown, this));
+        $(window).on("resize", $.proxy(this.resize, this));
 
         this.options.pause == "hover" && !("ontouchstart" in document.documentElement) && this.$element
             .on("mouseenter.devcarousel", $.proxy(this.pause, this))
@@ -43,6 +45,14 @@
             default: return;
         }
         e.preventDefault();
+    };
+
+    DevCarousel.prototype.resize = function (e) {
+        if(window.innerWidth >= 768){
+            this.grid = 4;
+        }else if(window.innerWidth < 768){
+            this.grid = 2;
+        }
     };
 
     DevCarousel.prototype.cycle = function (e) {
