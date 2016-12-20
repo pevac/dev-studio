@@ -204,7 +204,7 @@
 
     DevCarousel.prototype.slideComponent = function () {
         var obj = {};
-        obj.template = '<div class="col-sm-6 col-xs-12 flex_col" href="#project-carousel" role="button" data-action="view">'+
+        obj.template = '<div class="col-sm-6 col-xs-12 flex_col" data-target="#project-carousel" role="button" data-action="view">'+
                             '<div class="item-container" >'+
                                 '<div class="project-slide-item">'+
                                     '<a><img class="project-photo" data-src="linkUrl" alt=""></a>'+
@@ -436,15 +436,15 @@
             '<div class="vacancy">'+
             '<div class="resume">'+
             '<h3 data-vacancy="job_name"></h3>'+
-            '<a class="btn btn-dev btn-desc" href="#project-view" role="button" data-view="vacancy-description" data-action="toggleVacancy">Опис вакансії</a>'+
-            '<a class="btn btn-dev btn-send" href="#project-view" role="button" data-view="send_resume"   data-action="toggleVacancy">Відіслати резюме</a>'+
+            '<a class="btn btn-dev btn-desc" data-target="#project-view" role="button" data-view="vacancy-description" data-action="toggleVacancy">Опис вакансії</a>'+
+            '<a class="btn btn-dev btn-send" data-target="#project-view" role="button" data-view="send_resume"   data-action="toggleVacancy">Відіслати резюме</a>'+
             '</div>'+
             '<div class="vacancy-description collapse-view collapse" >'+
                 '<p data-vacancy="description"></p>'+
             '</div>'+
             '<div id="ok" class="ok success collapse-view  text-center collapse" >'+
             '<div class="clearfix">'+
-               '<a class="close" href="#project-view" role="button" data-view="ok"   data-action="toggleVacancy"></a>'+
+               '<a class="close" data-target="#project-view" role="button" data-view="ok"   data-action="toggleVacancy"></a>'+
             '</div>'+
             '<div class="ok-icon"></div>'+
             '<p>Дякуємо, Ваша резюме</p>'+
