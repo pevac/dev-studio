@@ -1,18 +1,40 @@
 
 // SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api"
-SERVER_API_DEFAULT = 'http://192.168.10.91:8080/api/'
+SERVER_API_DEFAULT = 'http://192.168.10.60:8080/api/'
 
 
 SERVER_API_ACTION = {
-    sendOrderFormUrl: SERVER_API_DEFAULT + '/customerrequests',
-    getProjectsUrl:  'js/data.json',
-    sendResume: SERVER_API_DEFAULT +  "/resume",
-    sendResumeFile: SERVER_API_DEFAULT
+    sendOrderFormUrl: SERVER_API_DEFAULT + 'customerrequests',
+    getProjectsUrl:  SERVER_API_DEFAULT + "projects",
+    sendResume: SERVER_API_DEFAULT +  "resume",
+    sendResumeFile: SERVER_API_DEFAULT,
+    getProjectImages:  'http://192.168.10.60:8080/api/images/'
 };
 
 
 var ServerApi =  function (){
    var api = {};
+
+       api.getProjectImages =function(callback, id, name){
+        var url1 = SERVER_API_ACTION.getProjectImages + "3/draft.png";
+        var success1 = callback;
+        $.ajax({
+            // type: "GET",
+            url: url1,
+            // cache: true,
+            // processData : false,
+            // dataType: "image/png",
+            // headers:{'Content-Type':'image/png','X-Requested-With':'XMLHttpRequest'},
+            success: function (result) {
+                console.log("hell");
+                success1(result);
+            },
+            error: function(data){
+// console.log(data);
+//  success1(data.responseText);
+            },
+        });
+    }
 
     api.sendOrderForm = function(data, callback){
         var success = callback;

@@ -181,6 +181,7 @@
 
     // method added by me
     DevCarousel.prototype.setData = function (data) {
+        console.log(data);
         this.data = data;
         this.initCarouselItem();
     };
@@ -262,15 +263,23 @@
         that.index = (direction == "next") ? index-1 : index;
     };
 
+    DevCarousel.prototype.setImage = function(data){
+        // console.log(data);
+        this.itemImg = data;
+    };
+
     DevCarousel.prototype.initSlideComponent  = function (item, i) {
         var $slide = item, index = i;
-
-        $($slide).find(".has-vacancy").remove();
         var that = this;
         var data = that.data;
+        this.api.getProjectImages(this.setImage.bind(this), 3 , "draft.png");
+        // console.log(this.itemImg);
+        $($slide).find(".has-vacancy").remove();
+    
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
-        $img.src = data[index][dataSrc];
+        $img.src  = "data:image/png;base64," + this.itemImg;//'http://192.168.10.60:8080/api/images/3/draft.png'
+        // $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);
         data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];
         if(data[i].vacancies.length > 0){
