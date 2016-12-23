@@ -215,10 +215,6 @@
                         '</div>' ;
         return obj;
     };
-    // '<span class="action hidden-xs"></span>'+
-    // '<a class="btn btn-primary btn-dev" >Подивитися вакансії</a>'+
-    //  '<span class="has-vacancy">Є вакансія</span>'+
-
 
     DevCarousel.prototype.setNextItem = function (type, $next) {
         var that = this;
@@ -273,12 +269,11 @@
         var that = this;
         var data = that.data;
         this.api.getProjectImages(this.setImage.bind(this), 3 , "draft.png");
-        // console.log(this.itemImg);
         $($slide).find(".has-vacancy").remove();
     
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
-        $img.src  = "data:image/png;base64," + this.itemImg;//'http://192.168.10.60:8080/api/images/3/draft.png'
+        $img.src  = this.itemImg//'http://192.168.10.60:8080/api/images/3/draft.png'
         // $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);
         data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];

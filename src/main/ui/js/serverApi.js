@@ -17,23 +17,18 @@ var ServerApi =  function (){
 
        api.getProjectImages =function(callback, id, name){
         var url1 = SERVER_API_ACTION.getProjectImages + "3/draft.png";
-        var success1 = callback;
-        $.ajax({
-            // type: "GET",
-            url: url1,
-            // cache: true,
-            // processData : false,
-            // dataType: "image/png",
-            // headers:{'Content-Type':'image/png','X-Requested-With':'XMLHttpRequest'},
-            success: function (result) {
-                console.log("hell");
-                success1(result);
-            },
-            error: function(data){
-// console.log(data);
-//  success1(data.responseText);
-            },
-        });
+           callback(url1);
+
+        // var success1 = callback;
+        // $.ajax({
+        //     type: "GET",
+        //     url: url1,
+        //     dataType: "image/png",
+        //     success: function (result) {
+        //         console.log("hell");
+        //         success1(result);
+        //     }
+        // });
     }
 
     api.sendOrderForm = function(data, callback){
