@@ -1,12 +1,12 @@
 
-// SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api"
-SERVER_API_DEFAULT = 'http://192.168.10.60:8080/api/'
+SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api/"
+// SERVER_API_DEFAULT = 'http://192.168.10.60:8080/api/'
 
 
 SERVER_API_ACTION = {
-    sendOrderFormUrl: SERVER_API_DEFAULT + 'customerrequests',
-    getProjectsUrl:  SERVER_API_DEFAULT + "projects",
-    sendResume: SERVER_API_DEFAULT +  "resume",
+    sendOrderFormUrl: SERVER_API_DEFAULT + 'customerrequests/',
+    getProjectsUrl:  SERVER_API_DEFAULT + "projects/",
+    sendResume: SERVER_API_DEFAULT +  "resume/",
     sendResumeFile: SERVER_API_DEFAULT,
     getProjectImages:  'http://192.168.10.60:8080/api/images/'
 };
