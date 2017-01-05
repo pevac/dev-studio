@@ -1,0 +1,57 @@
+// Core variables and mixins
+@import "partials/_variables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_mixins";
+
+// Reset and dependencies
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_normalize";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_print";
+//@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+
+// Core CSS
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_scaffolding";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_type";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_code";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_grid";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_tables";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_forms";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_buttons";
+// Components
+ @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_component-animations";
+ @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_dropdowns";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_input-groups";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_navs";
+@import "partials/_header";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pagination";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/pager";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_labels";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/badges";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/jumbotron";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/alerts";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/media";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/panels";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/wells";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/close";
+
+//Components w/ JavaScript
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/modals";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
+// @import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/popovers";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_carousel";
+
+//Utility classes
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_utilities";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_responsive-utilities";
+
+// dev-studio style
+@import "partials/_common";
+@import "partials/_about_us";
+@import "partials/_services";
+@import "partials/_projects";
+@import "partials/_footer";
+

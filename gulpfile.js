@@ -19,7 +19,7 @@ var AUTOPREFIXER_BROWSERS = [
     "bb >= 10"
 ];
 // var DEPLOYMENT_NAME = "bionic_dev_studio";
-var SOURCE_BASE_DIR = "src/main/ui";
+var SOURCE_BASE_DIR = "src";
 var TARGET_DIR = "build";
 var BUILD_BASE_DIR = TARGET_DIR;
 var PROXY_PATHS = BUILD_BASE_DIR;
