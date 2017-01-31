@@ -1,6 +1,6 @@
 
-// SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api/"
-SERVER_API_DEFAULT =  'http://192.168.10.245:8080/api/',
+SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api/"
+// SERVER_API_DEFAULT =  'http://192.168.10.245:8080/api/',
 
 
 SERVER_API_ACTION = {
@@ -8,7 +8,7 @@ SERVER_API_ACTION = {
     getProjectsUrl:  SERVER_API_DEFAULT + "projects/",
     sendResume: SERVER_API_DEFAULT +  "resume/",
     sendResumeFile: SERVER_API_DEFAULT,
-    getProjectImages:  "images/"
+    getProjectImages: SERVER_API_DEFAULT + "images/"
 
 };
 
@@ -16,26 +16,13 @@ SERVER_API_ACTION = {
 var ServerApi =  function (){
    var api = {};
 
-       api.getProjectImages =function(callback, id, name){
-        var url1 = SERVER_API_DEFAULT + SERVER_API_ACTION.getProjectImages + id + "/"+ name;
-
-           callback(url1);
-
-        // var success1 = callback;
-        // $.ajax({
-        //     type: "GET",
-        //     url: url1,
-        //     dataType: "image/png",
-        //     success: function (result) {
-        //         console.log("hell");
-        //         success1(result);
-        //     }
-        // });
+    api.getProjectImages =function(callback, id, name){
+        var url1 =SERVER_API_ACTION.getProjectImages + id + "/"+ name;
+        callback(url1);
     }
 
     api.sendOrderForm = function(data, callback){
         var success = callback;
-console.log(data);
         $.ajax({
             type: "POST",
             url: SERVER_API_ACTION.sendOrderFormUrl,

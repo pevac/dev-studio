@@ -125,7 +125,7 @@
         var isCycling = this.interval;
         var direction = type == "next" ? "left" : "right";
         var that      = this;
-
+        that.setNextItem(type, $next );
         if ($next.hasClass("active")) return (this.sliding = false);
         var relatedTarget = $next[0]
         var slideEvent = $.Event("slide.devcarousel", {
@@ -143,8 +143,8 @@
             var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)]);
             $nextIndicator && $nextIndicator.addClass("active");
         }
-        that.setNextItem(type, $next );
-        var slidEvent = $.Event("slid.devcarousel", { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
+        
+        var slidEvent = $.Event("slide.devcarousel", { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
         if ($.support.transition && this.$element.hasClass("slide")) {
             $inner.css("overflow", "hidden");
             $next.addClass(type);
@@ -175,7 +175,6 @@
 
     // method added by me
     DevCarousel.prototype.setData = function (data) {
-        console.log(data);
         this.data = data;
         this.initCarouselItem();
     };
@@ -262,16 +261,12 @@
         var $slide = item, index = i;
         var that = this;
         var data = that.data;
-
-        this.api.getProjectImages(this.setImage.bind(this), data[i].id ,data[i].mainImg);
         $($slide).find(".has-vacancy").remove();
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
-        
-        this.api.getProjectImages(this.setImage.bind(this), data[i].id , data[i][dataSrc] );
+        this.api.getProjectImages(this.setImage.bind(this), data[index].id , data[index][dataSrc] );
       
         $img.src  = this.itemImg;
-        // $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);
         data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];
         if(data[i].vacancies.length > 0){
@@ -652,7 +647,7 @@
                  model = $(that).attr("data-model");
                  console.log(model);
 
-                that.src = SERVER_API_ACTION.getProjectImages + selectedProject.id+ "/" + selectedProject["previewImg"];
+                that.src =SERVER_API_DEFAULT + SERVER_API_ACTION.getProjectImages + selectedProject.id+ "/" + selectedProject["previewImg"];
             }
         });
         this.createListVacancies(selectedProject);
@@ -703,7 +698,7 @@
 
         for(var i = 0; i< data.length; i++){
                 var li = $('<li  data-target="#project-view" role="button" data-action="select"><a></a></li>');
-                $(li).find("a").text(data[i].projectName);
+                $(li).find("a").text(data[i].name);
                 li.data("data" ,data[i]);
                 $($list).append(li);
                 if(data[i].id === this.currentProject.id) {li.slideToggle();}
