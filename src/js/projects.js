@@ -127,10 +127,7 @@
         var that      = this;
 
         if ($next.hasClass("active")) return (this.sliding = false);
-
-
-
-        var relatedTarget = $next[0];
+        var relatedTarget = $next[0]
         var slideEvent = $.Event("slide.devcarousel", {
             relatedTarget: relatedTarget,
             direction: direction
@@ -139,7 +136,6 @@
         if (slideEvent.isDefaultPrevented()) return;
 
         this.sliding = true;
-
         isCycling && this.pause();
 
         if (this.$indicators.length) {
@@ -151,7 +147,6 @@
         var slidEvent = $.Event("slid.devcarousel", { relatedTarget: relatedTarget, direction: direction }); // yes, "slid"
         if ($.support.transition && this.$element.hasClass("slide")) {
             $inner.css("overflow", "hidden");
-
             $next.addClass(type);
             $next[0].offsetWidth;// force reflow
             $active.addClass(direction);
@@ -167,7 +162,6 @@
                     }, 0);
                 })
                 .emulateTransitionEnd(DevCarousel.TRANSITION_DURATION);
-
         } else {
             $active.removeClass("active");
             $next.addClass("active");
@@ -208,7 +202,7 @@
         obj.template = '<div class="col-sm-6 col-xs-12 flex_col" data-target="#project-carousel" role="button" data-action="view">'+
                             '<div class="item-container" >'+
                                 '<div class="project-slide-item">'+
-                                    '<a><img class="project-photo" data-src="linkUrl" alt=""></a>'+
+                                    '<a><img class="project-photo" data-src="mainImg" alt=""></a>'+
                                 '</div>'+
 
                             '</div>'+
@@ -268,11 +262,12 @@
         var $slide = item, index = i;
         var that = this;
         var data = that.data;
-        this.api.getProjectImages(this.setImage.bind(this), 3 , "draft.png");
         $($slide).find(".has-vacancy").remove();
-    
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
+        
+        this.api.getProjectImages(this.setImage.bind(this), data[i].id , data[i][dataSrc] );
+      
         $img.src  = this.itemImg//'http://192.168.10.60:8080/api/images/3/draft.png'
         // $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);

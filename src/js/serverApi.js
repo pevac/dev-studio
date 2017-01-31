@@ -8,7 +8,7 @@ SERVER_API_ACTION = {
     getProjectsUrl:  SERVER_API_DEFAULT + "projects/",
     sendResume: SERVER_API_DEFAULT +  "resume/",
     sendResumeFile: SERVER_API_DEFAULT,
-    getProjectImages:  'http://192.168.10.60:8080/api/images/'
+    getProjectImages:  "images/"
 };
 
 
@@ -16,7 +16,7 @@ var ServerApi =  function (){
    var api = {};
 
        api.getProjectImages =function(callback, id, name){
-        var url1 = SERVER_API_ACTION.getProjectImages + "3/draft.png";
+        var url1 = SERVER_API_DEFAULT + SERVER_API_ACTION.getProjectImages + id + "/"+ name;
            callback(url1);
 
         // var success1 = callback;
@@ -33,13 +33,13 @@ var ServerApi =  function (){
 
     api.sendOrderForm = function(data, callback){
         var success = callback;
-
+console.log(data);
         $.ajax({
             type: "POST",
             url: SERVER_API_ACTION.sendOrderFormUrl,
             data: data,
             error: function () {
-                success();
+                // success();
             },
             success: function () {
                 success();

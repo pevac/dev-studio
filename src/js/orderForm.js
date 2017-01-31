@@ -153,18 +153,7 @@
   function sendOrderMessage() {
     var customer = JSON.stringify($("#formValidate").serializeObject());
     ServerApi.sendOrderForm(customer, successRequest);
-    // var url = SERVER_API_ACTION.sendOrderFormUrl ;
-    // $.ajax({
-    //   type: "POST",
-    //   url: url,
-    //   data: customer,
-    //   success: function () {
-    //     successRequest();
-    //   },
-    //   dataType: "json",
-    //   contentType: "application/json"
-    // });
-    // successRequest();
+
     $("#formValidate").clearInputs();
   }
 
