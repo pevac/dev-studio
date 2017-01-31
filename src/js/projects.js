@@ -262,13 +262,15 @@
         var $slide = item, index = i;
         var that = this;
         var data = that.data;
+
+        this.api.getProjectImages(this.setImage.bind(this), data[i].id ,data[i].mainImg);
         $($slide).find(".has-vacancy").remove();
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
         
         this.api.getProjectImages(this.setImage.bind(this), data[i].id , data[i][dataSrc] );
       
-        $img.src  = this.itemImg//'http://192.168.10.60:8080/api/images/3/draft.png'
+        $img.src  = this.itemImg;
         // $img.src = data[index][dataSrc];
         $($slide).data("data",data[index]);
         data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];
@@ -634,6 +636,7 @@
 
     // change html value
     ProjectViwer.prototype.viewProject = function () {
+        var self = this;
         var $element = this.$element;
         var selectedProject = this.currentProject;
         var $items = $element.find("[data-model]");
@@ -647,7 +650,9 @@
                  that.innerHTML = selectedProject[model];
             }else if(that.tagName == "img".toUpperCase()){
                  model = $(that).attr("data-model");
-                that.src = selectedProject[model];
+                 console.log(model);
+
+                that.src = SERVER_API_ACTION.getProjectImages + selectedProject.id+ "/" + selectedProject["previewImg"];
             }
         });
         this.createListVacancies(selectedProject);

@@ -1,6 +1,6 @@
 
-SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api/"
-// SERVER_API_DEFAULT = 'http://192.168.10.60:8080/api/'
+// SERVER_API_DEFAULT = "http://128.0.169.5:8888/dev-studio/api/"
+SERVER_API_DEFAULT =  'http://192.168.10.245:8080/api/',
 
 
 SERVER_API_ACTION = {
@@ -9,6 +9,7 @@ SERVER_API_ACTION = {
     sendResume: SERVER_API_DEFAULT +  "resume/",
     sendResumeFile: SERVER_API_DEFAULT,
     getProjectImages:  "images/"
+
 };
 
 
@@ -17,6 +18,7 @@ var ServerApi =  function (){
 
        api.getProjectImages =function(callback, id, name){
         var url1 = SERVER_API_DEFAULT + SERVER_API_ACTION.getProjectImages + id + "/"+ name;
+
            callback(url1);
 
         // var success1 = callback;

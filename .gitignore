@@ -5,6 +5,7 @@ target
 bin
 build
 DerivedData
+debug.log
 
 .project
 .classpath
