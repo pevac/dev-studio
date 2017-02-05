@@ -42,8 +42,12 @@
     border-bottom: 2px solid $yellow-base-color;
 }
 
-.header .navbar-blue .navbar-nav > li > a:focus{
+/*.header .navbar-blue .navbar-nav > li > a:focus{
     color: $yellow-base-color;
+}*/
+
+.header .navbar-blue .navbar-nav > li > a:active{
+    color: $default-color;
 }
 
 .header .navbar-toggle:hover span{
@@ -104,4 +108,5 @@
 
 .header .navbar li.active a:hover, .header .navbar li.active a:focus{
     background-color: $dark-blue-base-color;
+    color: $yellow-base-color;
 }
