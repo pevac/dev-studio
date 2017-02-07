@@ -343,23 +343,24 @@
       min-height: 370px;
 
       img{
-        min-height:200px;
+        // min-height:200px;
+        width: 100%;
       }
 
-      .description {
+      .preview {
         background-color: $yellow-base-color;
-        padding: 0 40px 22px 40px;
+        // padding: 0 40px 22px 40px;
 
         h1 {
           font-size: 28px;
           text-transform: capitalize;
-          margin-bottom: 38px;
+          margin-bottom: 20px;
           font-weight: 700;
         }
 
-        p {
+        .description {
           font-size: 18px;
-          margin-left: 12px;
+          padding: 15px;
         }
       }
 

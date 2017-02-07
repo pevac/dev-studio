@@ -264,9 +264,9 @@
         $($slide).find(".has-vacancy").remove();
         var $img =  $($slide).find("[data-src]")[0];
         var dataSrc = $($($img)[0]).attr("data-src");
-        this.api.getProjectImages(this.setImage.bind(this), data[index].id , data[index][dataSrc] );
       
-        $img.src  = this.itemImg;
+       
+        $img.src  =  this.api.getProjectImages(data[index].id , data[index][dataSrc] );
         $($slide).data("data",data[index]);
         data[i].vacancies = data[i].vacancies ? data[i].vacancies : [];
         if(data[i].vacancies.length > 0){
@@ -620,6 +620,7 @@
     ProjectViwer.prototype.select = function (option) {
         var that = this;
         that.currentProject = option.data;
+        console.log(that.currentProject);
         this.viewProject();
         this.hideSelectedItemList(option);
     };
@@ -645,9 +646,8 @@
                  that.innerHTML = selectedProject[model];
             }else if(that.tagName == "img".toUpperCase()){
                  model = $(that).attr("data-model");
-                 console.log(model);
 
-                that.src =SERVER_API_DEFAULT + SERVER_API_ACTION.getProjectImages + selectedProject.id+ "/" + selectedProject["previewImg"];
+                that.src=  ServerApi.getProjectImages(selectedProject.id, selectedProject["previewImg"] );
             }
         });
         this.createListVacancies(selectedProject);

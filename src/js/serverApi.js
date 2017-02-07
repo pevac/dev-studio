@@ -16,9 +16,8 @@ SERVER_API_ACTION = {
 var ServerApi =  function (){
    var api = {};
 
-    api.getProjectImages =function(callback, id, name){
-        var url1 =SERVER_API_ACTION.getProjectImages + id + "/"+ name;
-        callback(url1);
+    api.getProjectImages =function(id, name){
+        return SERVER_API_ACTION.getProjectImages + id + "/"+ name;
     }
 
     api.sendOrderForm = function(data, callback){
