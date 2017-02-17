@@ -8,7 +8,7 @@ body>.dev-studio>section{
 }
 
 body{
-  font-family: "PFBeauSansPro Light", sans-serif;
+  font-family: "PFBeauSansPro", sans-serif;
   width: 100%;
   min-height: 100%;
   display: flex;
@@ -26,42 +26,54 @@ body{
 
 
 // Fonts
-@font-face {
-  font-family: 'PFBeauSansPro Black';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Black.ttf')  format('truetype'),
+
+ @font-face {
+  font-family: 'PFBeauSansPro';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype');
+  font-style: normal;
+  font-weight: normal;
 }
 @font-face {
-  font-family: 'PFBeauSansPro Bold';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
+  font-family: 'PFBeauSansPro';
+  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype');
+  font-style: normal;
+  font-weight: bold;
 }
-@font-face {
-  font-family: 'PFBeauSansPro Light';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro Reg';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro SemiBold';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro Thin';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Thin.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro ThinItal';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-ThinItal.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro XThin';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThin.ttf')  format('truetype'),
-}
-@font-face {
-  font-family: 'PFBeauSansPro XThinItal';
-  src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThinItal.ttf')  format('truetype'),
-}
+// @font-face {
+//   font-family: 'PFBeauSansPro Black';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Black.ttf')  format('truetype'),
+// }
+
+// @font-face {
+//   font-family: 'PFBeauSansPro Light';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro Reg';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype');
+//   font-style: normal;
+//   font-weight: normal;
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro SemiBold';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro Thin';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Thin.ttf')  format('truetype'),
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro ThinItal';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-ThinItal.ttf')  format('truetype'),
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro XThin';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThin.ttf')  format('truetype'),
+// }
+// @font-face {
+//   font-family: 'PFBeauSansPro XThinItal';
+//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-XThinItal.ttf')  format('truetype'),
+// }
 
 
 .btn-dev{

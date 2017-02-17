@@ -145,10 +145,10 @@
     bottom:85%;
   }
 
-.has-vacancy{
-  position: absolute;
-  font-size: 18px;
-}
+  .has-vacancy{
+    position: absolute;
+    font-size: 18px;
+  }
 
   .flex_col:nth-child(1) .action{
     top:40%;
@@ -349,18 +349,17 @@
 
       .preview {
         background-color: $yellow-base-color;
-        // padding: 0 40px 22px 40px;
+        padding: 0 40px 22px 40px;
 
         h1 {
           font-size: 28px;
           text-transform: capitalize;
-          margin-bottom: 20px;
+          // margin-bottom: 20px;
           font-weight: 700;
         }
 
         .description {
           font-size: 18px;
-          padding: 15px;
         }
       }
 
