@@ -11,7 +11,7 @@
         this.$active     = null;
         this.$items      = null;
         // field added by me
-        this.data        = null;
+        this.data        = [];
         this.grid = 4;
         this.index       = -1;
         this.currentDirection   = "next";
@@ -26,6 +26,8 @@
         this.options.pause == "hover" && !("ontouchstart" in document.documentElement) && this.$element
             .on("mouseenter.devcarousel", $.proxy(this.pause, this))
             .on("mouseleave.devcarousel", $.proxy(this.cycle, this));
+        
+            
     };
 
     DevCarousel.TRANSITION_DURATION = 600;
@@ -60,7 +62,7 @@
 
         this.interval && clearInterval(this.interval);
 
-        this.options.interval
+        !(this.data.length > 0) && this.options.interval
         && !this.paused
         && (this.interval = setInterval($.proxy(this.next, this), this.options.interval));
 
@@ -125,7 +127,9 @@
         var isCycling = this.interval;
         var direction = type == "next" ? "left" : "right";
         var that      = this;
-        that.setNextItem(type, $next );
+        if((this.data.length > 0)){
+            that.setNextItem(type, $next );
+        }
         if ($next.hasClass("active")) return (this.sliding = false);
         var relatedTarget = $next[0]
         var slideEvent = $.Event("slide.devcarousel", {
@@ -137,6 +141,7 @@
 
         this.sliding = true;
         isCycling && this.pause();
+        !(this.data.length > 0) && this.pause();
 
         if (this.$indicators.length) {
             this.$indicators.find(".active").removeClass("active");
@@ -168,15 +173,28 @@
             this.sliding = false;
             this.$element.trigger(slidEvent);
         }
-        isCycling && this.cycle();
+        !(this.data.length > 0) && isCycling && this.cycle();
+        !(this.data.length > 0) && this.pause();
+        
 
         return this;
     };
 
     // method added by me
     DevCarousel.prototype.setData = function (data) {
-        this.data = data;
-        this.initCarouselItem();
+        for(var i = 0; i<data.length; i++){
+            if(!data[i].draft){
+                this.data.push(data[i]);
+            }
+        }
+        if(this.data.length > 0){
+            this.initCarouselItem();
+            
+        }else{
+            this.$element.css("display", "none");
+            !(this.data.length > 0) && this.$element
+            .on("mouseenter.devcarousel", $.proxy(this.pause, this))
+        }
     };
 
     DevCarousel.prototype.initCarouselItem= function () {
@@ -417,11 +435,12 @@
         this.$element = element;
         this.currentProject= currentProject;
         this.data = data;
+        this.vacancies = [];
+        this.jobPositions = [];
         this.createListProjects(this.data);
         this.vacancy = null;
         this.serverApi = api;
         this.view();
-
     };
 
     ProjectViwer.prototype.vacancyComponent = function (arg) {
@@ -431,7 +450,7 @@
         obj.template =
             '<div class="vacancy">'+
             '<div class="resume">'+
-            '<h3 data-vacancy="job_name"></h3>'+
+            '<h3 data-vacancy="jobName"></h3>'+
             '<a class="btn btn-dev btn-desc" data-target="#project-view" role="button" data-view="vacancy-description" data-action="toggleVacancy">Опис вакансії</a>'+
             '<a class="btn btn-dev btn-send" data-target="#project-view" role="button" data-view="send_resume"   data-action="toggleVacancy">Відіслати резюме</a>'+
             '</div>'+
@@ -533,17 +552,6 @@
         var form  = option.item.parents(".alumnus");
         var formData = JSON.stringify(form.serializeObject());
         this.serverApi.sendResume(formData, that.successSendFile, $parent)
-        // var url = SERVER_API_ACTION.sendResume;
-        // $.ajax({
-        //     type: "POST",
-        //     url: url,
-        //     data: formData,
-        //     success: function () {
-        //         that.successSendFile($parent);
-        //     },
-        //     dataType: "json",
-        //     contentType: "application/json"
-        // });
         form.find($("input")).each(function(){
             $(this).val('');
         });
@@ -596,23 +604,9 @@
     ProjectViwer.prototype.requestResumeFile = function (data, $item) {
         var file = data;
         var that = this;
-        var formData = new FormData("file", file);
-        this.serverApi.sendResumeFile(formData, that.successSendFile, $item)
+        // var formData = new FormData("file", file);
+        this.serverApi.sendResumeFile(file, that.successSendFile, $item)
 
-
-        // var url = SERVER_API_ACTION.sendResumeFile;
-        // $.ajax({
-        //     type: "POST",
-        //     url: url,
-        //     success: function(data){
-        //         that.successSendFile($item);
-        //     },
-        //      data: formData,
-        //     // Options to tell jQuery not to process data or worry about the content-type
-        //     cache: false,
-        //     contentType: false,
-        //     processData: false
-        // });
     };
 
 
@@ -620,7 +614,6 @@
     ProjectViwer.prototype.select = function (option) {
         var that = this;
         that.currentProject = option.data;
-        console.log(that.currentProject);
         this.viewProject();
         this.hideSelectedItemList(option);
     };
@@ -628,7 +621,27 @@
       // toggle into carousel
     ProjectViwer.prototype.view = function (option) {
         this.$element.slideToggle();
+        var selectedProject = this.currentProject;
+        var setVacancies = this.setVacancies.bind(this);
+        var createListVacancies = this.createListVacancies.bind(this);
+        var setJobPostions = this.setJobPostions.bind(this);
+        ServerApi.getVacancies().then(function(response){
+            setVacancies(response);
+            createListVacancies(selectedProject);
+        });
+        ServerApi.getJobPositions().then(function(response){
+            setJobPostions(response);
+            createListVacancies(selectedProject);
+        });
     };
+
+    ProjectViwer.prototype.setJobPostions = function(data){
+        this.jobPositions = data;
+    }
+
+    ProjectViwer.prototype.setVacancies = function(data){
+        this.vacancies = data;
+    }
 
     // change html value
     ProjectViwer.prototype.viewProject = function () {
@@ -650,13 +663,22 @@
                 that.src=  ServerApi.getProjectImages(selectedProject.id, selectedProject["previewImg"] );
             }
         });
+
         this.createListVacancies(selectedProject);
+
     };
 
     ProjectViwer.prototype.createListVacancies = function (item) {
         var project = item;
-        var vacancies = (project.vacancies && project.vacancies.length>=0 ) ? project.vacancies : [];
-        var $container = this.$element.find(".vacancies");
+        var that = this;
+        var vacancies= [];
+        for(var i = 0; i< that.vacancies.length; i++){
+            if(project.id == that.vacancies[i].project.id){
+                vacancies.push(that.vacancies[i]);
+            }
+        };
+
+        var $container = that.$element.find(".vacancies");
         // var $vacancy = $.parseHTML(this.vacancyComponent().template)
         $container.children().remove();
         if(vacancies.length>0){
@@ -678,6 +700,13 @@
         var $vacancyItems = $item;
         var data = model;
         var text =  /^(?:p|a|h1|h2|h3|h4|h5|h6|span|div)$/i;
+        for(var i = 0; i< this.jobPositions.length; i++){
+            if(data.jobPosition.id == this.jobPositions[i].id){
+                data.jobName = this.jobPositions[i].name;
+                console.log(data);
+                
+            }
+        }
         $vacancyItems.each(function () {
             var that = this;
             var attr;

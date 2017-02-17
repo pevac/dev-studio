@@ -7,8 +7,10 @@ SERVER_API_ACTION = {
     sendOrderFormUrl: SERVER_API_DEFAULT + 'customerrequests/',
     getProjectsUrl:  SERVER_API_DEFAULT + "projects/",
     sendResume: SERVER_API_DEFAULT +  "resume/",
-    sendResumeFile: SERVER_API_DEFAULT,
-    getProjectImages: SERVER_API_DEFAULT + "images/"
+    sendResumeFile: SERVER_API_DEFAULT + "images/",
+    getProjectImages: SERVER_API_DEFAULT + "images/",
+    getVacancies: SERVER_API_DEFAULT + "vacancies/",
+    getJobPositions: SERVER_API_DEFAULT + "jobpositions/",
 
 };
 
@@ -50,6 +52,30 @@ var ServerApi =  function (){
         });
     }
 
+    api.getVacancies =function(callback){
+       return  $.ajax({
+            type: "GET",
+            url: SERVER_API_ACTION.getVacancies,
+            dataType: "json",
+            contentType: "application/json"
+        }).then(function(data){
+            return data;
+        });
+    }
+
+    api.getJobPositions =function(callback){
+       return  $.ajax({
+            type: "GET",
+            url: SERVER_API_ACTION.getJobPositions,
+            dataType: "json",
+            contentType: "application/json"
+        }).then(function(data){
+            return data;
+        });
+    }
+
+    
+
     api.sendResume = function(data, callback, $parent){
 
         $.ajax({
@@ -65,10 +91,12 @@ var ServerApi =  function (){
     }
 
     api.sendResumeFile = function(data, callback, $parent){
-
+        var formData = new FormData();
+        formData.append("file", data);
+        console.log(data);
         $.ajax({
             type: "POST",
-            url: SERVER_API_ACTION.sendResumeFile,
+            url: SERVER_API_ACTION.sendResumeFile + 1 + "/"+ data.name,
             data: formData,
             success: function () {
                 callback($parent);
