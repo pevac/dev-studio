@@ -16,10 +16,10 @@
   margin-top: 30px;
 
   .btn-dev{
-    padding: 10px 25px;
+    padding: 12px 30px;
     font-size: 16px;
     margin-bottom: 15px;
-    font-size: 26px;
+    font-size: 14pt;
   }
 
   textarea{
@@ -163,10 +163,9 @@
     text-align: left;
   }
 }
-
 section.about_us{
   position: relative;
-  margin-top: 38%;
+  margin-top: 42.4%;
   width: 100%;
   height:auto;
   padding-bottom:30px;
@@ -178,7 +177,7 @@ section.about_us{
     position: relative;
     height: 0;
 
-    h1 {
+    /*h1 {
       font-size: 16px;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -232,43 +231,70 @@ section.about_us{
         top: 84px;
         left: 70px;
       }
-    }
+    }*/
+  }
+  h2{
+    font-family: 'PFBeauSansPro Bold', sans-serif;
+    font-size: 24px;
+    color: $dark-blue-green-color;
+    text-align: center;
+  }
+  .lines{
+    padding: 18px 0;
+  }
+  .lines:first-child{
+    padding-left: 26%;
+  }
+  .lines:last-child{
+    padding-right: 26%;
+  }
+  .line{
+    width: 100%;
+    height: 2px;
+    background-color: $dark-blue-base-color;
+    opacity: 0.6;
+    display: inline-block;
   }
 
   .about-item{
     height: 100%;
-    background-color: $gray-base-color;
-    border-right: 3px solid $dark-gray-base-color;
-    border-bottom: 8px solid $dark-gray-base-color;
+    background-color: $light-grey-purple-color;
+    /*border-right: 3px solid $dark-gray-base-color;
+    border-bottom: 8px solid $dark-gray-base-color;*/
+    box-shadow: 2px 2px 6px 0px $light-gray-color;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     margin: 10px 0;
 
     img {
-      filter: grayscale(100%);
+      /*filter: grayscale(100%);*/
+      width: 86%;
     }
 
     &:hover{
       background-color: $blue-base-color;
       color:$default-color;
-      border-right: 3px solid #0f7492;
-      border-bottom: 8px solid #0f7492;
+      box-shadow: 0px 0px 0px 0px;
+      border-bottom: none;
       & svg {
         fill: $yellow-base-color;
       }
       .about-img, .about-img img{
         width:100%;
-        padding:0 5px 5px 5px ;
+        padding: 0;
         filter: none;
 
       }
       .about-article{
-        padding-bottom:10px;
+        padding-bottom: 2px;
       }
       
       p{
+        font-family: 'PFBeauSansPro Light', sans-serif;
+        font-size: 14pt;
         color: #fff;
+        line-height: 20px;
       }
     }
 
@@ -280,20 +306,23 @@ section.about_us{
 
     .about-article{
       flex-grow: 5;
-      padding:25px;
+      padding: 10px 25px 2px 25px;
 
     }
 
     p{
+      font-family: 'PFBeauSansPro Light', sans-serif;
       text-align: left;
       margin: 0;
-      font-size: 20px;
+      font-size: 14pt;
       color: black;
+      line-height: 20px;
     }
 
     .about-img{
-      padding-top: 40px;
-      padding-bottom:55px;
+      /*padding-top: 10px;*/
+      padding-top: 20px;
+      padding-bottom: 30px;
     }
   }
 

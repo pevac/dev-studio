@@ -3,7 +3,7 @@ html {
 }
 
 body>.dev-studio>section{
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 75px;
 }
 
@@ -16,10 +16,10 @@ body{
 }
 
 .dev-studio{
-  background-image: url("../img/dev.jpg");
+  background-image: url("../img/dev.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  margin-top: 50px;
+  margin-top: 16px;
   flex: 1 0 auto;
 }
 
@@ -43,11 +43,14 @@ body{
 //   font-family: 'PFBeauSansPro Black';
 //   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Black.ttf')  format('truetype'),
 // }
-
-// @font-face {
-//   font-family: 'PFBeauSansPro Light';
-//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
-// }
+ @font-face {
+   font-family: 'PFBeauSansPro Bold';
+   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Bold.ttf')  format('truetype'),
+ }
+ @font-face {
+   font-family: 'PFBeauSansPro Light';
+   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
+ }
 // @font-face {
 //   font-family: 'PFBeauSansPro Reg';
 //   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype');

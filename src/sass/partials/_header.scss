@@ -11,20 +11,21 @@
     border: none;
 }
 
-.header .intership{
-    background-color: white;
-    width: 100%;
+.header .internship{
+    background-color: $yellow-base-color;
+    /*width: 100%;*/
+    text-align: center;
 }
 
 .header .navbar-brand{
-    padding: 5px 10px 5px 10px;
+    padding: 5px 10px;
 }
 
 .header li{
     height: 50px;
     font-size: 14pt;
-    margin: 0 0 0 80px;
-    padding: 15px 0;
+    /*margin: 0 0 0 80px;*/
+    padding: 15px 30px;
 }
 
 .header li:first-child{
@@ -34,6 +35,11 @@
 .header .navbar-blue .navbar-nav li a{
     color: white;
     padding: 0;
+}
+
+.header .small-menu .internship .nav.navbar-nav li{
+    padding-left: 45px;
+    padding-right: 45px;
 }
 
 .header .navbar-blue .navbar-nav li a:hover{
@@ -57,17 +63,17 @@
 	background-color: #f7c008;
 }
 
-.header .intership .nav li a{
+.header .internship .nav li a{
     color: $dark-blue-base-color;
 }
 
-.header .intership .nav li {
+.header .internship .nav li {
     float: none;
     padding-left: 15px;
 }
 
-.header .intership .nav li a:hover{
-    color: #171d3e;
+.header .internship .nav li a:hover{
+    color: $default-color;
     border: none;
 }
 
@@ -87,15 +93,17 @@
 }
 
 @media(max-width: 1200px){
-    .header li{margin: 0 0 0 40px;}
+    .header li{padding: 15px 20px;}
 }
 
 @media(max-width: 1000px){
-    .header li{margin: 0 0 0 20px;}
+    .header li{padding: 15px 10px;}
+    .header .small-menu .internship .nav.navbar-nav li{padding-left: 30px; padding-right: 30px;}
 }
 
 @media(max-width: 767px){
-    .header li{margin: 0;}
+    .header li{padding: 15px 10px;}
+    .header .small-menu .internship .nav.navbar-nav li{padding-left: 20px; padding-right: 20px;}
     .white_block{display: none;}
 }
 
