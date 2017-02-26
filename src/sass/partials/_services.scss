@@ -1,5 +1,32 @@
+/*section.services{
+    height: 850px;
+}*/
+h2{
+    font-family: 'PFBeauSansPro Bold', sans-serif;
+    font-size: 24px;
+    color: $dark-blue-green-color;
+    text-align: center;
+}
+.lines{
+    padding: 18px 0;
+}
+.lines:first-child{
+    padding-left: 26%;
+}
+.lines:last-child{
+    padding-right: 26%;
+}
+.line{
+    width: 100%;
+    height: 2px;
+    background-color: $dark-blue-base-color;
+    opacity: 0.6;
+    display: inline-block;
+}
+
 .withborderyellow{
     text-align: center;
+    padding-top: 40px;
 }
 
 .services .borderyellow{
@@ -10,27 +37,67 @@
 
 .services .borderyellow:first-child, .services .borderyellow:nth-child(2), .services .borderyellow:nth-child(5), .services .borderyellow:last-child{
     padding: 20px;
+    position: relative;
+}
+
+.services .borderyellow:hover{
+    background-color: $dark-blue-color;
+    border-color: $dark-blue-color;
+}
+
+.services .borderyellow:hover p,
+.services .borderyellow:hover h3{
+    color: $default-color;
 }
 
 .services .borderyellow:first-child{
-    height: 290px;
-    width: 510px;
+    height: 300px;
+    width: 47.2%;
 }
 
 .services .borderyellow:nth-child(2){
-    margin-left: 40px;
-    height: 340px;
-    width: 580px;
+    top: 20px;
+    margin-bottom: 20px;
+    margin-left: 2.4%;
+    height: 330px;
+    width: 50%;
 }
 
 .services .borderyellow:nth-child(5){
     height: 290px;
-    width: 470px;
+    width: 43.8%;
 }
 .services .borderyellow:last-child{
-    margin-left: 20px;
+    top: 10px;
+    margin-left: 1.8%;
     height: 290px;
-    width: 630px;
+    width: 54%;
+}
+
+.services .hidden1,
+.services .hidden2,
+.services .hidden3,
+.services .hidden4{
+    width: 101.2%;
+    height: 101.4%;
+    border: 1px solid #f7c008;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    visibility: hidden;
+}
+
+.services .borderyellow:first-child:hover .hidden1{
+    visibility: visible;
+}
+.services .borderyellow:nth-child(2):hover .hidden2{
+    visibility: visible;
+}
+.services .borderyellow:nth-child(5):hover .hidden3{
+    visibility: visible;
+}
+.services .borderyellow:last-child:hover .hidden4{
+    visibility: visible;
 }
 
 .services .borderyellow h3{
@@ -52,7 +119,7 @@
     position: relative;
     height: 0;
 
-    h1 {
+    /*h1 {
       font-size: 16px;
       letter-spacing: 4px;
       text-transform: uppercase;
@@ -110,10 +177,10 @@
         bottom: 2px;
         right: 14px;
       }
-    }
+    }*/
   }
     .bluespanchuks1{
-        position: relative;
+        position: absolute;
         height: 0;
         span{
             position: absolute;
@@ -121,51 +188,52 @@
             background-color: $dark-blue-base-color;
         }
         span:nth-child(1){
-            width: 64px;
-            height: 64px;
-            top: -110px;
-            left: -62px;
-        }
-        span:nth-child(2){
             width: 50px;
             height: 50px;
-            top: -72px;
-            left: 30px;
+            top: 60px;
+            left: -112px;
+        }
+        span:nth-child(2){
+            width: 38px;
+            height: 38px;
+            top: 94px;
+            left: -32px;
         }
         span:nth-child(3){
-            width: 34px;
-            height: 34px;
-            top: -28px;
-            left: -20px;
+            width: 24px;
+            height: 24px;
+            top: 128px;
+            left: -80px;
         }
         span:nth-child(4){
-            width: 28px;
-            height: 28px;
-            top: 30px;
-            left: -36px;
+            width: 20px;
+            height: 20px;
+            top: 168px;
+            left: -92px;
         }
         span:nth-child(5){
-            width: 22px;
-            height: 22px;
-            top: 34px;
-            left: 54px; /*10*/
+            width: 16px;
+            height: 16px;
+            top: 170px;
+            left: -20px; /*10*/
         }
         span:nth-child(6){
-            width: 14px;
-            height: 14px;
-            top: 64px; /*54*/
-            left: 8px;
+            width: 10px;
+            height: 10px;
+            top: 186px; /*54*/
+            left: -58px;
         }
         span:nth-child(7){
-            width: 12px;
-            height: 12px;
-            top: 18px; /*10*/
-            left: 22px;
+            width: 8px;
+            height: 8px;
+            top: 152px; /*10*/
+            left: -36px;
         }
     }
     .yellowspanchuks{
         position: relative;
-        top: 8px;
+        top: 4px;
+        left: 18px;
         margin: 0 0 0 44%;
         height: 0;
         span{
@@ -175,46 +243,46 @@
           font-weight: 700;
         }
         span:nth-child(1){
-            width: 42px;
-            height: 42px;
-            top: -94px;
-            left: -24px;
+            width: 46px;
+            height: 46px;
+            top: -64px;
+            left: -38px;
         }
         span:nth-child(2){
-            width: 30px;
-            height: 30px;
-            top: -62px;
-            left: 42px;
+            width: 34px;
+            height: 34px;
+            top: -28px;
+            left: 34px;
         }
         span:nth-child(3){
-            width: 20px;
-            height: 20px;
-            top: -28px;
-            left: 6px;
+            width: 24px;
+            height: 24px;
+            top: -4px;
+            left: -10px;
         }
         span:nth-child(4){
-            width: 16px;
-            height: 16px;
-            top: 6px;
-            left: -6px;
+            width: 20px;
+            height: 20px;
+            top: 36px;
+            left: -26px;
         }
         span:nth-child(5){
-            width: 12px;
-            height: 12px;
-            top: 8px;
+            width: 14px;
+            height: 14px;
+            top: 38px;
             left: 44px; /*10*/
         }
         span:nth-child(6){
-            width: 10px;
-            height: 10px;
-            top: 20px; /*54*/
-            left: 22px;
+            width: 12px;
+            height: 12px;
+            top: 54px; /*54*/
+            left: 12px;
         }
         span:nth-child(7){
-            width: 8px;
-            height: 8px;
-            top: -8px; /*10*/
-            left: 34px;
+            width: 10px;
+            height: 10px;
+            top: 20px; /*10*/
+            left: 28px;
         }
     }
     .bluespanchuks2{
@@ -231,44 +299,44 @@
         span:nth-child(1){
             width: 36px;
             height: 36px;
-            top: -100px;
-            left: -52px;
+            top: -102px;
+            left: 30px;
         }
         span:nth-child(2){
             width: 28px;
             height: 28px;
             top: -76px;
-            left: 6px;
+            left: 90px;
         }
         span:nth-child(3){
             width: 18px;
             height: 18px;
-            top: -44px;
-            left: -30px;
+            top: -54px;
+            left: 54px; /*56*/
         }
         span:nth-child(4){
             width: 14px;
             height: 14px;
-            top: -12px;
-            left: -38px;
+            top: -22px;
+            left: 46px;
         }
         span:nth-child(5){
             width: 10px;
             height: 10px;
-            top: -12px;
-            left: 16px; /*10*/
+            top: -20px;
+            left: 100px; /*10*/
         }
         span:nth-child(6){
             width: 8px;
             height: 8px;
-            top: 12px; /*54*/
-            left: -8px;
+            top: -8px; /*54*/
+            left: 72px;
         }
         span:nth-child(7){
             width: 6px;
             height: 6px;
-            top: -22px; /*10*/
-            left: 2px;
+            top: -36px; /*10*/
+            left: 86px;
         }
     }
 }
