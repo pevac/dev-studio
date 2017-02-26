@@ -51,16 +51,16 @@ body{
    font-family: 'PFBeauSansPro Light';
    src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Light.ttf')  format('truetype'),
  }
-// @font-face {
-//   font-family: 'PFBeauSansPro Reg';
-//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype');
-//   font-style: normal;
-//   font-weight: normal;
-// }
-// @font-face {
-//   font-family: 'PFBeauSansPro SemiBold';
-//   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
-// }
+ @font-face {
+   font-family: 'PFBeauSansPro Reg';
+   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Reg.ttf')  format('truetype');
+   font-style: normal;
+   font-weight: normal;
+ }
+ @font-face {
+   font-family: 'PFBeauSansPro SemiBold';
+   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-SemiBold.ttf')  format('truetype'),
+ }
 // @font-face {
 //   font-family: 'PFBeauSansPro Thin';
 //   src: url('../fonts/PFBeauSansPro/PFBeauSansPro-Thin.ttf')  format('truetype'),
