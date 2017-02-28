@@ -1,0 +1,375 @@
+.about_us{
+	.parallax{
+	position: relative;
+	.item{
+		display: inline-block;
+		position: absolute;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		
+	} 
+	.item1{
+		width: 60px;
+		height: 26px;
+		top: 60px;
+		left: 30px;
+		animation: top-down 30s linear infinite;
+		
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	}
+	.item2{
+		width: 46px;
+		height: 30px;
+		top: 170px;
+		left: 48%;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+	.item3{
+		width: 60px;
+		height: 26px;
+		top: 160px;
+		right: 100px;
+		animation: top-down 30s linear infinite;
+
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	}
+	.item4{
+		width: 66px;
+		height: 24px;
+		top: 310px;
+		left: 90px;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+	.item5{
+		width: 24px;
+		height: 38px;
+		top: 240px;
+		left: 290px;
+		animation: top-down 30s linear infinite;
+
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	} 
+	.item6{
+		width: 50px;
+		height: 20px;
+		top: 340px;
+		right: 460px;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+	.item7{
+		width: 42px;
+		height: 58px;
+		top: 300px;
+		right: 260px;
+		animation: top-down 30s linear infinite;
+
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	}
+	.item8{
+		width: 60px;
+		height: 26px;
+		top: 560px;
+		left: 60px;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+	.item9{
+		width: 64px;
+		height: 42px;
+		top: 650px;
+		left: 426px;
+		animation: top-down 30s linear infinite;
+
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	}
+	.item10{
+		width: 48px;
+		height: 66px;
+		top: 660px;
+		right: 40px;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+	.item11{
+		width: 24px;
+		height: 38px;
+		top: 1140px;
+		left: 220px;
+		animation: top-down 30s linear infinite;
+
+		img{
+			animation: rotate_right 20s linear infinite;
+		}
+	}
+	.item12{
+		width: 64px;
+		height: 42px;
+		top: 1180px;
+		right: 400px;
+		animation: down_top 30s linear infinite;
+
+		img{
+			animation: rotate_left 20s linear infinite;
+		}
+	}
+}
+}
+.services{
+	.parallax{
+		position: relative;
+		.item{
+		display: inline-block;
+		position: absolute;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		}
+		.item1{
+			width: 70px;
+			height: 20px;
+			top: 180px;
+			left: 180px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item2{
+			width: 40px;
+			height: 50px;
+			top: 200px;
+			left: 380px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item3{
+			width: 40px;
+			height: 50px;
+			top: 160px;
+			right: 190px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item4{
+			width: 60px;
+			height: 26px;
+			top: 230px;
+			right: 40px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item5{
+			width: 50px;
+			height: 60px;
+			top: 420px;
+			left: 40px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item6{
+			width: 60px;
+			height: 26px;
+			top: 620px;
+			left: 260px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item7{
+			width: 40px;
+			height: 20px;
+			top: 640px;
+			left: 370px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item8{
+			width: 30px;
+			height: 54px;
+			top: 520px;
+			left: 650px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item9{
+			width: 30px;
+			height: 20px;
+			top: 540px;
+			right: 70px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item10{
+			width: 40px;
+			height: 50px;
+			top: 660px;
+			right: 50px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item11{
+			width: 60px;
+			height: 20px;
+			top: 740px;
+			right: 160px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item12{
+			width: 50px;
+			height: 60px;
+			top: 1090px;
+			right: 260px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item13{
+			width: 60px;
+			height: 40px;
+			top: 1120px;
+			right: 570px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item14{
+			width: 30px;
+			height: 40px;
+			top: 1080px;
+			left: 430px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item15{
+			width: 40px;
+			height: 20px;
+			top: 1020px;
+			left: 540px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item16{
+			width: 90px;
+			height: 30px;
+			top: 1060px;
+			left: 40px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item17{
+			width: 50px;
+			height: 30px;
+			top: 1040px;
+			left: 170px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item18{
+			width: 30px;
+			height: 10px;
+			top: 660px;
+			left: 60px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+	}
+}
+
+@keyframes rotate_right{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(360deg);}
+}
+
+@keyframes rotate_left{
+	from{transform: rotate(0deg);}
+	to{transform: rotate(-360deg);}
+}
+
+@keyframes top-down{
+	0%{padding-top: 0px;}
+	50%{padding-top: 100px;}
+	100%{padding-top: 0px;}
+}
+
+@keyframes down_top{
+	0%{padding-top: 100px;}
+	50%{padding-top: 0px;}
+	100%{padding-top: 100px;}
+}
