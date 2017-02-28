@@ -1,10 +1,14 @@
 var gulp = require("gulp");
-var jshint = require("gulp-jshint");
 var del = require("del");
 var runSequence = require("run-sequence");
 var browserSync = require("browser-sync").create();
 var argv = require("minimist")(process.argv.slice(2));
 var $ = require("gulp-load-plugins")();
+var bowerComponent = require("./vendor");
+var pngquant = require('imagemin-pngquant');
+var events = require('events');
+var emitter = new events.EventEmitter();
+var currentTask = "";
 
 var RELEASE = !!argv.release;
 var AUTOPREFIXER_BROWSERS = [             
@@ -34,16 +38,8 @@ var path = {
         img: BUILD_BASE_DIR + "/img"
     },
     src: { 
-        html: SOURCE_BASE_DIR + "/*.html",
-        js: [
-            "./bower_components/jquery/dist/jquery.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js",
-            "./bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js",
-            "./bower_components/jquery-validation/dist/jquery.validate.js",
-            "./bower_components/jquery.maskedinput/dist/jquery.maskedinput.js",
-            SOURCE_BASE_DIR + "/js/**/*.js"],
-        jshint:  SOURCE_BASE_DIR + "/js/**/*.js",
+        html: SOURCE_BASE_DIR + "/index.html",
+        js: [].concat(bowerComponent, SOURCE_BASE_DIR + "/js/**/*.js"),
         styles: SOURCE_BASE_DIR + "/sass/*.scss",
         fonts: SOURCE_BASE_DIR + "/fonts/**/*.*",
         img: SOURCE_BASE_DIR + "/img/**/*.*"
@@ -56,12 +52,17 @@ var path = {
         img: SOURCE_BASE_DIR + "/img/**/*.*",
         reload: BUILD_BASE_DIR + "/**/*.*"
     },
+    zip: {
+        src: BUILD_BASE_DIR  + "/**/*.*",
+        dest: "./"
+    },
     clean: BUILD_BASE_DIR,
 };
 
 gulp.task("sass:build", function () {
+    currentTask = "sass:build";
     return gulp.src(path.src.styles)
-        .pipe($.plumber())
+        .pipe($.plumber({errorHandler:  reportError}))
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.sass())
         .pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
@@ -71,16 +72,14 @@ gulp.task("sass:build", function () {
             extname: ".css"
         }))
         .pipe($.if(!RELEASE, $.sourcemaps.write({sourceRoot: './src/sass'})))
-        .pipe(gulp.dest(path.build.styles));
-});
-
-gulp.task("accets:build", function () {
-    return gulp.src("src/main/ui/js/**/*.json")
-        .pipe(gulp.dest(path.build.js));
+        .pipe(gulp.dest(path.build.styles))
+        .pipe($.size({title: "styles"}));
 });
 
 gulp.task("script:build", function(){
+    currentTask = "script:build";
     return gulp.src(path.src.js)
+        .pipe($.plumber({errorHandler:  reportError}))
         .pipe($.if(!RELEASE, $.sourcemaps.init()))
         .pipe($.concat("main.js"))
         .pipe($.if(RELEASE,$.uglify()))
@@ -89,30 +88,25 @@ gulp.task("script:build", function(){
             extname: ".js"
         }))
         .pipe($.if(!RELEASE, $.sourcemaps.write({sourceRoot: './src/js'})))
-        .pipe(gulp.dest(path.build.js));
+        .pipe(gulp.dest(path.build.js))
+        .pipe($.size({title: "script"}));
 });
-
-gulp.task("jshint:build", function(){
-    return gulp.src(path.src.jshint)
-        .pipe(jshint()) 
-        .pipe(jshint.reporter("jshint-stylish"))
-});
-
-gulp.task("js:build", function (cb) {
-    runSequence("jshint:build", "script:build", cb);
-});
-
-
 
 gulp.task("html:build", function() {
+    var appScriptSources = gulp.src([path.build.js + "/**/*.js"]);
+    var otherSources = gulp.src([path.build.styles + "/**/*.css"], {read: false});
+    var sources = $.merge(otherSources, appScriptSources);
     return gulp.src(path.src.html)
         .pipe($.rigger())
+        .pipe($.inject(sources, { ignorePath:"../build/", relative : true }))
         .pipe($.if(RELEASE, $.htmlmin({
             removeComments: true,
             collapseWhitespace: true,
             minifyJS: true
         })))
         .pipe(gulp.dest(path.build.html))
+        .pipe($.size({title: "index"}));
+
 });
 
 gulp.task("fonts:build", function() {
@@ -120,15 +114,44 @@ gulp.task("fonts:build", function() {
         .pipe(gulp.dest(path.build.fonts));
 });
 
-gulp.task('image:build', function () {
-   return gulp.src(path.src.img)
+gulp.task('images:build', function () {
+    currentTask = "images:build";
+    return gulp.src(path.src.img)
+        .pipe($.plumber({errorHandler:  reportError}))
+        .pipe($.changed(path.build.img))
+        .pipe($.cache($.imagemin({
+            progressive: true,
+            svgoPlugins: [{removeViewBox: false}],
+            use: [pngquant()],
+            interlaced: true
+        })))
         .pipe(gulp.dest(path.build.img))
+        .pipe($.size({title: "images"}));
+
 });
 
 gulp.task("clean", del.bind(null, path.clean));
 
 gulp.task("build", ["clean"],  function (cb) {
-    runSequence(["sass:build", "accets:build", "js:build","html:build", "fonts:build","image:build"], cb);
+    runSequence(["sass:build", "script:build", "fonts:build","images:build"],"html:build", cb);
+});
+
+gulp.task("public",  function (cb) {
+    RELEASE = true;
+    runSequence("build", cb);
+});
+
+gulp.task("del:war", del.bind(null, "./admin.war"));
+
+gulp.task("war",  ["del:war", "public"],  function() {
+    return gulp.src(path.zip.src)
+        .pipe($.war({
+            welcome: "index.html",
+            displayName: "Gulp WAR",
+        }))
+        .pipe($.zip("dev-studio-landing.war"))
+        .pipe(gulp.dest(path.zip.dest))
+        .pipe($.size({title: "war"}));
 });
 
 gulp.task("browser-sync", function () {
@@ -171,3 +194,25 @@ gulp.task("storm", function (cb) {
 });
 
 gulp.task("default", ["serve"]);
+
+function reportError(error) {
+    var lineNumber = (error.line) ? "LINE " + error.line + " -- " : "";
+    var pluginName = (!error.plugin) ? ": ["+error.plugin+"]" : "["+currentTask+"]";
+ 
+    $.notify({
+        title: "Task Failed "+ pluginName,
+        message: lineNumber + "See console.",
+        sound: false
+    }).write(error);
+ 
+    var report = "";
+    var chalk = $.util.colors.white.bgRed;
+ 
+    report += chalk("TASK:") + pluginName+"\n";
+    report += chalk("ERROR:") + " " + error.message + "\n";
+    if (error.line) { report += chalk("LINE:") + " " + error.line + "\n"; }
+    if (error.file) { report += chalk("FILE:") + " " + error.file + "\n"; }
+ 
+    console.error(report);
+    this.emit("end");
+}

@@ -41,14 +41,4 @@ node_modules
 bower_components
 test-results.xml
 
-src/main/webapp/**/*.js
-src/main/webapp/**/*.css
-src/main/webapp/**/*.html
-
-src/main/webapp/js
-src/main/webapp/css
-src/main/webapp/sass
-src/main/webapp/fonts
-src/main/webapp/img
-src/main/webapp/template
-src/main/java/com/springapp
+*.war
