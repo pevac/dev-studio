@@ -173,7 +173,7 @@ gulp.task("watch", function(){
     });
 
     $.watch([path.watch.js], function(event, cb) {
-        gulp.start("js:build");
+        gulp.start("script:build");
     });
 
     $.watch([path.watch.fonts], function(event, cb) {
