@@ -183,7 +183,7 @@ h2{
         height: 0;
         span{
             position: absolute;
-            z-index: 1000;
+            z-index: 100;
             background-color: $dark-blue-base-color;
         }
         span:nth-child(1){
@@ -237,7 +237,7 @@ h2{
         height: 0;
         span{
             position: absolute;
-            z-index: 1000;
+            z-index: 100;
             background-color: $yellow-base-color;
           font-weight: 700;
         }
@@ -291,7 +291,7 @@ h2{
         height: 0;
         span{
             position: absolute;
-            z-index: 1000;
+            z-index: 100;
             background-color: $dark-blue-base-color;
           font-weight: 700;
         }
