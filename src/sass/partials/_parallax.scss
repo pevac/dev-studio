@@ -352,6 +352,173 @@
 	}
 }
 
+.projects{
+	.parallax{
+		
+		.item{
+		display: inline-block;
+		position: absolute;
+		background-repeat: no-repeat;
+		background-size: 100%;
+		}
+		.item1{
+			width: 70px;
+			height: 20px;
+			top: 360px;
+			left: 80px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item2{
+			width: 40px;
+			height: 50px;
+			top: 400px;
+			left: 360px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item3{
+			width: 40px;
+			height: 50px;
+			top: 560px;
+			left: 656px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item4{
+			width: 60px;
+			height: 26px;
+			top: 480px;
+			right: 180px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item5{
+			width: 50px;
+			height: 60px;
+			top: 720px;
+			right: 40px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item6{
+			width: 60px;
+			height: 26px;
+			top: 720px;
+			left: 640px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item7{
+			width: 40px;
+			height: 20px;
+			top: 840px;
+			left: 10px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item8{
+			width: 30px;
+			height: 54px;
+			top: 880px;
+			left: 200px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item9{
+			width: 30px;
+			height: 20px;
+			top: 1040px;
+			left: 646px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item10{
+			width: 40px;
+			height: 50px;
+			top: 1000px;
+			right: 100px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item11{
+			width: 60px;
+			height: 20px;
+			top: 1220px;
+			right: 180px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item12{
+			width: 50px;
+			height: 60px;
+			top: 1290px;
+			right: 560px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+		.item13{
+			width: 60px;
+			height: 40px;
+			top: 1320px;
+			left: 380px;
+			animation: down_top 30s linear infinite;
+
+			img{
+				animation: rotate_left 20s linear infinite;
+			}
+		}
+		.item14{
+			width: 30px;
+			height: 40px;
+			top: 1180px;
+			left: 90px;
+			animation: top-down 30s linear infinite;
+
+			img{
+				animation: rotate_right 20s linear infinite;
+			}
+		}
+	position: relative;
+	}
+}
+
 @keyframes rotate_right{
 	from{transform: rotate(0deg);}
 	to{transform: rotate(360deg);}
