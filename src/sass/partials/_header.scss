@@ -13,7 +13,6 @@
 
 .header .internship{
     background-color: $yellow-base-color;
-    /*width: 100%;*/
     text-align: center;
 }
 
@@ -24,8 +23,7 @@
 .header li{
     height: 50px;
     font-size: 14pt;
-    /*margin: 0 0 0 80px;*/
-    padding: 15px 30px;
+    padding: 15px 20px;
 }
 
 .header li:first-child{
@@ -46,10 +44,6 @@
     color: $yellow-base-color;
     border-bottom: 2px solid $yellow-base-color;
 }
-
-/*.header .navbar-blue .navbar-nav > li > a:focus{
-    color: $yellow-base-color;
-}*/
 
 .header .navbar-blue .navbar-nav > li > a:active{
     color: $default-color;

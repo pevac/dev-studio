@@ -1,5 +1,5 @@
 
-SERVER_API_DEFAULT = "http://62.80.173.67:8888/dev-studio/api/"
+SERVER_API_DEFAULT = "http://www.edu.bionic-university.com:2101/dev-studio/api/"
 // SERVER_API_DEFAULT =  'http://192.168.10.245:8080/api/',
 
 
